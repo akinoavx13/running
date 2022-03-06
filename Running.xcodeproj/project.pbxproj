@@ -11,7 +11,7 @@
 		520FD90927D4FE61005B3050 /* HealthKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520FD90827D4FE61005B3050 /* HealthKitService.swift */; };
 		520FD90C27D4FEA0005B3050 /* DependencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520FD90B27D4FEA0005B3050 /* DependencyManager.swift */; };
 		520FD91127D50170005B3050 /* AnalyseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520FD91027D50170005B3050 /* AnalyseViewModel.swift */; };
-		520FD91627D51EA0005B3050 /* Injectable in Frameworks */ = {isa = PBXBuildFile; productRef = 520FD91527D51EA0005B3050 /* Injectable */; };
+		520FD91A27D5305A005B3050 /* DD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520FD91927D5305A005B3050 /* DD.swift */; };
 		5239B91227D4F56B00253D61 /* RunningApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5239B91127D4F56B00253D61 /* RunningApp.swift */; };
 		5239B91427D4F56B00253D61 /* AnalyseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5239B91327D4F56B00253D61 /* AnalyseView.swift */; };
 		5239B91627D4F56B00253D61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5239B91527D4F56B00253D61 /* Assets.xcassets */; };
@@ -25,6 +25,7 @@
 		520FD90827D4FE61005B3050 /* HealthKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitService.swift; sourceTree = "<group>"; };
 		520FD90B27D4FEA0005B3050 /* DependencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyManager.swift; sourceTree = "<group>"; };
 		520FD91027D50170005B3050 /* AnalyseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyseViewModel.swift; sourceTree = "<group>"; };
+		520FD91927D5305A005B3050 /* DD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD.swift; sourceTree = "<group>"; };
 		5239B90E27D4F56B00253D61 /* Running.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Running.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5239B91127D4F56B00253D61 /* RunningApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningApp.swift; sourceTree = "<group>"; };
 		5239B91327D4F56B00253D61 /* AnalyseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyseView.swift; sourceTree = "<group>"; };
@@ -38,7 +39,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				520FD90427D4FB44005B3050 /* HealthKit.framework in Frameworks */,
-				520FD91627D51EA0005B3050 /* Injectable in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,6 +106,14 @@
 			path = Analyse;
 			sourceTree = "<group>";
 		};
+		520FD91827D5304B005B3050 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				520FD91927D5305A005B3050 /* DD.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		5239B90527D4F56B00253D61 = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				520FD90A27D4FE94005B3050 /* App */,
+				520FD91827D5304B005B3050 /* Utils */,
 				520FD90627D4FE29005B3050 /* Services */,
 				520FD90027D4F9A2005B3050 /* Scenes */,
 				520FD8FF27D4F981005B3050 /* Resources */,
@@ -160,7 +169,6 @@
 			);
 			name = Running;
 			packageProductDependencies = (
-				520FD91527D51EA0005B3050 /* Injectable */,
 			);
 			productName = Running;
 			productReference = 5239B90E27D4F56B00253D61 /* Running.app */;
@@ -191,7 +199,6 @@
 			);
 			mainGroup = 5239B90527D4F56B00253D61;
 			packageReferences = (
-				520FD91427D51EA0005B3050 /* XCRemoteSwiftPackageReference "Injectable" */,
 			);
 			productRefGroup = 5239B90F27D4F56B00253D61 /* Products */;
 			projectDirPath = "";
@@ -245,6 +252,7 @@
 				5239B91227D4F56B00253D61 /* RunningApp.swift in Sources */,
 				520FD90927D4FE61005B3050 /* HealthKitService.swift in Sources */,
 				520FD91127D50170005B3050 /* AnalyseViewModel.swift in Sources */,
+				520FD91A27D5305A005B3050 /* DD.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,25 +459,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		520FD91427D51EA0005B3050 /* XCRemoteSwiftPackageReference "Injectable" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mmaheo/Injectable.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		520FD91527D51EA0005B3050 /* Injectable */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 520FD91427D51EA0005B3050 /* XCRemoteSwiftPackageReference "Injectable" */;
-			productName = Injectable;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5239B90627D4F56B00253D61 /* Project object */;
 }

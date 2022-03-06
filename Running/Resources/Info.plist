@@ -2,7 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Privacy – Health Share Usage Description</key>
-	<string>Acces your running workouts to analyse them.</string>
+	<key>NSHealthShareUsageDescription</key>
+	<string>Need to access your workout to analyse your data.</string>
 </dict>
 </plist>

@@ -12,7 +12,7 @@ struct RunningApp: App {
     
     // MARK: - Properties
     
-    private let dependencyManager = DependencyManager()
+    private let dependencyManager = DependencyManager.shared
 
     // MARK: - Body
     
