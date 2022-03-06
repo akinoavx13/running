@@ -9,9 +9,16 @@ import SwiftUI
 
 @main
 struct RunningApp: App {
+    
+    // MARK: - Properties
+    
+    private let dependencyManager = DependencyManager()
+
+    // MARK: - Body
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AnalyseView()
         }
     }
 }

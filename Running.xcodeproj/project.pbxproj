@@ -7,16 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		520FD90427D4FB44005B3050 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 520FD90327D4FB44005B3050 /* HealthKit.framework */; };
+		520FD90927D4FE61005B3050 /* HealthKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520FD90827D4FE61005B3050 /* HealthKitService.swift */; };
+		520FD90C27D4FEA0005B3050 /* DependencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520FD90B27D4FEA0005B3050 /* DependencyManager.swift */; };
+		520FD91127D50170005B3050 /* AnalyseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520FD91027D50170005B3050 /* AnalyseViewModel.swift */; };
+		520FD91627D51EA0005B3050 /* Injectable in Frameworks */ = {isa = PBXBuildFile; productRef = 520FD91527D51EA0005B3050 /* Injectable */; };
 		5239B91227D4F56B00253D61 /* RunningApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5239B91127D4F56B00253D61 /* RunningApp.swift */; };
-		5239B91427D4F56B00253D61 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5239B91327D4F56B00253D61 /* ContentView.swift */; };
+		5239B91427D4F56B00253D61 /* AnalyseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5239B91327D4F56B00253D61 /* AnalyseView.swift */; };
 		5239B91627D4F56B00253D61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5239B91527D4F56B00253D61 /* Assets.xcassets */; };
 		5239B91927D4F56B00253D61 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5239B91827D4F56B00253D61 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		520FD90127D4FB44005B3050 /* Running.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Running.entitlements; sourceTree = "<group>"; };
+		520FD90327D4FB44005B3050 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		520FD90527D4FDAE005B3050 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		520FD90827D4FE61005B3050 /* HealthKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitService.swift; sourceTree = "<group>"; };
+		520FD90B27D4FEA0005B3050 /* DependencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyManager.swift; sourceTree = "<group>"; };
+		520FD91027D50170005B3050 /* AnalyseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyseViewModel.swift; sourceTree = "<group>"; };
 		5239B90E27D4F56B00253D61 /* Running.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Running.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5239B91127D4F56B00253D61 /* RunningApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningApp.swift; sourceTree = "<group>"; };
-		5239B91327D4F56B00253D61 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		5239B91327D4F56B00253D61 /* AnalyseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyseView.swift; sourceTree = "<group>"; };
 		5239B91527D4F56B00253D61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5239B91827D4F56B00253D61 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -26,17 +37,81 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				520FD90427D4FB44005B3050 /* HealthKit.framework in Frameworks */,
+				520FD91627D51EA0005B3050 /* Injectable in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		520FD8FF27D4F981005B3050 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				520FD90127D4FB44005B3050 /* Running.entitlements */,
+				520FD90527D4FDAE005B3050 /* Info.plist */,
+				5239B91527D4F56B00253D61 /* Assets.xcassets */,
+				5239B91727D4F56B00253D61 /* Preview Content */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		520FD90027D4F9A2005B3050 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				520FD90D27D500D0005B3050 /* Analyse */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		520FD90227D4FB44005B3050 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				520FD90327D4FB44005B3050 /* HealthKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		520FD90627D4FE29005B3050 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				520FD90727D4FE4B005B3050 /* HealthKit */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		520FD90727D4FE4B005B3050 /* HealthKit */ = {
+			isa = PBXGroup;
+			children = (
+				520FD90827D4FE61005B3050 /* HealthKitService.swift */,
+			);
+			path = HealthKit;
+			sourceTree = "<group>";
+		};
+		520FD90A27D4FE94005B3050 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				5239B91127D4F56B00253D61 /* RunningApp.swift */,
+				520FD90B27D4FEA0005B3050 /* DependencyManager.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		520FD90D27D500D0005B3050 /* Analyse */ = {
+			isa = PBXGroup;
+			children = (
+				5239B91327D4F56B00253D61 /* AnalyseView.swift */,
+				520FD91027D50170005B3050 /* AnalyseViewModel.swift */,
+			);
+			path = Analyse;
+			sourceTree = "<group>";
+		};
 		5239B90527D4F56B00253D61 = {
 			isa = PBXGroup;
 			children = (
 				5239B91027D4F56B00253D61 /* Running */,
 				5239B90F27D4F56B00253D61 /* Products */,
+				520FD90227D4FB44005B3050 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -51,10 +126,10 @@
 		5239B91027D4F56B00253D61 /* Running */ = {
 			isa = PBXGroup;
 			children = (
-				5239B91127D4F56B00253D61 /* RunningApp.swift */,
-				5239B91327D4F56B00253D61 /* ContentView.swift */,
-				5239B91527D4F56B00253D61 /* Assets.xcassets */,
-				5239B91727D4F56B00253D61 /* Preview Content */,
+				520FD90A27D4FE94005B3050 /* App */,
+				520FD90627D4FE29005B3050 /* Services */,
+				520FD90027D4F9A2005B3050 /* Scenes */,
+				520FD8FF27D4F981005B3050 /* Resources */,
 			);
 			path = Running;
 			sourceTree = "<group>";
@@ -77,12 +152,16 @@
 				5239B90A27D4F56B00253D61 /* Sources */,
 				5239B90B27D4F56B00253D61 /* Frameworks */,
 				5239B90C27D4F56B00253D61 /* Resources */,
+				520FD91727D51F66005B3050 /* Swiftlint */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Running;
+			packageProductDependencies = (
+				520FD91527D51EA0005B3050 /* Injectable */,
+			);
 			productName = Running;
 			productReference = 5239B90E27D4F56B00253D61 /* Running.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +190,9 @@
 				Base,
 			);
 			mainGroup = 5239B90527D4F56B00253D61;
+			packageReferences = (
+				520FD91427D51EA0005B3050 /* XCRemoteSwiftPackageReference "Injectable" */,
+			);
 			productRefGroup = 5239B90F27D4F56B00253D61 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -132,13 +214,37 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		520FD91727D51F66005B3050 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if test -d \"/opt/homebrew/bin/\"; then\n  PATH=\"/opt/homebrew/bin/:${PATH}\"\nfi\n\nexport PATH\n\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5239B90A27D4F56B00253D61 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5239B91427D4F56B00253D61 /* ContentView.swift in Sources */,
+				520FD90C27D4FEA0005B3050 /* DependencyManager.swift in Sources */,
+				5239B91427D4F56B00253D61 /* AnalyseView.swift in Sources */,
 				5239B91227D4F56B00253D61 /* RunningApp.swift in Sources */,
+				520FD90927D4FE61005B3050 /* HealthKitService.swift in Sources */,
+				520FD91127D50170005B3050 /* AnalyseViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,12 +372,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Running/Resources/Running.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Running/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Running/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = D27NXEG753;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Running/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -295,12 +403,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Running/Resources/Running.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"Running/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Running/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = D27NXEG753;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Running/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -341,6 +451,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		520FD91427D51EA0005B3050 /* XCRemoteSwiftPackageReference "Injectable" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mmaheo/Injectable.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		520FD91527D51EA0005B3050 /* Injectable */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 520FD91427D51EA0005B3050 /* XCRemoteSwiftPackageReference "Injectable" */;
+			productName = Injectable;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5239B90627D4F56B00253D61 /* Project object */;
 }
