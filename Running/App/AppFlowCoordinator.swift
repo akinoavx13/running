@@ -41,8 +41,6 @@ final class AppFlowCoordinator {
     // MARK: - Methods
     
     func start() {
-        setupStyle()
-        
         Tab.allCases.forEach(add(tab:))
     }
     
@@ -65,18 +63,5 @@ final class AppFlowCoordinator {
                 .makeAnalyseFlowCoordinator(navigationController: navigationController)
                 .start()
         }
-    }
-    
-    private func setupStyle() {
-//        if #available(iOS 15.0, *) {
-//            let appearance = UITabBarAppearance()
-//            appearance.configureWithOpaqueBackground()
-//            appearance.backgroundColor = Colors.bar
-//
-//            tabBarController.tabBar.standardAppearance = appearance
-//            tabBarController.tabBar.scrollEdgeAppearance = appearance
-//        } else {
-//            tabBarController.tabBar.barTintColor = Colors.bar
-//        }
     }
 }

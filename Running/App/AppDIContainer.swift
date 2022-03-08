@@ -7,10 +7,16 @@
 
 final class AppDIContainer {
 
+    // MARK: - Services
+
+    private lazy var healthKitService: HealthKitServiceProtocol = {
+        HealthKitService()
+    }()
+    
     // MARK: - Containers
     
     lazy var analyseDIContainer: AnalyseDIContainerProtocol = {
-        let dependencies = AnalyseDIContainer.Dependencies()
+        let dependencies = AnalyseDIContainer.Dependencies(healthKitService: healthKitService)
         
         return AnalyseDIContainer(dependencies: dependencies)
     }()

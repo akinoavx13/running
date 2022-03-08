@@ -10,6 +10,7 @@
 		5221C73527D7820400C84795 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5221C73427D7820400C84795 /* AppDelegate.swift */; };
 		5221C73E27D7820400C84795 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5221C73D27D7820400C84795 /* Assets.xcassets */; };
 		5221C74127D7820400C84795 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5221C73F27D7820400C84795 /* LaunchScreen.storyboard */; };
+		5237753227D7F0B300157ED5 /* IntensityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5237753127D7F0B300157ED5 /* IntensityCell.xib */; };
 		526B359227D782570092AFEC /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 526B359127D782570092AFEC /* HealthKit.framework */; };
 		526B359927D784BE0092AFEC /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526B359827D784BE0092AFEC /* AppDIContainer.swift */; };
 		526B359B27D784DA0092AFEC /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526B359A27D784DA0092AFEC /* AppFlowCoordinator.swift */; };
@@ -22,6 +23,14 @@
 		526B35AD27D787940092AFEC /* Rswift in Frameworks */ = {isa = PBXBuildFile; productRef = 526B35AC27D787940092AFEC /* Rswift */; };
 		526B35AF27D787E60092AFEC /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526B35AE27D787E60092AFEC /* R.generated.swift */; };
 		526B35B227D78BA60092AFEC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 526B35B427D78BA60092AFEC /* Localizable.strings */; };
+		5299BFEF27D7ED750011DB49 /* HealthKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299BFEE27D7ED750011DB49 /* HealthKitService.swift */; };
+		5299BFF127D7EE780011DB49 /* CompositionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299BFF027D7EE780011DB49 /* CompositionSection.swift */; };
+		5299BFF427D7EEAC0011DB49 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 5299BFF327D7EEAC0011DB49 /* RxCocoa */; };
+		5299BFF627D7EEAC0011DB49 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 5299BFF527D7EEAC0011DB49 /* RxSwift */; };
+		5299BFF827D7EF6F0011DB49 /* DD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299BFF727D7EF6F0011DB49 /* DD.swift */; };
+		5299BFFD27D7F0070011DB49 /* IntensityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299BFFC27D7F0070011DB49 /* IntensityCell.swift */; };
+		5299BFFF27D7F0120011DB49 /* IntensityCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299BFFE27D7F0120011DB49 /* IntensityCellViewModel.swift */; };
+		5299C00427D7F04D0011DB49 /* Reusable in Frameworks */ = {isa = PBXBuildFile; productRef = 5299C00327D7F04D0011DB49 /* Reusable */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +39,7 @@
 		5221C73D27D7820400C84795 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5221C74027D7820400C84795 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5221C74227D7820400C84795 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5237753127D7F0B300157ED5 /* IntensityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntensityCell.xib; sourceTree = "<group>"; };
 		526B358F27D782570092AFEC /* Running.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Running.entitlements; sourceTree = "<group>"; };
 		526B359127D782570092AFEC /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		526B359827D784BE0092AFEC /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
@@ -42,6 +52,11 @@
 		526B35A827D785D90092AFEC /* AnalyseViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AnalyseViewController.storyboard; sourceTree = "<group>"; };
 		526B35AE27D787E60092AFEC /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		526B35B327D78BA60092AFEC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5299BFEE27D7ED750011DB49 /* HealthKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitService.swift; sourceTree = "<group>"; };
+		5299BFF027D7EE780011DB49 /* CompositionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionSection.swift; sourceTree = "<group>"; };
+		5299BFF727D7EF6F0011DB49 /* DD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD.swift; sourceTree = "<group>"; };
+		5299BFFC27D7F0070011DB49 /* IntensityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityCell.swift; sourceTree = "<group>"; };
+		5299BFFE27D7F0120011DB49 /* IntensityCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,8 +64,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5299BFF427D7EEAC0011DB49 /* RxCocoa in Frameworks */,
 				526B359227D782570092AFEC /* HealthKit.framework in Frameworks */,
+				5299BFF627D7EEAC0011DB49 /* RxSwift in Frameworks */,
 				526B35AD27D787940092AFEC /* Rswift in Frameworks */,
+				5299C00427D7F04D0011DB49 /* Reusable in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,8 +96,10 @@
 			isa = PBXGroup;
 			children = (
 				526B359527D782BF0092AFEC /* App */,
+				5299BFEC27D7ED580011DB49 /* Services */,
 				526B359C27D785380092AFEC /* Util */,
 				526B359427D782B80092AFEC /* Controllers */,
+				5299BFF927D7EFA60011DB49 /* Views */,
 				526B359327D7825E0092AFEC /* Resources */,
 			);
 			path = Running;
@@ -128,6 +148,8 @@
 			isa = PBXGroup;
 			children = (
 				526B359D27D785440092AFEC /* Colors.swift */,
+				5299BFF027D7EE780011DB49 /* CompositionSection.swift */,
+				5299BFF727D7EF6F0011DB49 /* DD.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -142,6 +164,48 @@
 				526B35A827D785D90092AFEC /* AnalyseViewController.storyboard */,
 			);
 			path = Analyse;
+			sourceTree = "<group>";
+		};
+		5299BFEC27D7ED580011DB49 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5299BFED27D7ED650011DB49 /* HealthKit */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		5299BFED27D7ED650011DB49 /* HealthKit */ = {
+			isa = PBXGroup;
+			children = (
+				5299BFEE27D7ED750011DB49 /* HealthKitService.swift */,
+			);
+			path = HealthKit;
+			sourceTree = "<group>";
+		};
+		5299BFF927D7EFA60011DB49 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5299BFFA27D7EFAE0011DB49 /* CollectionViewCells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5299BFFA27D7EFAE0011DB49 /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				5299BFFB27D7EFEB0011DB49 /* Intensity */,
+			);
+			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
+		5299BFFB27D7EFEB0011DB49 /* Intensity */ = {
+			isa = PBXGroup;
+			children = (
+				5299BFFE27D7F0120011DB49 /* IntensityCellViewModel.swift */,
+				5299BFFC27D7F0070011DB49 /* IntensityCell.swift */,
+				5237753127D7F0B300157ED5 /* IntensityCell.xib */,
+			);
+			path = Intensity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,6 +228,9 @@
 			name = Running;
 			packageProductDependencies = (
 				526B35AC27D787940092AFEC /* Rswift */,
+				5299BFF327D7EEAC0011DB49 /* RxCocoa */,
+				5299BFF527D7EEAC0011DB49 /* RxSwift */,
+				5299C00327D7F04D0011DB49 /* Reusable */,
 			);
 			productName = Running;
 			productReference = 5221C73127D7820400C84795 /* Running.app */;
@@ -195,6 +262,8 @@
 			mainGroup = 5221C72827D7820400C84795;
 			packageReferences = (
 				526B35AB27D787940092AFEC /* XCRemoteSwiftPackageReference "R.swift" */,
+				5299BFF227D7EEAB0011DB49 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				5299C00227D7F04D0011DB49 /* XCRemoteSwiftPackageReference "Reusable" */,
 			);
 			productRefGroup = 5221C73227D7820400C84795 /* Products */;
 			projectDirPath = "";
@@ -213,6 +282,7 @@
 				526B35A927D785D90092AFEC /* AnalyseViewController.storyboard in Resources */,
 				526B35B227D78BA60092AFEC /* Localizable.strings in Resources */,
 				5221C74127D7820400C84795 /* LaunchScreen.storyboard in Resources */,
+				5237753227D7F0B300157ED5 /* IntensityCell.xib in Resources */,
 				5221C73E27D7820400C84795 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,15 +335,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5299BFF127D7EE780011DB49 /* CompositionSection.swift in Sources */,
 				526B359B27D784DA0092AFEC /* AppFlowCoordinator.swift in Sources */,
+				5299BFFD27D7F0070011DB49 /* IntensityCell.swift in Sources */,
 				526B35A527D785C60092AFEC /* AnalyseViewModel.swift in Sources */,
 				526B35AF27D787E60092AFEC /* R.generated.swift in Sources */,
 				526B35A727D785CF0092AFEC /* AnalyseViewController.swift in Sources */,
+				5299BFFF27D7F0120011DB49 /* IntensityCellViewModel.swift in Sources */,
 				526B359E27D785440092AFEC /* Colors.swift in Sources */,
 				526B35A127D785A80092AFEC /* AnalyseDIContainer.swift in Sources */,
 				5221C73527D7820400C84795 /* AppDelegate.swift in Sources */,
 				526B35A327D785BC0092AFEC /* AnalyseFlowCoordinator.swift in Sources */,
+				5299BFEF27D7ED750011DB49 /* HealthKitService.swift in Sources */,
 				526B359927D784BE0092AFEC /* AppDIContainer.swift in Sources */,
+				5299BFF827D7EF6F0011DB49 /* DD.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +580,22 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		5299BFF227D7EEAB0011DB49 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		5299C00227D7F04D0011DB49 /* XCRemoteSwiftPackageReference "Reusable" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AliSoftware/Reusable.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -512,6 +603,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 526B35AB27D787940092AFEC /* XCRemoteSwiftPackageReference "R.swift" */;
 			productName = Rswift;
+		};
+		5299BFF327D7EEAC0011DB49 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5299BFF227D7EEAB0011DB49 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		5299BFF527D7EEAC0011DB49 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5299BFF227D7EEAB0011DB49 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
+		5299C00327D7F04D0011DB49 /* Reusable */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5299C00227D7F04D0011DB49 /* XCRemoteSwiftPackageReference "Reusable" */;
+			productName = Reusable;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
