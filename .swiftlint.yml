@@ -5,6 +5,7 @@ included:
   - Running
 
 excluded:
+  - Running/Resources/R.generated.swift
 
 # Disable some of them:
 disabled_rules:
