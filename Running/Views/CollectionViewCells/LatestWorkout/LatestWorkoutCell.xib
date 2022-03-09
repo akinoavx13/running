@@ -59,7 +59,7 @@
                             </stackView>
                         </subviews>
                     </stackView>
-                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hAE-e2-G1C" customClass="AnimateButton" customModule="Running" customModuleProvider="target">
+                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hAE-e2-G1C" customClass="AnimateButton" customModule="Running" customModuleProvider="target">
                         <rect key="frame" x="306" y="0.0" width="53" height="70"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>

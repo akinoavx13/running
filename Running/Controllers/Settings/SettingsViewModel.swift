@@ -21,6 +21,7 @@ protocol SettingsViewModelProtocol: AnyObject {
     
     func refresh() async
     func importWorkout(uuid: UUID) async
+    func eraseAllData() async
 }
 
 final class SettingsViewModel: SettingsViewModelProtocol {
@@ -34,15 +35,18 @@ final class SettingsViewModel: SettingsViewModelProtocol {
     private let actions: SettingsViewModelActions
     private let formatterService: FormatterServiceProtocol
     private let importService: ImportServiceProtocol
+    private let databaseService: DatabaseServiceProtocol
     
     // MARK: - Lifecycle
     
     init(actions: SettingsViewModelActions,
          formatterService: FormatterServiceProtocol,
-         importService: ImportServiceProtocol) {
+         importService: ImportServiceProtocol,
+         databaseService: DatabaseServiceProtocol) {
         self.actions = actions
         self.formatterService = formatterService
         self.importService = importService
+        self.databaseService = databaseService
         
         configureComposition()
     }
@@ -64,6 +68,12 @@ final class SettingsViewModel: SettingsViewModelProtocol {
         
         await refresh()
     }
+    
+    func eraseAllData() async {
+        databaseService.eraseAllData()
+        
+        await refresh()
+    }
 }
 
 // MARK: - Composition -
@@ -76,11 +86,13 @@ extension SettingsViewModel {
     }
     
     enum SectionType {
-        case latestWorkouts(_ for: LatestWorkoutsReusableViewModel)
+        case latestWorkouts(_ for: LatestWorkoutsReusableViewModel),
+             eraseData
     }
     
     enum Cell {
-        case latestWorkout(_ for: LatestWorkoutCellViewModel)
+        case latestWorkout(_ for: LatestWorkoutCellViewModel),
+             eraseData
     }
     
     // MARK: - Private methods
@@ -91,6 +103,8 @@ extension SettingsViewModel {
         if let latestWorkoutsSection = configureLatestWorkoutsSection(workouts: workouts) {
             sections.append(latestWorkoutsSection)
         }
+        
+        sections.append(configureEraseDataSection())
         
         compositionSubject.onNext(Composition(sections: sections))
     }
@@ -117,5 +131,11 @@ extension SettingsViewModel {
         return .section(.latestWorkouts(LatestWorkoutsReusableViewModel(nbWorkouts: workouts.count)),
                         title: nil,
                         cells: cells)
+    }
+    
+    private func configureEraseDataSection() -> Section {
+        .section(.eraseData,
+                 title: nil,
+                 cells: [.eraseData])
     }
 }

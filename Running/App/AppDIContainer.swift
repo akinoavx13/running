@@ -32,7 +32,8 @@ final class AppDIContainer {
     }()
     lazy var settingsDIContainer: SettingsDIContainerProtocol = {
         let dependencies = SettingsDIContainer.Dependencies(formatterService: formatterService,
-                                                            importService: importService)
+                                                            importService: importService,
+                                                            databaseService: databaseService)
         
         return SettingsDIContainer(dependencies: dependencies)
     }()

@@ -16,6 +16,8 @@
 		5237753227D7F0B300157ED5 /* IntensityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5237753127D7F0B300157ED5 /* IntensityCell.xib */; };
 		5237753527D7F5A700157ED5 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5237753427D7F5A700157ED5 /* Date+Extensions.swift */; };
 		5242AAF327D9010400BABAB9 /* ImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5242AAF227D9010400BABAB9 /* ImportService.swift */; };
+		5242AAF927D90E7500BABAB9 /* EraseDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5242AAF727D90E7500BABAB9 /* EraseDataCell.xib */; };
+		5242AAFA27D90E7500BABAB9 /* EraseDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5242AAF827D90E7500BABAB9 /* EraseDataCell.swift */; };
 		526B359227D782570092AFEC /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 526B359127D782570092AFEC /* HealthKit.framework */; };
 		526B359927D784BE0092AFEC /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526B359827D784BE0092AFEC /* AppDIContainer.swift */; };
 		526B359B27D784DA0092AFEC /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526B359A27D784DA0092AFEC /* AppFlowCoordinator.swift */; };
@@ -62,6 +64,8 @@
 		5237753127D7F0B300157ED5 /* IntensityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntensityCell.xib; sourceTree = "<group>"; };
 		5237753427D7F5A700157ED5 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		5242AAF227D9010400BABAB9 /* ImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportService.swift; sourceTree = "<group>"; };
+		5242AAF727D90E7500BABAB9 /* EraseDataCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EraseDataCell.xib; sourceTree = "<group>"; };
+		5242AAF827D90E7500BABAB9 /* EraseDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EraseDataCell.swift; sourceTree = "<group>"; };
 		526B358F27D782570092AFEC /* Running.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Running.entitlements; sourceTree = "<group>"; };
 		526B359127D782570092AFEC /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		526B359827D784BE0092AFEC /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
@@ -171,6 +175,15 @@
 			path = Import;
 			sourceTree = "<group>";
 		};
+		5242AAF627D90E5000BABAB9 /* EraseData */ = {
+			isa = PBXGroup;
+			children = (
+				5242AAF827D90E7500BABAB9 /* EraseDataCell.swift */,
+				5242AAF727D90E7500BABAB9 /* EraseDataCell.xib */,
+			);
+			path = EraseData;
+			sourceTree = "<group>";
+		};
 		526B359027D782570092AFEC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -267,6 +280,7 @@
 		5299BFFA27D7EFAE0011DB49 /* CollectionViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				5242AAF627D90E5000BABAB9 /* EraseData */,
 				52A2426327D8B818006183C1 /* LatestWorkout */,
 				5299BFFB27D7EFEB0011DB49 /* Intensity */,
 			);
@@ -408,6 +422,7 @@
 				5221C74127D7820400C84795 /* LaunchScreen.storyboard in Resources */,
 				5237753227D7F0B300157ED5 /* IntensityCell.xib in Resources */,
 				52A2426827D8B839006183C1 /* LatestWorkoutCell.xib in Resources */,
+				5242AAF927D90E7500BABAB9 /* EraseDataCell.xib in Resources */,
 				52A2425F27D8B21E006183C1 /* SettingsViewController.storyboard in Resources */,
 				5221C73E27D7820400C84795 /* Assets.xcassets in Resources */,
 			);
@@ -465,6 +480,7 @@
 				5299BFF127D7EE780011DB49 /* CompositionSection.swift in Sources */,
 				5242AAF327D9010400BABAB9 /* ImportService.swift in Sources */,
 				52A2427427D8C333006183C1 /* LatestWorkoutsReusableViewModel.swift in Sources */,
+				5242AAFA27D90E7500BABAB9 /* EraseDataCell.swift in Sources */,
 				52340C4427D8DA1C00446E3C /* FormatterService.swift in Sources */,
 				521F0B1727D8E95F004304F4 /* Running.xcdatamodeld in Sources */,
 				526B359B27D784DA0092AFEC /* AppFlowCoordinator.swift in Sources */,

@@ -16,6 +16,7 @@ final class SettingsViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView! {
         didSet {
             collectionView.register(cellType: LatestWorkoutCell.self)
+            collectionView.register(cellType: EraseDataCell.self)
             collectionView.register(supplementaryViewType: LatestWorkoutsReusableView.self, ofKind: UICollectionView.elementKindSectionHeader)
             collectionView.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
         }
@@ -70,6 +71,10 @@ final class SettingsViewController: UIViewController {
     private func importWorkout(uuid: UUID) {
         Task { await viewModel.importWorkout(uuid: uuid) }
     }
+    
+    private func eraseAllData() {
+        Task { await viewModel.eraseAllData() }
+    }
 }
 
 // MARK: - UICollectionViewDataSource -
@@ -91,6 +96,11 @@ extension SettingsViewController: UICollectionViewDataSource {
             cell.delegate = self
             
             return cell
+        case .eraseData:
+            let cell: EraseDataCell = collectionView.dequeueReusableCell(for: indexPath)
+            cell.delegate = self
+            
+            return cell
         }
     }
     
@@ -103,6 +113,7 @@ extension SettingsViewController: UICollectionViewDataSource {
             headerView.bind(to: viewModel)
             
             return headerView
+        case .eraseData: return UICollectionReusableView()
         }
     }
 }
@@ -117,6 +128,7 @@ extension SettingsViewController: UICollectionViewDelegateFlowLayout {
 
         switch type {
         case .latestWorkout: return LatestWorkoutCell.size
+        case .eraseData: return EraseDataCell.size
         }
     }
     
@@ -125,6 +137,7 @@ extension SettingsViewController: UICollectionViewDelegateFlowLayout {
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
         switch composition.sections[section].type {
         case .latestWorkouts: return LatestWorkoutsReusableView.size
+        case .eraseData: return .zero
         }
     }
     
@@ -136,6 +149,10 @@ extension SettingsViewController: UICollectionViewDelegateFlowLayout {
                                                   left: 0,
                                                   bottom: 0,
                                                   right: 0)
+        case .eraseData: return UIEdgeInsets(top: 16,
+                                             left: 0,
+                                             bottom: 0,
+                                             right: 0)
         }
     }
     
@@ -143,7 +160,7 @@ extension SettingsViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         switch composition.sections[section].type {
-        case .latestWorkouts: return .zero
+        case .latestWorkouts, .eraseData: return .zero
         }
     }
 }
@@ -155,5 +172,14 @@ extension SettingsViewController: LatestWorkoutCellDelegate {
                            importButtonDidTap button: AnimateButton,
                            uuid: UUID) {
         importWorkout(uuid: uuid)
+    }
+}
+
+// MARK: - EraseDataCellDelegate -
+
+extension SettingsViewController: EraseDataCellDelegate {
+    func eraseDataCell(_ sender: EraseDataCell,
+                       eraseButtonDidTap button: AnimateButton) {
+        eraseAllData()
     }
 }

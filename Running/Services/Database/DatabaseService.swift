@@ -15,25 +15,20 @@ protocol DatabaseServiceProtocol: AnyObject {
     func saveIfNeeded() -> Bool
     func fetchWorkout(with uuid: UUID) -> CDWorkout?
     func save(workout: HKWorkout) -> Bool
+    func eraseAllData()
 }
 
 final class DatabaseService: DatabaseServiceProtocol {
     
     // MARK: - Properties
     
-    private let context: NSManagedObjectContext
+    private var persistentContainer: NSPersistentContainer!
+    private var context: NSManagedObjectContext!
     
     // MARK: - Lifecycle
     
     init() {
-        let container = NSPersistentContainer(name: "Running")
-        container.loadPersistentStores { _, error in
-            if let error = error {
-                fatalError(error.localizedDescription)
-            }
-        }
-        
-        context = container.newBackgroundContext()
+        initDatabase()
     }
     
     // MARK: - Methods
@@ -64,5 +59,33 @@ final class DatabaseService: DatabaseServiceProtocol {
         newWorkout.uuid = workout.uuid
         
         return saveIfNeeded()
+    }
+    
+    func eraseAllData() {
+        let storeContainer = persistentContainer.persistentStoreCoordinator
+        
+        for store in storeContainer.persistentStores {
+            guard let url = store.url else { continue }
+
+            try? storeContainer.destroyPersistentStore(at: url,
+                                                       ofType: store.type,
+                                                       options: nil)
+            
+        }
+        
+        initDatabase()
+    }
+    
+    // MARK: - Private methods
+    
+    private func initDatabase() {
+        persistentContainer = NSPersistentContainer(name: "Running")
+        persistentContainer.loadPersistentStores { _, error in
+            if let error = error {
+                fatalError(error.localizedDescription)
+            }
+        }
+        
+        context = persistentContainer.newBackgroundContext()
     }
 }
