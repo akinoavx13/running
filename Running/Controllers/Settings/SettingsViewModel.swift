@@ -20,7 +20,7 @@ protocol SettingsViewModelProtocol: AnyObject {
     // MARK: - Methods
     
     func refresh() async
-    func importWorkout(uuid: UUID) async
+    func importWorkout(uuid: UUID) async -> Bool
     func eraseAllData() async
 }
 
@@ -63,10 +63,12 @@ final class SettingsViewModel: SettingsViewModelProtocol {
         configureComposition(workouts: workouts)
     }
     
-    func importWorkout(uuid: UUID) async {
-        guard await importService.importWorkout(uuid: uuid) else { return }
+    func importWorkout(uuid: UUID) async -> Bool {
+        guard await importService.importWorkout(uuid: uuid) else { return false }
         
         await refresh()
+        
+        return true
     }
     
     func eraseAllData() async {

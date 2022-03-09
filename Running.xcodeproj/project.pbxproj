@@ -50,6 +50,8 @@
 		52A2427027D8C31E006183C1 /* LatestWorkoutsReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2426F27D8C31E006183C1 /* LatestWorkoutsReusableView.swift */; };
 		52A2427427D8C333006183C1 /* LatestWorkoutsReusableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2427327D8C333006183C1 /* LatestWorkoutsReusableViewModel.swift */; };
 		52A2427627D8C3AE006183C1 /* LatestWorkoutsReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52A2427527D8C3AE006183C1 /* LatestWorkoutsReusableView.xib */; };
+		52BBAEA527D9403B00F5694A /* PKHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 52BBAEA427D9403B00F5694A /* PKHUD */; };
+		52BBAEA727D9408000F5694A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BBAEA627D9407F00F5694A /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -95,6 +97,7 @@
 		52A2426F27D8C31E006183C1 /* LatestWorkoutsReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestWorkoutsReusableView.swift; sourceTree = "<group>"; };
 		52A2427327D8C333006183C1 /* LatestWorkoutsReusableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestWorkoutsReusableViewModel.swift; sourceTree = "<group>"; };
 		52A2427527D8C3AE006183C1 /* LatestWorkoutsReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LatestWorkoutsReusableView.xib; sourceTree = "<group>"; };
+		52BBAEA627D9407F00F5694A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +108,7 @@
 				5299BFF427D7EEAC0011DB49 /* RxCocoa in Frameworks */,
 				526B359227D782570092AFEC /* HealthKit.framework in Frameworks */,
 				5299BFF627D7EEAC0011DB49 /* RxSwift in Frameworks */,
+				52BBAEA527D9403B00F5694A /* PKHUD in Frameworks */,
 				526B35AD27D787940092AFEC /* Rswift in Frameworks */,
 				5299C00427D7F04D0011DB49 /* Reusable in Frameworks */,
 			);
@@ -232,6 +236,7 @@
 				526B359D27D785440092AFEC /* Colors.swift */,
 				5299BFF027D7EE780011DB49 /* CompositionSection.swift */,
 				5299BFF727D7EF6F0011DB49 /* DD.swift */,
+				52BBAEA627D9407F00F5694A /* Constants.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -368,6 +373,7 @@
 				5299BFF327D7EEAC0011DB49 /* RxCocoa */,
 				5299BFF527D7EEAC0011DB49 /* RxSwift */,
 				5299C00327D7F04D0011DB49 /* Reusable */,
+				52BBAEA427D9403B00F5694A /* PKHUD */,
 			);
 			productName = Running;
 			productReference = 5221C73127D7820400C84795 /* Running.app */;
@@ -401,6 +407,7 @@
 				526B35AB27D787940092AFEC /* XCRemoteSwiftPackageReference "R.swift" */,
 				5299BFF227D7EEAB0011DB49 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				5299C00227D7F04D0011DB49 /* XCRemoteSwiftPackageReference "Reusable" */,
+				52BBAEA327D9403B00F5694A /* XCRemoteSwiftPackageReference "PKHUD" */,
 			);
 			productRefGroup = 5221C73227D7820400C84795 /* Products */;
 			projectDirPath = "";
@@ -481,6 +488,7 @@
 				5242AAF327D9010400BABAB9 /* ImportService.swift in Sources */,
 				52A2427427D8C333006183C1 /* LatestWorkoutsReusableViewModel.swift in Sources */,
 				5242AAFA27D90E7500BABAB9 /* EraseDataCell.swift in Sources */,
+				52BBAEA727D9408000F5694A /* Constants.swift in Sources */,
 				52340C4427D8DA1C00446E3C /* FormatterService.swift in Sources */,
 				521F0B1727D8E95F004304F4 /* Running.xcdatamodeld in Sources */,
 				526B359B27D784DA0092AFEC /* AppFlowCoordinator.swift in Sources */,
@@ -752,6 +760,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		52BBAEA327D9403B00F5694A /* XCRemoteSwiftPackageReference "PKHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pkluz/PKHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -774,6 +790,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5299C00227D7F04D0011DB49 /* XCRemoteSwiftPackageReference "Reusable" */;
 			productName = Reusable;
+		};
+		52BBAEA427D9403B00F5694A /* PKHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 52BBAEA327D9403B00F5694A /* XCRemoteSwiftPackageReference "PKHUD" */;
+			productName = PKHUD;
 		};
 /* End XCSwiftPackageProductDependency section */
 

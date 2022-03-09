@@ -8,6 +8,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import PKHUD
 
 final class SettingsViewController: UIViewController {
     
@@ -87,11 +88,25 @@ final class SettingsViewController: UIViewController {
     }
     
     private func importWorkout(uuid: UUID) {
-        Task { await viewModel.importWorkout(uuid: uuid) }
+        HUD.show(.progress)
+        
+        Task {
+            let isSuccess = await viewModel.importWorkout(uuid: uuid)
+            
+            DispatchQueue.main.async {
+                HUD.flash(isSuccess ? .success : .error, delay: Constants.defaultHUDDuration)
+            }
+        }
     }
     
     private func eraseAllData() {
-        Task { await viewModel.eraseAllData() }
+        HUD.show(.progress)
+        
+        Task {
+            await viewModel.eraseAllData()
+            
+            DispatchQueue.main.async { HUD.hide() }
+        }
     }
     
     // MARK: - Actions

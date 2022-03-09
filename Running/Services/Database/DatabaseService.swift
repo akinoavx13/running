@@ -14,7 +14,12 @@ protocol DatabaseServiceProtocol: AnyObject {
     
     func saveIfNeeded() -> Bool
     func fetchWorkout(with uuid: UUID) -> CDWorkout?
-    func save(workout: HKWorkout) -> Bool
+    func save(workout: HKWorkout,
+              hearthRate: [HKQuantitySample],
+              distanceWalkingRunning: [HKQuantitySample],
+              stepCount: [HKQuantitySample],
+              basalEnergyBurned: [HKQuantitySample],
+              activeEnergyBurned: [HKQuantitySample]) -> Bool
     func eraseAllData()
 }
 
@@ -54,7 +59,12 @@ final class DatabaseService: DatabaseServiceProtocol {
         return workouts.first
     }
     
-    func save(workout: HKWorkout) -> Bool {
+    func save(workout: HKWorkout,
+              hearthRate: [HKQuantitySample],
+              distanceWalkingRunning: [HKQuantitySample],
+              stepCount: [HKQuantitySample],
+              basalEnergyBurned: [HKQuantitySample],
+              activeEnergyBurned: [HKQuantitySample]) -> Bool {
         let newWorkout = CDWorkout(context: context)
         newWorkout.uuid = workout.uuid
         newWorkout.startDate = workout.startDate
@@ -85,6 +95,12 @@ final class DatabaseService: DatabaseServiceProtocol {
             newWorkout.weatherTemperature = weatherTemperatureQuantity.doubleValue(for: .degreeFahrenheit())
         }
         
+        newWorkout.hearthRate = NSSet(array: hearthRate.map { convertHearthRate(quantitySample: $0) })
+        newWorkout.distanceWalkingRunning = NSSet(array: distanceWalkingRunning.map { convertDistanceWalkingRunning(quantitySample: $0) })
+        newWorkout.stepCount = NSSet(array: stepCount.map { convertStepCount(quantitySample: $0) })
+        newWorkout.basalEnergyBurned = NSSet(array: basalEnergyBurned.map { convertEnergyBurned(quantitySample: $0) })
+        newWorkout.activeEnergyBurned = NSSet(array: activeEnergyBurned.map { convertEnergyBurned(quantitySample: $0) })
+
         return saveIfNeeded()
     }
     
@@ -114,5 +130,45 @@ final class DatabaseService: DatabaseServiceProtocol {
         }
         
         context = persistentContainer.newBackgroundContext()
+    }
+    
+    private func convertHearthRate(quantitySample: HKQuantitySample) -> CDQuantitySample {
+        let newHearthRate = CDQuantitySample(context: context)
+        newHearthRate.uuid = quantitySample.uuid
+        newHearthRate.startDate = quantitySample.startDate
+        newHearthRate.endDate = quantitySample.endDate
+        newHearthRate.value = quantitySample.quantity.doubleValue(for: .count().unitDivided(by: .minute()))
+        
+        return newHearthRate
+    }
+    
+    private func convertDistanceWalkingRunning(quantitySample: HKQuantitySample) -> CDQuantitySample {
+        let newHearthRate = CDQuantitySample(context: context)
+        newHearthRate.uuid = quantitySample.uuid
+        newHearthRate.startDate = quantitySample.startDate
+        newHearthRate.endDate = quantitySample.endDate
+        newHearthRate.value = quantitySample.quantity.doubleValue(for: .meter())
+        
+        return newHearthRate
+    }
+    
+    private func convertStepCount(quantitySample: HKQuantitySample) -> CDQuantitySample {
+        let newHearthRate = CDQuantitySample(context: context)
+        newHearthRate.uuid = quantitySample.uuid
+        newHearthRate.startDate = quantitySample.startDate
+        newHearthRate.endDate = quantitySample.endDate
+        newHearthRate.value = quantitySample.quantity.doubleValue(for: .count())
+        
+        return newHearthRate
+    }
+    
+    private func convertEnergyBurned(quantitySample: HKQuantitySample) -> CDQuantitySample {
+        let newHearthRate = CDQuantitySample(context: context)
+        newHearthRate.uuid = quantitySample.uuid
+        newHearthRate.startDate = quantitySample.startDate
+        newHearthRate.endDate = quantitySample.endDate
+        newHearthRate.value = quantitySample.quantity.doubleValue(for: .kilocalorie())
+        
+        return newHearthRate
     }
 }

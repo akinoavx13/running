@@ -48,7 +48,23 @@ final class ImportService: ImportServiceProtocol {
               !isImported(uuid: uuid)
         else { return false }
         
-        return databaseService.save(workout: workout)
+        let heartRate = await healthKitService.fetchQuantitySample(for: workout,
+                                                                      quantityType: .heartRate)
+        let distanceWalkingRunning = await healthKitService.fetchQuantitySample(for: workout,
+                                                                                   quantityType: .distanceWalkingRunning)
+        let stepCount = await healthKitService.fetchQuantitySample(for: workout,
+                                                                      quantityType: .stepCount)
+        let basalEnergyBurned = await healthKitService.fetchQuantitySample(for: workout,
+                                                                              quantityType: .basalEnergyBurned)
+        let activeEnergyBurned = await healthKitService.fetchQuantitySample(for: workout,
+                                                                               quantityType: .activeEnergyBurned)
+        
+        return databaseService.save(workout: workout,
+                                    hearthRate: heartRate,
+                                    distanceWalkingRunning: distanceWalkingRunning,
+                                    stepCount: stepCount,
+                                    basalEnergyBurned: basalEnergyBurned,
+                                    activeEnergyBurned: activeEnergyBurned)
     }
     
     func isImported(uuid: UUID) -> Bool {

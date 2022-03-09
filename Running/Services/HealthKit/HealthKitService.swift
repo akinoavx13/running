@@ -15,6 +15,8 @@ protocol HealthKitServiceProtocol: AnyObject {
                        start: Date?,
                        end: Date?) async -> [HKWorkout]
     func fetchWorkout(with uuid: UUID) async -> HKWorkout?
+    func fetchQuantitySample(for workout: HKWorkout,
+                             quantityType: HKQuantityTypeIdentifier) async -> [HKQuantitySample]
 }
 
 final class HealthKitService: HealthKitServiceProtocol {
@@ -93,6 +95,30 @@ final class HealthKitService: HealthKitServiceProtocol {
         return workouts.first
     }
     
+    func fetchQuantitySample(for workout: HKWorkout,
+                             quantityType: HKQuantityTypeIdentifier) async -> [HKQuantitySample] {
+        guard let sampleType = HKObjectType.quantityType(forIdentifier: quantityType) else { return [] }
+        
+        let predicate = HKQuery.predicateForObjects(from: workout)
+        let samples: [HKSample] = await withCheckedContinuation { continuation in
+            healthStore.execute(HKSampleQuery(sampleType: sampleType,
+                                              predicate: predicate,
+                                              limit: HKObjectQueryNoLimit,
+                                              sortDescriptors: [],
+                                              resultsHandler: { _, samples, error in
+                guard error == nil,
+                      let samples = samples
+                else { return continuation.resume(returning: []) }
+                
+                return continuation.resume(returning: samples)
+            }))
+        }
+        
+        guard let quantitySamples = samples as? [HKQuantitySample] else { return [] }
+
+        return quantitySamples
+    }
+    
     // MARK: - Private methods
     
     private func requestAuthorization() async {
@@ -116,30 +142,5 @@ final class HealthKitService: HealthKitServiceProtocol {
         ]
         
         try? await healthStore.requestAuthorization(toShare: [], read: read)
-    }
-    
-    private func fetchHearthRate(for workout: HKWorkout) async -> [HKQuantitySample] {
-        guard let heartRate = HKObjectType.quantityType(forIdentifier: .heartRate) else { return [] }
-        
-        let dateDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate,
-                                              ascending: false)
-        let predicate = HKQuery.predicateForObjects(from: workout)
-        let samples: [HKSample] = await withCheckedContinuation { continuation in
-            healthStore.execute(HKSampleQuery(sampleType: heartRate,
-                                              predicate: predicate,
-                                              limit: HKObjectQueryNoLimit,
-                                              sortDescriptors: [dateDescriptor],
-                                              resultsHandler: { _, samples, error in
-                guard error == nil,
-                      let samples = samples
-                else { return continuation.resume(returning: []) }
-                
-                return continuation.resume(returning: samples)
-            }))
-        }
-        
-        guard let heartRates = samples as? [HKQuantitySample] else { return [] }
-
-        return heartRates
     }
 }
