@@ -8,6 +8,12 @@
 import UIKit
 import Reusable
 
+protocol LatestWorkoutCellDelegate: AnyObject {
+    func latestWorkoutCell(_ sender: LatestWorkoutCell,
+                           importButtonDidTap button: AnimateButton,
+                           uuid: UUID)
+}
+
 final class LatestWorkoutCell: UICollectionViewCell, NibReusable {
     
     // MARK: - Outlets
@@ -27,6 +33,10 @@ final class LatestWorkoutCell: UICollectionViewCell, NibReusable {
                height: 70)
     }
     
+    weak var delegate: LatestWorkoutCellDelegate?
+    
+    private var uuid: UUID?
+    
     // MARK: - Lifecycle
     
     override func prepareForReuse() {
@@ -37,6 +47,9 @@ final class LatestWorkoutCell: UICollectionViewCell, NibReusable {
         distanceLabel.text = nil
         importButton.isHidden = false
         checkIconImageView.isHidden = true
+        
+        uuid = nil
+        delegate = nil
     }
     
     // MARK: - Methods
@@ -48,5 +61,17 @@ final class LatestWorkoutCell: UICollectionViewCell, NibReusable {
         
         importButton.isHidden = viewModel.isImported
         checkIconImageView.isHidden = !viewModel.isImported
+        
+        uuid = viewModel.uuid
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction private func importButtonDidTap(_ sender: AnimateButton) {
+        guard let uuid = uuid else { return }
+
+        delegate?.latestWorkoutCell(self,
+                                    importButtonDidTap: sender,
+                                    uuid: uuid)
     }
 }

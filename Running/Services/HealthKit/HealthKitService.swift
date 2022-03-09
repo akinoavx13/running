@@ -14,6 +14,7 @@ protocol HealthKitServiceProtocol: AnyObject {
     func fetchWorkouts(activity: HKWorkoutActivityType,
                        start: Date?,
                        end: Date?) async -> [HKWorkout]
+    func fetchWorkout(with uuid: UUID) async -> HKWorkout?
 }
 
 final class HealthKitService: HealthKitServiceProtocol {
@@ -68,6 +69,28 @@ final class HealthKitService: HealthKitServiceProtocol {
         guard let workouts = samples as? [HKWorkout] else { return [] }
         
         return workouts.filter { $0.workoutActivityType == activity }
+    }
+    
+    func fetchWorkout(with uuid: UUID) async -> HKWorkout? {
+        let predicate = HKQuery.predicateForObject(with: uuid)
+        
+        let samples: [HKSample] = await withCheckedContinuation { continuation in
+            healthStore.execute(HKSampleQuery(sampleType: HKSeriesType.workoutType(),
+                                              predicate: predicate,
+                                              limit: HKObjectQueryNoLimit,
+                                              sortDescriptors: [],
+                                              resultsHandler: { _, samples, error in
+                guard error == nil,
+                      let samples = samples
+                else { return continuation.resume(returning: []) }
+                
+                return continuation.resume(returning: samples)
+            }))
+        }
+     
+        guard let workouts = samples as? [HKWorkout] else { return nil }
+        
+        return workouts.first
     }
     
     // MARK: - Private methods

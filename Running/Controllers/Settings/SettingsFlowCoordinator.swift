@@ -12,7 +12,6 @@ protocol SettingsFlowCoordinatorDependencies: AnyObject {
     // MARK: - Methods
     
     func makeSettingsViewController(actions: SettingsViewModelActions) -> SettingsViewController
-    
 }
 
 protocol SettingsFlowCoordinatorProtocol: AnyObject {

@@ -64,9 +64,11 @@ final class SettingsViewController: UIViewController {
     }
     
     private func refresh() {
-        Task {
-            await viewModel.refresh()
-        }
+        Task { await viewModel.refresh() }
+    }
+    
+    private func importWorkout(uuid: UUID) {
+        Task { await viewModel.importWorkout(uuid: uuid) }
     }
 }
 
@@ -86,7 +88,8 @@ extension SettingsViewController: UICollectionViewDataSource {
         case let .latestWorkout(viewModel):
             let cell: LatestWorkoutCell = collectionView.dequeueReusableCell(for: indexPath)
             cell.bind(to: viewModel)
-
+            cell.delegate = self
+            
             return cell
         }
     }
@@ -142,5 +145,15 @@ extension SettingsViewController: UICollectionViewDelegateFlowLayout {
         switch composition.sections[section].type {
         case .latestWorkouts: return .zero
         }
+    }
+}
+
+// MARK: - LatestWorkoutCellDelegate -
+
+extension SettingsViewController: LatestWorkoutCellDelegate {
+    func latestWorkoutCell(_ sender: LatestWorkoutCell,
+                           importButtonDidTap button: AnimateButton,
+                           uuid: UUID) {
+        importWorkout(uuid: uuid)
     }
 }

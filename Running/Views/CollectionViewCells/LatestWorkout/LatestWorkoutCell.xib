@@ -66,6 +66,9 @@
                         <state key="normal" title="Button">
                             <color key="titleColor" name="AccentColor"/>
                         </state>
+                        <connections>
+                            <action selector="importButtonDidTap:" destination="8mz-9A-vNh" eventType="touchUpInside" id="krV-fT-xdX"/>
+                        </connections>
                     </button>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icons/check-regular" translatesAutoresizingMaskIntoConstraints="NO" id="H2d-oU-hUW">
                         <rect key="frame" x="343" y="23" width="16" height="24"/>
