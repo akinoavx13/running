@@ -17,6 +17,8 @@ final class AnalyseViewController: UIViewController {
         didSet { collectionView.register(cellType: IntensityCell.self) }
     }
     
+    private var refreshControl = UIRefreshControl()
+
     // MARK: - Properties
     
     var viewModel: AnalyseViewModelProtocol!
@@ -39,7 +41,7 @@ final class AnalyseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = R.string.localizable.analyse()
+        configure()
         
         bind(to: viewModel)
         
@@ -47,6 +49,14 @@ final class AnalyseViewController: UIViewController {
     }
     
     // MARK: - Private methods
+    
+    private func configure() {
+        title = R.string.localizable.analyse()
+        
+        refreshControl.addTarget(self, action: #selector(refreshControlValueDidChange), for: .valueChanged)
+        
+        collectionView.refreshControl = refreshControl
+    }
     
     private func bind(to viewModel: AnalyseViewModelProtocol) {
         viewModel.composition
@@ -62,7 +72,18 @@ final class AnalyseViewController: UIViewController {
     private func refresh() {
         Task {
             await viewModel.refresh()
+            
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                
+                self.refreshControl.endRefreshing()
+            }
         }
+    }
+    
+    @objc private func refreshControlValueDidChange() {
+        refreshControl.beginRefreshing()
+        refresh()
     }
 }
 

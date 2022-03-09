@@ -49,8 +49,6 @@ final class AppFlowCoordinator {
         setupStyle()
         
         Tab.allCases.forEach(add(tab:))
-        
-        tabBarController.selectedIndex = 1
     }
     
     // MARK: - Private methods

@@ -30,14 +30,14 @@ final class AnalyseViewModel: AnalyseViewModelProtocol {
     private let compositionSubject = ReplaySubject<Composition>.create(bufferSize: 1)
     
     private let actions: AnalyseViewModelActions
-    private let healthKitService: HealthKitServiceProtocol
+    private let databaseService: DatabaseServiceProtocol
     
     // MARK: - Lifecycle
     
     init(actions: AnalyseViewModelActions,
-         healthKitService: HealthKitServiceProtocol) {
+         databaseService: DatabaseServiceProtocol) {
         self.actions = actions
-        self.healthKitService = healthKitService
+        self.databaseService = databaseService
         
         configureComposition()
     }
@@ -45,7 +45,10 @@ final class AnalyseViewModel: AnalyseViewModelProtocol {
     // MARK: - Methods
     
     func refresh() async {
+        let workouts = await databaseService.fetchWorkouts(start: .ago(days: 7, to: .now),
+                                                           end: .now)
         
+        configureComposition(workouts: workouts)
     }
 }
 
@@ -68,15 +71,15 @@ extension AnalyseViewModel {
     
     // MARK: - Private methods
     
-    private func configureComposition() {
+    private func configureComposition(workouts: [CDWorkout] = []) {
         var sections = [Section]()
         
-        sections.append(configureIntensitySection())
+        sections.append(configureIntensitySection(workouts: workouts))
         
         compositionSubject.onNext(Composition(sections: sections))
     }
     
-    private func configureIntensitySection() -> Section {
+    private func configureIntensitySection(workouts: [CDWorkout]) -> Section {
         let cells: [Cell] = [.intensity(IntensityCellViewModel())]
         
         return .section(.intensity,
