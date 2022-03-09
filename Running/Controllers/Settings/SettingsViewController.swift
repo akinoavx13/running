@@ -22,6 +22,8 @@ final class SettingsViewController: UIViewController {
         }
     }
     
+    private var refreshControl = UIRefreshControl()
+    
     // MARK: - Properties
     
     var viewModel: SettingsViewModelProtocol!
@@ -44,7 +46,7 @@ final class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = R.string.localizable.settings()
+        configure()
         
         bind(to: viewModel)
         
@@ -52,6 +54,14 @@ final class SettingsViewController: UIViewController {
     }
     
     // MARK: - Private methods
+    
+    private func configure() {
+        title = R.string.localizable.settings()
+        
+        refreshControl.addTarget(self, action: #selector(refreshControlValueDidChange), for: .valueChanged)
+        
+        collectionView.refreshControl = refreshControl
+    }
     
     private func bind(to viewModel: SettingsViewModelProtocol) {
         viewModel.composition
@@ -65,7 +75,15 @@ final class SettingsViewController: UIViewController {
     }
     
     private func refresh() {
-        Task { await viewModel.refresh() }
+        Task {
+            await viewModel.refresh()
+            
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                
+                self.refreshControl.endRefreshing()
+            }
+        }
     }
     
     private func importWorkout(uuid: UUID) {
@@ -74,6 +92,13 @@ final class SettingsViewController: UIViewController {
     
     private func eraseAllData() {
         Task { await viewModel.eraseAllData() }
+    }
+    
+    // MARK: - Actions
+    
+    @objc private func refreshControlValueDidChange() {
+        refreshControl.beginRefreshing()
+        refresh()
     }
 }
 
