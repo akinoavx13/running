@@ -54,11 +54,11 @@ extension SettingsViewModel {
     }
     
     enum SectionType {
-        case importWorkouts
+        case latestWorkouts(_ for: LatestWorkoutsReusableViewModel)
     }
     
     enum Cell {
-        
+        case latestWorkout(_ for: LatestWorkoutCellViewModel)
     }
     
     // MARK: - Private methods
@@ -66,15 +66,17 @@ extension SettingsViewModel {
     private func configureComposition() {
         var sections = [Section]()
         
-        sections.append(configureImportWorkoutsSection())
+        sections.append(configureLatestWorkoutsSection())
         
         compositionSubject.onNext(Composition(sections: sections))
     }
     
-    private func configureImportWorkoutsSection() -> Section {
-        let cells: [Cell] = []
+    private func configureLatestWorkoutsSection() -> Section {
+        let cells: [Cell] = [.latestWorkout(LatestWorkoutCellViewModel(date: "3 October", time: "16:56", isImported: false)),
+                             .latestWorkout(LatestWorkoutCellViewModel(date: "3 October", time: "16:56", isImported: false)),
+                             .latestWorkout(LatestWorkoutCellViewModel(date: "3 October", time: "16:56", isImported: true))]
         
-        return .section(.importWorkouts,
+        return .section(.latestWorkouts(LatestWorkoutsReusableViewModel(nbWorkouts: 3)),
                         title: nil,
                         cells: cells)
     }

@@ -46,7 +46,11 @@ final class AppFlowCoordinator {
     // MARK: - Methods
     
     func start() {
+        setupStyle()
+        
         Tab.allCases.forEach(add(tab:))
+        
+        tabBarController.selectedIndex = 1
     }
     
     // MARK: - Private methods
@@ -75,5 +79,14 @@ final class AppFlowCoordinator {
                 .makeSettingsFlowCoordinator(navigationController: navigationController)
                 .start()
         }
+    }
+    
+    private func setupStyle() {
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = Colors.tabBar
+        
+        tabBarController.tabBar.standardAppearance = appearance
+        tabBarController.tabBar.scrollEdgeAppearance = appearance
     }
 }

@@ -8,5 +8,7 @@
 import UIKit
 
 final class Colors {
+
+    static var tabBar = R.color.tabBar() ?? .systemPink
     
 }

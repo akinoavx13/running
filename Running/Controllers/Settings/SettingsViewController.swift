@@ -13,7 +13,12 @@ final class SettingsViewController: UIViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet private weak var collectionView: UICollectionView!
+    @IBOutlet private weak var collectionView: UICollectionView! {
+        didSet {
+            collectionView.register(cellType: LatestWorkoutCell.self)
+            collectionView.register(supplementaryViewType: LatestWorkoutsReusableView.self, ofKind: UICollectionView.elementKindSectionHeader)
+        }
+    }
     
     // MARK: - Properties
     
@@ -74,17 +79,27 @@ extension SettingsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        guard let type = composition.sections[indexPath.section].cellForIndex(indexPath.row) else { return UICollectionViewCell() }
-//
-//        switch type {
-//        case let .intensity(viewModel):
-//            let cell: IntensityCell = collectionView.dequeueReusableCell(for: indexPath)
-//            cell.bind(to: viewModel)
-//
-//            return cell
-//        }
-        
-        UICollectionViewCell()
+        guard let type = composition.sections[indexPath.section].cellForIndex(indexPath.row) else { return UICollectionViewCell() }
+
+        switch type {
+        case let .latestWorkout(viewModel):
+            let cell: LatestWorkoutCell = collectionView.dequeueReusableCell(for: indexPath)
+            cell.bind(to: viewModel)
+
+            return cell
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
+        switch composition.sections[indexPath.section].type {
+        case let .latestWorkouts(viewModel):
+            let headerView: LatestWorkoutsReusableView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, for: indexPath)
+            headerView.bind(to: viewModel)
+            
+            return headerView
+        }
     }
 }
 
@@ -94,12 +109,37 @@ extension SettingsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        guard let type = composition.sections[indexPath.section].cellForIndex(indexPath.row) else { return .zero }
-//
-//        switch type {
-//        case .intensity: return IntensityCell.size
-//        }
-        
-        .zero
+        guard let type = composition.sections[indexPath.section].cellForIndex(indexPath.row) else { return .zero }
+
+        switch type {
+        case .latestWorkout: return LatestWorkoutCell.size
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForHeaderInSection section: Int) -> CGSize {
+        switch composition.sections[section].type {
+        case .latestWorkouts: return LatestWorkoutsReusableView.size
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        switch composition.sections[section].type {
+        case .latestWorkouts: return UIEdgeInsets(top: 8,
+                                                  left: 0,
+                                                  bottom: 0,
+                                                  right: 0)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        switch composition.sections[section].type {
+        case .latestWorkouts: return .zero
+        }
     }
 }
