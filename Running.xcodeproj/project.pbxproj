@@ -32,6 +32,11 @@
 		5299BFFD27D7F0070011DB49 /* IntensityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299BFFC27D7F0070011DB49 /* IntensityCell.swift */; };
 		5299BFFF27D7F0120011DB49 /* IntensityCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299BFFE27D7F0120011DB49 /* IntensityCellViewModel.swift */; };
 		5299C00427D7F04D0011DB49 /* Reusable in Frameworks */ = {isa = PBXBuildFile; productRef = 5299C00327D7F04D0011DB49 /* Reusable */; };
+		52A2425E27D8B21E006183C1 /* SettingsDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2425927D8B21E006183C1 /* SettingsDIContainer.swift */; };
+		52A2425F27D8B21E006183C1 /* SettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52A2425A27D8B21E006183C1 /* SettingsViewController.storyboard */; };
+		52A2426027D8B21E006183C1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2425B27D8B21E006183C1 /* SettingsViewController.swift */; };
+		52A2426127D8B21E006183C1 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2425C27D8B21E006183C1 /* SettingsViewModel.swift */; };
+		52A2426227D8B21E006183C1 /* SettingsFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2425D27D8B21E006183C1 /* SettingsFlowCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +64,11 @@
 		5299BFF727D7EF6F0011DB49 /* DD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD.swift; sourceTree = "<group>"; };
 		5299BFFC27D7F0070011DB49 /* IntensityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityCell.swift; sourceTree = "<group>"; };
 		5299BFFE27D7F0120011DB49 /* IntensityCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityCellViewModel.swift; sourceTree = "<group>"; };
+		52A2425927D8B21E006183C1 /* SettingsDIContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDIContainer.swift; sourceTree = "<group>"; };
+		52A2425A27D8B21E006183C1 /* SettingsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SettingsViewController.storyboard; sourceTree = "<group>"; };
+		52A2425B27D8B21E006183C1 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		52A2425C27D8B21E006183C1 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		52A2425D27D8B21E006183C1 /* SettingsFlowCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsFlowCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				526B359F27D7858D0092AFEC /* Analyse */,
+				52A2425827D8B1BA006183C1 /* Settings */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -219,6 +230,18 @@
 			path = Intensity;
 			sourceTree = "<group>";
 		};
+		52A2425827D8B1BA006183C1 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				52A2425927D8B21E006183C1 /* SettingsDIContainer.swift */,
+				52A2425D27D8B21E006183C1 /* SettingsFlowCoordinator.swift */,
+				52A2425C27D8B21E006183C1 /* SettingsViewModel.swift */,
+				52A2425B27D8B21E006183C1 /* SettingsViewController.swift */,
+				52A2425A27D8B21E006183C1 /* SettingsViewController.storyboard */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -294,6 +317,7 @@
 				526B35B227D78BA60092AFEC /* Localizable.strings in Resources */,
 				5221C74127D7820400C84795 /* LaunchScreen.storyboard in Resources */,
 				5237753227D7F0B300157ED5 /* IntensityCell.xib in Resources */,
+				52A2425F27D8B21E006183C1 /* SettingsViewController.storyboard in Resources */,
 				5221C73E27D7820400C84795 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,19 +372,23 @@
 			files = (
 				5299BFF127D7EE780011DB49 /* CompositionSection.swift in Sources */,
 				526B359B27D784DA0092AFEC /* AppFlowCoordinator.swift in Sources */,
+				52A2426227D8B21E006183C1 /* SettingsFlowCoordinator.swift in Sources */,
 				5299BFFD27D7F0070011DB49 /* IntensityCell.swift in Sources */,
 				526B35A527D785C60092AFEC /* AnalyseViewModel.swift in Sources */,
 				526B35AF27D787E60092AFEC /* R.generated.swift in Sources */,
+				52A2425E27D8B21E006183C1 /* SettingsDIContainer.swift in Sources */,
 				526B35A727D785CF0092AFEC /* AnalyseViewController.swift in Sources */,
 				5299BFFF27D7F0120011DB49 /* IntensityCellViewModel.swift in Sources */,
 				526B359E27D785440092AFEC /* Colors.swift in Sources */,
 				526B35A127D785A80092AFEC /* AnalyseDIContainer.swift in Sources */,
 				5221C73527D7820400C84795 /* AppDelegate.swift in Sources */,
 				5237753527D7F5A700157ED5 /* Date+Extensions.swift in Sources */,
+				52A2426027D8B21E006183C1 /* SettingsViewController.swift in Sources */,
 				526B35A327D785BC0092AFEC /* AnalyseFlowCoordinator.swift in Sources */,
 				5299BFEF27D7ED750011DB49 /* HealthKitService.swift in Sources */,
 				526B359927D784BE0092AFEC /* AppDIContainer.swift in Sources */,
 				5299BFF827D7EF6F0011DB49 /* DD.swift in Sources */,
+				52A2426127D8B21E006183C1 /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

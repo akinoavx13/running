@@ -20,4 +20,10 @@ final class AppDIContainer {
         
         return AnalyseDIContainer(dependencies: dependencies)
     }()
+    
+    lazy var settingsDIContainer: SettingsDIContainerProtocol = {
+        let dependencies = SettingsDIContainer.Dependencies()
+        
+        return SettingsDIContainer(dependencies: dependencies)
+    }()
 }

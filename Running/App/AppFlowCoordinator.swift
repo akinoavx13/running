@@ -10,13 +10,18 @@ import UIKit
 final class AppFlowCoordinator {
 
     private enum Tab: CaseIterable {
-        case analyse
+        case analyse,
+             settings
         
         var tabBarItem: UITabBarItem {
             switch self {
             case .analyse:
                 return UITabBarItem(title: R.string.localizable.analyse(),
                                     image: R.image.icons.chartMixed(),
+                                    selectedImage: nil)
+            case .settings:
+                return UITabBarItem(title: R.string.localizable.settings(),
+                                    image: R.image.icons.gearRegular(),
                                     selectedImage: nil)
             }
         }
@@ -61,6 +66,13 @@ final class AppFlowCoordinator {
             appDIContainer
                 .analyseDIContainer
                 .makeAnalyseFlowCoordinator(navigationController: navigationController)
+                .start()
+        case .settings:
+            navigationController.navigationBar.prefersLargeTitles = true
+            
+            appDIContainer
+                .settingsDIContainer
+                .makeSettingsFlowCoordinator(navigationController: navigationController)
                 .start()
         }
     }
