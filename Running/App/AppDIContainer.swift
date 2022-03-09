@@ -12,6 +12,16 @@ final class AppDIContainer {
     private lazy var healthKitService: HealthKitServiceProtocol = {
         HealthKitService()
     }()
+    private lazy var formatterService: FormatterServiceProtocol = {
+        FormatterService()
+    }()
+    private lazy var databaseService: DatabaseServiceProtocol = {
+        DatabaseService()
+    }()
+    private lazy var importService: ImportServiceProtocol = {
+        ImportService(healthKitService: healthKitService,
+                      databaseService: databaseService)
+    }()
     
     // MARK: - Containers
     
@@ -19,5 +29,12 @@ final class AppDIContainer {
         let dependencies = AnalyseDIContainer.Dependencies(healthKitService: healthKitService)
         
         return AnalyseDIContainer(dependencies: dependencies)
+    }()
+    lazy var settingsDIContainer: SettingsDIContainerProtocol = {
+        let dependencies = SettingsDIContainer.Dependencies(formatterService: formatterService,
+                                                            importService: importService,
+                                                            databaseService: databaseService)
+        
+        return SettingsDIContainer(dependencies: dependencies)
     }()
 }

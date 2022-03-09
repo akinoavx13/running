@@ -7,10 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		521F0B1427D8E927004304F4 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521F0B1327D8E927004304F4 /* DatabaseService.swift */; };
+		521F0B1727D8E95F004304F4 /* Running.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 521F0B1527D8E95F004304F4 /* Running.xcdatamodeld */; };
 		5221C73527D7820400C84795 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5221C73427D7820400C84795 /* AppDelegate.swift */; };
 		5221C73E27D7820400C84795 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5221C73D27D7820400C84795 /* Assets.xcassets */; };
 		5221C74127D7820400C84795 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5221C73F27D7820400C84795 /* LaunchScreen.storyboard */; };
+		52340C4427D8DA1C00446E3C /* FormatterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52340C4327D8DA1C00446E3C /* FormatterService.swift */; };
 		5237753227D7F0B300157ED5 /* IntensityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5237753127D7F0B300157ED5 /* IntensityCell.xib */; };
+		5237753527D7F5A700157ED5 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5237753427D7F5A700157ED5 /* Date+Extensions.swift */; };
+		5242AAF327D9010400BABAB9 /* ImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5242AAF227D9010400BABAB9 /* ImportService.swift */; };
+		5242AAF927D90E7500BABAB9 /* EraseDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5242AAF727D90E7500BABAB9 /* EraseDataCell.xib */; };
+		5242AAFA27D90E7500BABAB9 /* EraseDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5242AAF827D90E7500BABAB9 /* EraseDataCell.swift */; };
 		526B359227D782570092AFEC /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 526B359127D782570092AFEC /* HealthKit.framework */; };
 		526B359927D784BE0092AFEC /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526B359827D784BE0092AFEC /* AppDIContainer.swift */; };
 		526B359B27D784DA0092AFEC /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526B359A27D784DA0092AFEC /* AppFlowCoordinator.swift */; };
@@ -31,15 +38,36 @@
 		5299BFFD27D7F0070011DB49 /* IntensityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299BFFC27D7F0070011DB49 /* IntensityCell.swift */; };
 		5299BFFF27D7F0120011DB49 /* IntensityCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299BFFE27D7F0120011DB49 /* IntensityCellViewModel.swift */; };
 		5299C00427D7F04D0011DB49 /* Reusable in Frameworks */ = {isa = PBXBuildFile; productRef = 5299C00327D7F04D0011DB49 /* Reusable */; };
+		52A2425E27D8B21E006183C1 /* SettingsDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2425927D8B21E006183C1 /* SettingsDIContainer.swift */; };
+		52A2425F27D8B21E006183C1 /* SettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52A2425A27D8B21E006183C1 /* SettingsViewController.storyboard */; };
+		52A2426027D8B21E006183C1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2425B27D8B21E006183C1 /* SettingsViewController.swift */; };
+		52A2426127D8B21E006183C1 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2425C27D8B21E006183C1 /* SettingsViewModel.swift */; };
+		52A2426227D8B21E006183C1 /* SettingsFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2425D27D8B21E006183C1 /* SettingsFlowCoordinator.swift */; };
+		52A2426727D8B839006183C1 /* LatestWorkoutCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2426427D8B839006183C1 /* LatestWorkoutCellViewModel.swift */; };
+		52A2426827D8B839006183C1 /* LatestWorkoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52A2426527D8B839006183C1 /* LatestWorkoutCell.xib */; };
+		52A2426927D8B839006183C1 /* LatestWorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2426627D8B839006183C1 /* LatestWorkoutCell.swift */; };
+		52A2426C27D8C01C006183C1 /* AnimateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2426B27D8C01C006183C1 /* AnimateButton.swift */; };
+		52A2427027D8C31E006183C1 /* LatestWorkoutsReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2426F27D8C31E006183C1 /* LatestWorkoutsReusableView.swift */; };
+		52A2427427D8C333006183C1 /* LatestWorkoutsReusableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2427327D8C333006183C1 /* LatestWorkoutsReusableViewModel.swift */; };
+		52A2427627D8C3AE006183C1 /* LatestWorkoutsReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52A2427527D8C3AE006183C1 /* LatestWorkoutsReusableView.xib */; };
+		52BBAEA527D9403B00F5694A /* PKHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 52BBAEA427D9403B00F5694A /* PKHUD */; };
+		52BBAEA727D9408000F5694A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BBAEA627D9407F00F5694A /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		521F0B1327D8E927004304F4 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
+		521F0B1627D8E95F004304F4 /* Running.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Running.xcdatamodel; sourceTree = "<group>"; };
 		5221C73127D7820400C84795 /* Running.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Running.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5221C73427D7820400C84795 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5221C73D27D7820400C84795 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5221C74027D7820400C84795 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5221C74227D7820400C84795 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52340C4327D8DA1C00446E3C /* FormatterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterService.swift; sourceTree = "<group>"; };
 		5237753127D7F0B300157ED5 /* IntensityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntensityCell.xib; sourceTree = "<group>"; };
+		5237753427D7F5A700157ED5 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		5242AAF227D9010400BABAB9 /* ImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportService.swift; sourceTree = "<group>"; };
+		5242AAF727D90E7500BABAB9 /* EraseDataCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EraseDataCell.xib; sourceTree = "<group>"; };
+		5242AAF827D90E7500BABAB9 /* EraseDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EraseDataCell.swift; sourceTree = "<group>"; };
 		526B358F27D782570092AFEC /* Running.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Running.entitlements; sourceTree = "<group>"; };
 		526B359127D782570092AFEC /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		526B359827D784BE0092AFEC /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
@@ -57,6 +85,19 @@
 		5299BFF727D7EF6F0011DB49 /* DD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD.swift; sourceTree = "<group>"; };
 		5299BFFC27D7F0070011DB49 /* IntensityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityCell.swift; sourceTree = "<group>"; };
 		5299BFFE27D7F0120011DB49 /* IntensityCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntensityCellViewModel.swift; sourceTree = "<group>"; };
+		52A2425927D8B21E006183C1 /* SettingsDIContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsDIContainer.swift; sourceTree = "<group>"; };
+		52A2425A27D8B21E006183C1 /* SettingsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SettingsViewController.storyboard; sourceTree = "<group>"; };
+		52A2425B27D8B21E006183C1 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		52A2425C27D8B21E006183C1 /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		52A2425D27D8B21E006183C1 /* SettingsFlowCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsFlowCoordinator.swift; sourceTree = "<group>"; };
+		52A2426427D8B839006183C1 /* LatestWorkoutCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LatestWorkoutCellViewModel.swift; sourceTree = "<group>"; };
+		52A2426527D8B839006183C1 /* LatestWorkoutCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LatestWorkoutCell.xib; sourceTree = "<group>"; };
+		52A2426627D8B839006183C1 /* LatestWorkoutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LatestWorkoutCell.swift; sourceTree = "<group>"; };
+		52A2426B27D8C01C006183C1 /* AnimateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimateButton.swift; sourceTree = "<group>"; };
+		52A2426F27D8C31E006183C1 /* LatestWorkoutsReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestWorkoutsReusableView.swift; sourceTree = "<group>"; };
+		52A2427327D8C333006183C1 /* LatestWorkoutsReusableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestWorkoutsReusableViewModel.swift; sourceTree = "<group>"; };
+		52A2427527D8C3AE006183C1 /* LatestWorkoutsReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LatestWorkoutsReusableView.xib; sourceTree = "<group>"; };
+		52BBAEA627D9407F00F5694A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +108,7 @@
 				5299BFF427D7EEAC0011DB49 /* RxCocoa in Frameworks */,
 				526B359227D782570092AFEC /* HealthKit.framework in Frameworks */,
 				5299BFF627D7EEAC0011DB49 /* RxSwift in Frameworks */,
+				52BBAEA527D9403B00F5694A /* PKHUD in Frameworks */,
 				526B35AD27D787940092AFEC /* Rswift in Frameworks */,
 				5299C00427D7F04D0011DB49 /* Reusable in Frameworks */,
 			);
@@ -75,6 +117,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		521F0B1227D8E919004304F4 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				521F0B1327D8E927004304F4 /* DatabaseService.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		5221C72827D7820400C84795 = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +155,39 @@
 			path = Running;
 			sourceTree = "<group>";
 		};
+		52340C4227D8DA1000446E3C /* Formatter */ = {
+			isa = PBXGroup;
+			children = (
+				52340C4327D8DA1C00446E3C /* FormatterService.swift */,
+			);
+			path = Formatter;
+			sourceTree = "<group>";
+		};
+		5237753327D7F5A000157ED5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5237753427D7F5A700157ED5 /* Date+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5242AAF127D900F800BABAB9 /* Import */ = {
+			isa = PBXGroup;
+			children = (
+				5242AAF227D9010400BABAB9 /* ImportService.swift */,
+			);
+			path = Import;
+			sourceTree = "<group>";
+		};
+		5242AAF627D90E5000BABAB9 /* EraseData */ = {
+			isa = PBXGroup;
+			children = (
+				5242AAF827D90E7500BABAB9 /* EraseDataCell.swift */,
+				5242AAF727D90E7500BABAB9 /* EraseDataCell.xib */,
+			);
+			path = EraseData;
+			sourceTree = "<group>";
+		};
 		526B359027D782570092AFEC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +199,7 @@
 		526B359327D7825E0092AFEC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				521F0B1527D8E95F004304F4 /* Running.xcdatamodeld */,
 				5221C73D27D7820400C84795 /* Assets.xcassets */,
 				526B35B427D78BA60092AFEC /* Localizable.strings */,
 				5221C74227D7820400C84795 /* Info.plist */,
@@ -130,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				526B359F27D7858D0092AFEC /* Analyse */,
+				52A2425827D8B1BA006183C1 /* Settings */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -147,9 +232,11 @@
 		526B359C27D785380092AFEC /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				5237753327D7F5A000157ED5 /* Extensions */,
 				526B359D27D785440092AFEC /* Colors.swift */,
 				5299BFF027D7EE780011DB49 /* CompositionSection.swift */,
 				5299BFF727D7EF6F0011DB49 /* DD.swift */,
+				52BBAEA627D9407F00F5694A /* Constants.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -169,6 +256,9 @@
 		5299BFEC27D7ED580011DB49 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				5242AAF127D900F800BABAB9 /* Import */,
+				521F0B1227D8E919004304F4 /* Database */,
+				52340C4227D8DA1000446E3C /* Formatter */,
 				5299BFED27D7ED650011DB49 /* HealthKit */,
 			);
 			path = Services;
@@ -186,6 +276,8 @@
 			isa = PBXGroup;
 			children = (
 				5299BFFA27D7EFAE0011DB49 /* CollectionViewCells */,
+				52A2426D27D8C2F6006183C1 /* ReusableViews */,
+				52A2426A27D8C00F006183C1 /* Buttons */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -193,6 +285,8 @@
 		5299BFFA27D7EFAE0011DB49 /* CollectionViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				5242AAF627D90E5000BABAB9 /* EraseData */,
+				52A2426327D8B818006183C1 /* LatestWorkout */,
 				5299BFFB27D7EFEB0011DB49 /* Intensity */,
 			);
 			path = CollectionViewCells;
@@ -206,6 +300,54 @@
 				5237753127D7F0B300157ED5 /* IntensityCell.xib */,
 			);
 			path = Intensity;
+			sourceTree = "<group>";
+		};
+		52A2425827D8B1BA006183C1 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				52A2425927D8B21E006183C1 /* SettingsDIContainer.swift */,
+				52A2425D27D8B21E006183C1 /* SettingsFlowCoordinator.swift */,
+				52A2425C27D8B21E006183C1 /* SettingsViewModel.swift */,
+				52A2425B27D8B21E006183C1 /* SettingsViewController.swift */,
+				52A2425A27D8B21E006183C1 /* SettingsViewController.storyboard */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		52A2426327D8B818006183C1 /* LatestWorkout */ = {
+			isa = PBXGroup;
+			children = (
+				52A2426427D8B839006183C1 /* LatestWorkoutCellViewModel.swift */,
+				52A2426627D8B839006183C1 /* LatestWorkoutCell.swift */,
+				52A2426527D8B839006183C1 /* LatestWorkoutCell.xib */,
+			);
+			path = LatestWorkout;
+			sourceTree = "<group>";
+		};
+		52A2426A27D8C00F006183C1 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				52A2426B27D8C01C006183C1 /* AnimateButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		52A2426D27D8C2F6006183C1 /* ReusableViews */ = {
+			isa = PBXGroup;
+			children = (
+				52A2426E27D8C300006183C1 /* LatestWorkouts */,
+			);
+			path = ReusableViews;
+			sourceTree = "<group>";
+		};
+		52A2426E27D8C300006183C1 /* LatestWorkouts */ = {
+			isa = PBXGroup;
+			children = (
+				52A2427327D8C333006183C1 /* LatestWorkoutsReusableViewModel.swift */,
+				52A2426F27D8C31E006183C1 /* LatestWorkoutsReusableView.swift */,
+				52A2427527D8C3AE006183C1 /* LatestWorkoutsReusableView.xib */,
+			);
+			path = LatestWorkouts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +373,7 @@
 				5299BFF327D7EEAC0011DB49 /* RxCocoa */,
 				5299BFF527D7EEAC0011DB49 /* RxSwift */,
 				5299C00327D7F04D0011DB49 /* Reusable */,
+				52BBAEA427D9403B00F5694A /* PKHUD */,
 			);
 			productName = Running;
 			productReference = 5221C73127D7820400C84795 /* Running.app */;
@@ -264,6 +407,7 @@
 				526B35AB27D787940092AFEC /* XCRemoteSwiftPackageReference "R.swift" */,
 				5299BFF227D7EEAB0011DB49 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				5299C00227D7F04D0011DB49 /* XCRemoteSwiftPackageReference "Reusable" */,
+				52BBAEA327D9403B00F5694A /* XCRemoteSwiftPackageReference "PKHUD" */,
 			);
 			productRefGroup = 5221C73227D7820400C84795 /* Products */;
 			projectDirPath = "";
@@ -279,10 +423,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52A2427627D8C3AE006183C1 /* LatestWorkoutsReusableView.xib in Resources */,
 				526B35A927D785D90092AFEC /* AnalyseViewController.storyboard in Resources */,
 				526B35B227D78BA60092AFEC /* Localizable.strings in Resources */,
 				5221C74127D7820400C84795 /* LaunchScreen.storyboard in Resources */,
 				5237753227D7F0B300157ED5 /* IntensityCell.xib in Resources */,
+				52A2426827D8B839006183C1 /* LatestWorkoutCell.xib in Resources */,
+				5242AAF927D90E7500BABAB9 /* EraseDataCell.xib in Resources */,
+				52A2425F27D8B21E006183C1 /* SettingsViewController.storyboard in Resources */,
 				5221C73E27D7820400C84795 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -335,20 +483,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52A2427027D8C31E006183C1 /* LatestWorkoutsReusableView.swift in Sources */,
 				5299BFF127D7EE780011DB49 /* CompositionSection.swift in Sources */,
+				5242AAF327D9010400BABAB9 /* ImportService.swift in Sources */,
+				52A2427427D8C333006183C1 /* LatestWorkoutsReusableViewModel.swift in Sources */,
+				5242AAFA27D90E7500BABAB9 /* EraseDataCell.swift in Sources */,
+				52BBAEA727D9408000F5694A /* Constants.swift in Sources */,
+				52340C4427D8DA1C00446E3C /* FormatterService.swift in Sources */,
+				521F0B1727D8E95F004304F4 /* Running.xcdatamodeld in Sources */,
 				526B359B27D784DA0092AFEC /* AppFlowCoordinator.swift in Sources */,
+				52A2426227D8B21E006183C1 /* SettingsFlowCoordinator.swift in Sources */,
 				5299BFFD27D7F0070011DB49 /* IntensityCell.swift in Sources */,
 				526B35A527D785C60092AFEC /* AnalyseViewModel.swift in Sources */,
 				526B35AF27D787E60092AFEC /* R.generated.swift in Sources */,
+				52A2425E27D8B21E006183C1 /* SettingsDIContainer.swift in Sources */,
+				52A2426C27D8C01C006183C1 /* AnimateButton.swift in Sources */,
 				526B35A727D785CF0092AFEC /* AnalyseViewController.swift in Sources */,
 				5299BFFF27D7F0120011DB49 /* IntensityCellViewModel.swift in Sources */,
 				526B359E27D785440092AFEC /* Colors.swift in Sources */,
+				52A2426927D8B839006183C1 /* LatestWorkoutCell.swift in Sources */,
+				52A2426727D8B839006183C1 /* LatestWorkoutCellViewModel.swift in Sources */,
 				526B35A127D785A80092AFEC /* AnalyseDIContainer.swift in Sources */,
 				5221C73527D7820400C84795 /* AppDelegate.swift in Sources */,
+				5237753527D7F5A700157ED5 /* Date+Extensions.swift in Sources */,
+				52A2426027D8B21E006183C1 /* SettingsViewController.swift in Sources */,
 				526B35A327D785BC0092AFEC /* AnalyseFlowCoordinator.swift in Sources */,
 				5299BFEF27D7ED750011DB49 /* HealthKitService.swift in Sources */,
+				521F0B1427D8E927004304F4 /* DatabaseService.swift in Sources */,
 				526B359927D784BE0092AFEC /* AppDIContainer.swift in Sources */,
 				5299BFF827D7EF6F0011DB49 /* DD.swift in Sources */,
+				52A2426127D8B21E006183C1 /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,7 +669,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -534,7 +698,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -596,6 +760,14 @@
 				minimumVersion = 4.0.0;
 			};
 		};
+		52BBAEA327D9403B00F5694A /* XCRemoteSwiftPackageReference "PKHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pkluz/PKHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -619,7 +791,25 @@
 			package = 5299C00227D7F04D0011DB49 /* XCRemoteSwiftPackageReference "Reusable" */;
 			productName = Reusable;
 		};
+		52BBAEA427D9403B00F5694A /* PKHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 52BBAEA327D9403B00F5694A /* XCRemoteSwiftPackageReference "PKHUD" */;
+			productName = PKHUD;
+		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		521F0B1527D8E95F004304F4 /* Running.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				521F0B1627D8E95F004304F4 /* Running.xcdatamodel */,
+			);
+			currentVersion = 521F0B1627D8E95F004304F4 /* Running.xcdatamodel */;
+			path = Running.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5221C72927D7820400C84795 /* Project object */;
 }

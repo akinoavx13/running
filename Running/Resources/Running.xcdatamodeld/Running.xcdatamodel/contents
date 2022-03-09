@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21D62" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CDQuantitySample" representedClassName="CDQuantitySample" syncable="YES" codeGenerationType="class">
+        <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="value" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="workout_activeEnergyBurned" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDWorkout" inverseName="activeEnergyBurned" inverseEntity="CDWorkout"/>
+        <relationship name="workout_basalEnergyBurned" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDWorkout" inverseName="basalEnergyBurned" inverseEntity="CDWorkout"/>
+        <relationship name="workout_distanceWalkingRunning" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDWorkout" inverseName="distanceWalkingRunning" inverseEntity="CDWorkout"/>
+        <relationship name="workout_hearthRate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDWorkout" inverseName="hearthRate" inverseEntity="CDWorkout"/>
+        <relationship name="workout_stepCount" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDWorkout" inverseName="stepCount" inverseEntity="CDWorkout"/>
+    </entity>
+    <entity name="CDWorkout" representedClassName="CDWorkout" syncable="YES" codeGenerationType="class">
+        <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="isIndoorWorkout" optional="YES" attributeType="Boolean" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="metabolicEquivalentTask" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="totalDistance" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="totalEnergyBurned" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="weatherHumidity" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="weatherTemperature" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="activeEnergyBurned" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDQuantitySample" inverseName="workout_activeEnergyBurned" inverseEntity="CDQuantitySample"/>
+        <relationship name="basalEnergyBurned" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDQuantitySample" inverseName="workout_basalEnergyBurned" inverseEntity="CDQuantitySample"/>
+        <relationship name="distanceWalkingRunning" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDQuantitySample" inverseName="workout_distanceWalkingRunning" inverseEntity="CDQuantitySample"/>
+        <relationship name="hearthRate" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDQuantitySample" inverseName="workout_hearthRate" inverseEntity="CDQuantitySample"/>
+        <relationship name="stepCount" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDQuantitySample" inverseName="workout_stepCount" inverseEntity="CDQuantitySample"/>
+    </entity>
+    <elements>
+        <element name="CDWorkout" positionX="-258.68359375" positionY="-35.78515625" width="128" height="268"/>
+        <element name="CDQuantitySample" positionX="19.19921875" positionY="65.8828125" width="128" height="178"/>
+    </elements>
+</model>

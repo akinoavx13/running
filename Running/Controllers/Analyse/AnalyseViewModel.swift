@@ -15,6 +15,10 @@ protocol AnalyseViewModelProtocol: AnyObject {
     // MARK: - Properties
     
     var composition: Driver<AnalyseViewModel.Composition> { get }
+    
+    // MARK: - Methods
+    
+    func refresh() async
 }
 
 final class AnalyseViewModel: AnalyseViewModelProtocol {
@@ -36,6 +40,12 @@ final class AnalyseViewModel: AnalyseViewModelProtocol {
         self.healthKitService = healthKitService
         
         configureComposition()
+    }
+    
+    // MARK: - Methods
+    
+    func refresh() async {
+        
     }
 }
 

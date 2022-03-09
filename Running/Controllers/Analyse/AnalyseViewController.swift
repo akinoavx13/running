@@ -42,6 +42,8 @@ final class AnalyseViewController: UIViewController {
         title = R.string.localizable.analyse()
         
         bind(to: viewModel)
+        
+        refresh()
     }
     
     // MARK: - Private methods
@@ -55,6 +57,12 @@ final class AnalyseViewController: UIViewController {
                 self.collectionView.reloadData()
             })
             .disposed(by: disposeBag)
+    }
+    
+    private func refresh() {
+        Task {
+            await viewModel.refresh()
+        }
     }
 }
 
