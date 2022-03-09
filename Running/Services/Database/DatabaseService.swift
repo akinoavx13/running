@@ -57,7 +57,12 @@ final class DatabaseService: DatabaseServiceProtocol {
     func save(workout: HKWorkout) -> Bool {
         let newWorkout = CDWorkout(context: context)
         newWorkout.uuid = workout.uuid
-        
+        newWorkout.startDate = workout.startDate
+        newWorkout.endDate = workout.endDate
+        newWorkout.duration = workout.duration
+        newWorkout.totalDistance = workout.totalDistance?.doubleValue(for: .meterUnit(with: .kilo)) ?? 0
+        newWorkout.totalEnergyBurned = workout.totalEnergyBurned?.doubleValue(for: .kilocalorie()) ?? 0
+
         return saveIfNeeded()
     }
     
