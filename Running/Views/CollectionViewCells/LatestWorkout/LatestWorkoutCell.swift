@@ -14,6 +14,7 @@ final class LatestWorkoutCell: UICollectionViewCell, NibReusable {
     
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var timeLabel: UILabel!
+    @IBOutlet private weak var distanceLabel: UILabel!
     @IBOutlet private weak var importButton: AnimateButton! {
         didSet { importButton.setTitle(R.string.localizable.import(), for: .normal) }
     }
@@ -23,7 +24,7 @@ final class LatestWorkoutCell: UICollectionViewCell, NibReusable {
     
     static var size: CGSize {
         CGSize(width: UIScreen.main.bounds.width,
-               height: 48)
+               height: 70)
     }
     
     // MARK: - Lifecycle
@@ -33,6 +34,7 @@ final class LatestWorkoutCell: UICollectionViewCell, NibReusable {
         
         dateLabel.text = nil
         timeLabel.text = nil
+        distanceLabel.text = nil
         importButton.isHidden = false
         checkIconImageView.isHidden = true
     }
@@ -42,6 +44,7 @@ final class LatestWorkoutCell: UICollectionViewCell, NibReusable {
     func bind(to viewModel: LatestWorkoutCellViewModel) {
         dateLabel.text = viewModel.date
         timeLabel.text = viewModel.time
+        distanceLabel.text = viewModel.distance
         
         importButton.isHidden = viewModel.isImported
         checkIconImageView.isHidden = !viewModel.isImported

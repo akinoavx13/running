@@ -17,6 +17,7 @@ final class SettingsViewController: UIViewController {
         didSet {
             collectionView.register(cellType: LatestWorkoutCell.self)
             collectionView.register(supplementaryViewType: LatestWorkoutsReusableView.self, ofKind: UICollectionView.elementKindSectionHeader)
+            collectionView.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
         }
     }
     

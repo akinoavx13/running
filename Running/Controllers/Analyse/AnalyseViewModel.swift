@@ -38,16 +38,14 @@ final class AnalyseViewModel: AnalyseViewModelProtocol {
          healthKitService: HealthKitServiceProtocol) {
         self.actions = actions
         self.healthKitService = healthKitService
+        
+        configureComposition()
     }
     
     // MARK: - Methods
     
     func refresh() async {
-        _ = await healthKitService.fetchWorkouts(with: .running,
-                                                 start: .lastWeek,
-                                                 end: .now)
         
-        configureComposition()
     }
 }
 

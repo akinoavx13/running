@@ -11,7 +11,7 @@ protocol HealthKitServiceProtocol: AnyObject {
     
     // MARK: - Methods
     
-    func fetchWorkouts(with type: HKWorkoutActivityType,
+    func fetchWorkouts(activity: HKWorkoutActivityType,
                        start: Date?,
                        end: Date?) async -> [HKWorkout]
 }
@@ -34,7 +34,7 @@ final class HealthKitService: HealthKitServiceProtocol {
     
     // MARK: - Methods
     
-    func fetchWorkouts(with type: HKWorkoutActivityType,
+    func fetchWorkouts(activity: HKWorkoutActivityType,
                        start: Date?,
                        end: Date?) async -> [HKWorkout] {
         let dateDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate,
@@ -44,9 +44,11 @@ final class HealthKitService: HealthKitServiceProtocol {
         
         if let start = start,
            let end = end {
-            predicate = HKQuery.predicateForSamples(withStart: start, end: end, options: [])
+            predicate = HKQuery.predicateForSamples(withStart: start,
+                                                    end: end,
+                                                    options: [])
         } else {
-            predicate = HKQuery.predicateForWorkouts(with: .running)
+            predicate = HKQuery.predicateForWorkouts(with: activity)
         }
         
         let samples: [HKSample] = await withCheckedContinuation { continuation in
@@ -65,7 +67,7 @@ final class HealthKitService: HealthKitServiceProtocol {
      
         guard let workouts = samples as? [HKWorkout] else { return [] }
         
-        return workouts
+        return workouts.filter { $0.workoutActivityType == activity }
     }
     
     // MARK: - Private methods

@@ -13,6 +13,10 @@ final class AppDIContainer {
         HealthKitService()
     }()
     
+    private lazy var formatterService: FormatterServiceProtocol = {
+        FormatterService()
+    }()
+    
     // MARK: - Containers
     
     lazy var analyseDIContainer: AnalyseDIContainerProtocol = {
@@ -22,7 +26,8 @@ final class AppDIContainer {
     }()
     
     lazy var settingsDIContainer: SettingsDIContainerProtocol = {
-        let dependencies = SettingsDIContainer.Dependencies()
+        let dependencies = SettingsDIContainer.Dependencies(healthKitService: healthKitService,
+                                                            formatterService: formatterService)
         
         return SettingsDIContainer(dependencies: dependencies)
     }()

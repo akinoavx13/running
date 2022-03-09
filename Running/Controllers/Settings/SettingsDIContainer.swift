@@ -16,7 +16,10 @@ protocol SettingsDIContainerProtocol: AnyObject {
 
 final class SettingsDIContainer: SettingsDIContainerProtocol {
     
-    struct Dependencies { }
+    struct Dependencies {
+        let healthKitService: HealthKitServiceProtocol
+        let formatterService: FormatterServiceProtocol
+    }
     
     // MARK: - Properties
     
@@ -40,6 +43,8 @@ final class SettingsDIContainer: SettingsDIContainerProtocol {
 
 extension SettingsDIContainer: SettingsFlowCoordinatorDependencies {
     func makeSettingsViewController(actions: SettingsViewModelActions) -> SettingsViewController {
-        SettingsViewController.create(with: SettingsViewModel(actions: actions))
+        SettingsViewController.create(with: SettingsViewModel(actions: actions,
+                                                              healthKitService: dependencies.healthKitService,
+                                                              formatterService: dependencies.formatterService))
     }
 }

@@ -12,30 +12,55 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="8mz-9A-vNh" customClass="LatestWorkoutCell" customModule="Running" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="2VY-W7-z5f">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icons/person-running-thin" translatesAutoresizingMaskIntoConstraints="NO" id="xki-2V-rLm">
-                        <rect key="frame" x="16" y="12" width="24" height="24"/>
-                        <color key="tintColor" systemColor="labelColor"/>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G3l-Bd-MN6">
-                        <rect key="frame" x="56" y="14" width="36" height="20.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lId-Rh-JdW">
-                        <rect key="frame" x="100" y="14" width="190" height="20.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Sn3-Yr-48Q">
+                        <rect key="frame" x="16" y="13.5" width="274" height="43.5"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icons/person-running-thin" translatesAutoresizingMaskIntoConstraints="NO" id="xki-2V-rLm">
+                                <rect key="frame" x="0.0" y="9.5" width="24" height="24"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="0al-xk-9U5"/>
+                                    <constraint firstAttribute="height" constant="24" id="qzK-Ln-0NW"/>
+                                </constraints>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="aEv-62-5fR">
+                                <rect key="frame" x="40" y="0.0" width="234" height="43.5"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="qkT-N4-Mfn">
+                                        <rect key="frame" x="0.0" y="0.0" width="234" height="20.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="G3l-Bd-MN6">
+                                                <rect key="frame" x="0.0" y="0.0" width="36" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="left" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lId-Rh-JdW">
+                                                <rect key="frame" x="44" y="0.0" width="190" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROs-yx-A4o">
+                                        <rect key="frame" x="0.0" y="26.5" width="234" height="17"/>
+                                        <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                    </stackView>
                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hAE-e2-G1C" customClass="AnimateButton" customModule="Running" customModuleProvider="target">
-                        <rect key="frame" x="306" y="0.0" width="53" height="48"/>
+                        <rect key="frame" x="306" y="0.0" width="53" height="70"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <state key="normal" title="Button">
@@ -43,14 +68,14 @@
                         </state>
                     </button>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icons/check-regular" translatesAutoresizingMaskIntoConstraints="NO" id="H2d-oU-hUW">
-                        <rect key="frame" x="343" y="12" width="16" height="24"/>
+                        <rect key="frame" x="343" y="23" width="16" height="24"/>
                         <color key="tintColor" systemColor="labelColor"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="16" id="3r6-h4-YZr"/>
                         </constraints>
                     </imageView>
                     <view alpha="0.10000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E2S-yg-V5s">
-                        <rect key="frame" x="0.0" y="47" width="375" height="1"/>
+                        <rect key="frame" x="0.0" y="69" width="375" height="1"/>
                         <color key="backgroundColor" systemColor="labelColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="CSg-C3-Thj"/>
@@ -61,28 +86,26 @@
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="hAE-e2-G1C" secondAttribute="bottom" id="2Bu-o9-9hs"/>
                     <constraint firstAttribute="bottom" secondItem="E2S-yg-V5s" secondAttribute="bottom" id="88p-kV-fcP"/>
-                    <constraint firstItem="G3l-Bd-MN6" firstAttribute="centerY" secondItem="2VY-W7-z5f" secondAttribute="centerY" id="Frs-ck-J2f"/>
-                    <constraint firstItem="xki-2V-rLm" firstAttribute="leading" secondItem="2VY-W7-z5f" secondAttribute="leading" constant="16" id="Khn-kg-SQL"/>
+                    <constraint firstItem="Sn3-Yr-48Q" firstAttribute="leading" secondItem="2VY-W7-z5f" secondAttribute="leading" constant="16" id="IPt-aZ-vp4"/>
                     <constraint firstItem="E2S-yg-V5s" firstAttribute="leading" secondItem="2VY-W7-z5f" secondAttribute="leading" id="NKF-Db-G3W"/>
-                    <constraint firstItem="G3l-Bd-MN6" firstAttribute="leading" secondItem="xki-2V-rLm" secondAttribute="trailing" constant="16" id="NL5-5I-iLo"/>
-                    <constraint firstItem="lId-Rh-JdW" firstAttribute="centerY" secondItem="2VY-W7-z5f" secondAttribute="centerY" id="Pl8-DX-KGb"/>
                     <constraint firstAttribute="trailing" secondItem="hAE-e2-G1C" secondAttribute="trailing" constant="16" id="bHA-oZ-xXy"/>
                     <constraint firstAttribute="trailing" secondItem="H2d-oU-hUW" secondAttribute="trailing" constant="16" id="f9g-Tm-wD6"/>
-                    <constraint firstItem="hAE-e2-G1C" firstAttribute="leading" secondItem="lId-Rh-JdW" secondAttribute="trailing" constant="16" id="p0G-aQ-ISr"/>
-                    <constraint firstItem="xki-2V-rLm" firstAttribute="centerY" secondItem="2VY-W7-z5f" secondAttribute="centerY" id="qgi-8x-zpB"/>
-                    <constraint firstItem="lId-Rh-JdW" firstAttribute="leading" secondItem="G3l-Bd-MN6" secondAttribute="trailing" constant="8" id="swP-6M-Nud"/>
+                    <constraint firstItem="hAE-e2-G1C" firstAttribute="leading" secondItem="Sn3-Yr-48Q" secondAttribute="trailing" constant="16" id="reI-5K-QTg"/>
+                    <constraint firstItem="Sn3-Yr-48Q" firstAttribute="centerY" secondItem="2VY-W7-z5f" secondAttribute="centerY" id="s57-uK-Fse"/>
                     <constraint firstItem="hAE-e2-G1C" firstAttribute="top" secondItem="2VY-W7-z5f" secondAttribute="top" id="sxU-B2-lAA"/>
                     <constraint firstItem="H2d-oU-hUW" firstAttribute="centerY" secondItem="2VY-W7-z5f" secondAttribute="centerY" id="tiC-Qm-gGd"/>
                     <constraint firstAttribute="trailing" secondItem="E2S-yg-V5s" secondAttribute="trailing" id="xZT-fO-OAi"/>
                 </constraints>
             </collectionViewCellContentView>
+            <size key="customSize" width="375" height="80"/>
             <connections>
                 <outlet property="checkIconImageView" destination="H2d-oU-hUW" id="NTL-EJ-BBk"/>
                 <outlet property="dateLabel" destination="G3l-Bd-MN6" id="DcK-W7-QFK"/>
+                <outlet property="distanceLabel" destination="ROs-yx-A4o" id="fC4-0s-fX3"/>
                 <outlet property="importButton" destination="hAE-e2-G1C" id="XGH-vG-hsI"/>
                 <outlet property="timeLabel" destination="lId-Rh-JdW" id="Hqk-sp-77z"/>
             </connections>
-            <point key="canvasLocation" x="-62" y="117"/>
+            <point key="canvasLocation" x="-63.04347826086957" y="127.23214285714285"/>
         </collectionViewCell>
     </objects>
     <resources>

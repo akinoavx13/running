@@ -10,6 +10,7 @@
 		5221C73527D7820400C84795 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5221C73427D7820400C84795 /* AppDelegate.swift */; };
 		5221C73E27D7820400C84795 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5221C73D27D7820400C84795 /* Assets.xcassets */; };
 		5221C74127D7820400C84795 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5221C73F27D7820400C84795 /* LaunchScreen.storyboard */; };
+		52340C4427D8DA1C00446E3C /* FormatterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52340C4327D8DA1C00446E3C /* FormatterService.swift */; };
 		5237753227D7F0B300157ED5 /* IntensityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5237753127D7F0B300157ED5 /* IntensityCell.xib */; };
 		5237753527D7F5A700157ED5 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5237753427D7F5A700157ED5 /* Date+Extensions.swift */; };
 		526B359227D782570092AFEC /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 526B359127D782570092AFEC /* HealthKit.framework */; };
@@ -52,6 +53,7 @@
 		5221C73D27D7820400C84795 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5221C74027D7820400C84795 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5221C74227D7820400C84795 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52340C4327D8DA1C00446E3C /* FormatterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterService.swift; sourceTree = "<group>"; };
 		5237753127D7F0B300157ED5 /* IntensityCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntensityCell.xib; sourceTree = "<group>"; };
 		5237753427D7F5A700157ED5 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		526B358F27D782570092AFEC /* Running.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Running.entitlements; sourceTree = "<group>"; };
@@ -131,6 +133,14 @@
 			path = Running;
 			sourceTree = "<group>";
 		};
+		52340C4227D8DA1000446E3C /* Formatter */ = {
+			isa = PBXGroup;
+			children = (
+				52340C4327D8DA1C00446E3C /* FormatterService.swift */,
+			);
+			path = Formatter;
+			sourceTree = "<group>";
+		};
 		5237753327D7F5A000157ED5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -205,6 +215,7 @@
 		5299BFEC27D7ED580011DB49 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				52340C4227D8DA1000446E3C /* Formatter */,
 				5299BFED27D7ED650011DB49 /* HealthKit */,
 			);
 			path = Services;
@@ -428,6 +439,7 @@
 				52A2427027D8C31E006183C1 /* LatestWorkoutsReusableView.swift in Sources */,
 				5299BFF127D7EE780011DB49 /* CompositionSection.swift in Sources */,
 				52A2427427D8C333006183C1 /* LatestWorkoutsReusableViewModel.swift in Sources */,
+				52340C4427D8DA1C00446E3C /* FormatterService.swift in Sources */,
 				526B359B27D784DA0092AFEC /* AppFlowCoordinator.swift in Sources */,
 				52A2426227D8B21E006183C1 /* SettingsFlowCoordinator.swift in Sources */,
 				5299BFFD27D7F0070011DB49 /* IntensityCell.swift in Sources */,

@@ -11,11 +11,11 @@ extension Date {
     
     // MARK: - Properties
     
-    static var lastWeek: Date? { remove(days: 7, to: .now) }
+    static var lastWeek: Date? { ago(days: 7, to: .now) }
         
     // MARK: - Methods
     
-    static func remove(days: Int, to date: Date) -> Date? {
+    static func ago(days: Int, to date: Date) -> Date? {
         Calendar.current.date(byAdding: .day, value: -days, to: date)
     }
 }
