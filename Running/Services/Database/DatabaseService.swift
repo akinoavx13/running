@@ -60,8 +60,14 @@ final class DatabaseService: DatabaseServiceProtocol {
         newWorkout.startDate = workout.startDate
         newWorkout.endDate = workout.endDate
         newWorkout.duration = workout.duration
-        newWorkout.totalDistance = workout.totalDistance?.doubleValue(for: .meterUnit(with: .kilo)) ?? 0
-        newWorkout.totalEnergyBurned = workout.totalEnergyBurned?.doubleValue(for: .kilocalorie()) ?? 0
+        
+        if let totalDistance = workout.totalDistance?.doubleValue(for: .meterUnit(with: .kilo)) {
+            newWorkout.totalDistance = totalDistance
+        }
+        
+        if let totalEnergyBurned = workout.totalEnergyBurned?.doubleValue(for: .kilocalorie()) {
+            newWorkout.totalEnergyBurned = totalEnergyBurned
+        }
         
         if let metabolicEquivalentTaskQuantity = workout.metadata?[HKMetadataKeyAverageMETs] as? HKQuantity {
             newWorkout.metabolicEquivalentTask = metabolicEquivalentTaskQuantity.doubleValue(for: HKUnit(from: "kcal/hr·kg"))
