@@ -6,8 +6,12 @@
 //
 
 import Foundation
+import HealthKit
 
 protocol ImportServiceProtocol: AnyObject {
+    func availableForImport(activity: HKWorkoutActivityType,
+                            start: Date,
+                            end: Date) async -> [HKWorkout]
     func importWorkout(uuid: UUID) async -> Bool
     func isImported(uuid: UUID) -> Bool
 }
@@ -28,6 +32,16 @@ final class ImportService: ImportServiceProtocol {
     }
     
     // MARK: - Methods
+    
+    func availableForImport(activity: HKWorkoutActivityType,
+                            start: Date,
+                            end: Date) async -> [HKWorkout] {
+        let workouts = await healthKitService.fetchWorkouts(activity: activity,
+                                                            start: start,
+                                                            end: end)
+        
+        return workouts.filter { $0.metadata?[HKMetadataKeyAverageMETs] != nil }
+    }
     
     func importWorkout(uuid: UUID) async -> Bool {
         guard let workout = await healthKitService.fetchWorkout(with: uuid),

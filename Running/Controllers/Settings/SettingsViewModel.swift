@@ -32,18 +32,15 @@ final class SettingsViewModel: SettingsViewModelProtocol {
     private let compositionSubject = ReplaySubject<Composition>.create(bufferSize: 1)
     
     private let actions: SettingsViewModelActions
-    private let healthKitService: HealthKitServiceProtocol
     private let formatterService: FormatterServiceProtocol
     private let importService: ImportServiceProtocol
     
     // MARK: - Lifecycle
     
     init(actions: SettingsViewModelActions,
-         healthKitService: HealthKitServiceProtocol,
          formatterService: FormatterServiceProtocol,
          importService: ImportServiceProtocol) {
         self.actions = actions
-        self.healthKitService = healthKitService
         self.formatterService = formatterService
         self.importService = importService
         
@@ -53,10 +50,12 @@ final class SettingsViewModel: SettingsViewModelProtocol {
     // MARK: - Methods
     
     func refresh() async {
-        let workouts = await healthKitService.fetchWorkouts(activity: .running,
-                                                            start: Date.ago(days: 30, to: .now),
-                                                            end: .now)
+        guard let startDate = Date.ago(days: 30, to: .now) else { return }
         
+        let workouts = await importService.availableForImport(activity: .running,
+                                                              start: startDate,
+                                                              end: .now)
+
         configureComposition(workouts: workouts)
     }
     
