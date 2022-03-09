@@ -62,7 +62,23 @@ final class DatabaseService: DatabaseServiceProtocol {
         newWorkout.duration = workout.duration
         newWorkout.totalDistance = workout.totalDistance?.doubleValue(for: .meterUnit(with: .kilo)) ?? 0
         newWorkout.totalEnergyBurned = workout.totalEnergyBurned?.doubleValue(for: .kilocalorie()) ?? 0
-
+        
+        if let metabolicEquivalentTaskQuantity = workout.metadata?[HKMetadataKeyAverageMETs] as? HKQuantity {
+            newWorkout.metabolicEquivalentTask = metabolicEquivalentTaskQuantity.doubleValue(for: HKUnit(from: "kcal/hr·kg"))
+        }
+        
+        if let isIndoorWorkout = workout.metadata?[HKMetadataKeyIndoorWorkout] as? Bool {
+            newWorkout.isIndoorWorkout = isIndoorWorkout
+        }
+        
+        if let weatherHumidityQuantity = workout.metadata?[HKMetadataKeyWeatherHumidity] as? HKQuantity {
+            newWorkout.weatherHumidity = weatherHumidityQuantity.doubleValue(for: .percent())
+        }
+        
+        if let weatherTemperatureQuantity = workout.metadata?[HKMetadataKeyWeatherTemperature] as? HKQuantity {
+            newWorkout.weatherTemperature = weatherTemperatureQuantity.doubleValue(for: .degreeFahrenheit())
+        }
+        
         return saveIfNeeded()
     }
     
