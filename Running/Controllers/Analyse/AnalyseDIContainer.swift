@@ -18,6 +18,7 @@ final class AnalyseDIContainer: AnalyseDIContainerProtocol {
     
     struct Dependencies {
         let databaseService: DatabaseServiceProtocol
+        let formatterService: FormatterServiceProtocol
     }
     
     // MARK: - Properties
@@ -43,6 +44,7 @@ final class AnalyseDIContainer: AnalyseDIContainerProtocol {
 extension AnalyseDIContainer: AnalyseFlowCoordinatorDependencies {
     func makeAnalyseViewController(actions: AnalyseViewModelActions) -> AnalyseViewController {
         AnalyseViewController.create(with: AnalyseViewModel(actions: actions,
-                                                            databaseService: dependencies.databaseService))
+                                                            databaseService: dependencies.databaseService,
+                                                            formatterService: dependencies.formatterService))
     }
 }

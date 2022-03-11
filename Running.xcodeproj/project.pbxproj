@@ -18,6 +18,7 @@
 		5242AAF327D9010400BABAB9 /* ImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5242AAF227D9010400BABAB9 /* ImportService.swift */; };
 		5242AAF927D90E7500BABAB9 /* EraseDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5242AAF727D90E7500BABAB9 /* EraseDataCell.xib */; };
 		5242AAFA27D90E7500BABAB9 /* EraseDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5242AAF827D90E7500BABAB9 /* EraseDataCell.swift */; };
+		5265693027D954620069E1EF /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 5265692F27D954620069E1EF /* Charts */; };
 		526B359227D782570092AFEC /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 526B359127D782570092AFEC /* HealthKit.framework */; };
 		526B359927D784BE0092AFEC /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526B359827D784BE0092AFEC /* AppDIContainer.swift */; };
 		526B359B27D784DA0092AFEC /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526B359A27D784DA0092AFEC /* AppFlowCoordinator.swift */; };
@@ -107,6 +108,7 @@
 			files = (
 				5299BFF427D7EEAC0011DB49 /* RxCocoa in Frameworks */,
 				526B359227D782570092AFEC /* HealthKit.framework in Frameworks */,
+				5265693027D954620069E1EF /* Charts in Frameworks */,
 				5299BFF627D7EEAC0011DB49 /* RxSwift in Frameworks */,
 				52BBAEA527D9403B00F5694A /* PKHUD in Frameworks */,
 				526B35AD27D787940092AFEC /* Rswift in Frameworks */,
@@ -374,6 +376,7 @@
 				5299BFF527D7EEAC0011DB49 /* RxSwift */,
 				5299C00327D7F04D0011DB49 /* Reusable */,
 				52BBAEA427D9403B00F5694A /* PKHUD */,
+				5265692F27D954620069E1EF /* Charts */,
 			);
 			productName = Running;
 			productReference = 5221C73127D7820400C84795 /* Running.app */;
@@ -408,6 +411,7 @@
 				5299BFF227D7EEAB0011DB49 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				5299C00227D7F04D0011DB49 /* XCRemoteSwiftPackageReference "Reusable" */,
 				52BBAEA327D9403B00F5694A /* XCRemoteSwiftPackageReference "PKHUD" */,
+				5265692E27D954620069E1EF /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = 5221C73227D7820400C84795 /* Products */;
 			projectDirPath = "";
@@ -736,6 +740,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5265692E27D954620069E1EF /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		526B35AB27D787940092AFEC /* XCRemoteSwiftPackageReference "R.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mac-cain13/R.swift.Library";
@@ -771,6 +783,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5265692F27D954620069E1EF /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5265692E27D954620069E1EF /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
+		};
 		526B35AC27D787940092AFEC /* Rswift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 526B35AB27D787940092AFEC /* XCRemoteSwiftPackageReference "R.swift" */;

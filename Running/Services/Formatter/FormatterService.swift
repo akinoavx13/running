@@ -13,6 +13,7 @@ protocol FormatterServiceProtocol: AnyObject {
                 timeStyle: DateFormatter.Style) -> String
     func format(value: Double,
                 accuracy: Int) -> String
+    func format(date: Date, with format: String) -> String
 }
 
 final class FormatterService: FormatterServiceProtocol {
@@ -20,7 +21,8 @@ final class FormatterService: FormatterServiceProtocol {
     // MARK: - Properties
     
     private let formatDateFormatter = DateFormatter()
-    
+    private let extractFormatter = DateFormatter()
+
     private let calendar = Calendar.current
 
     // MARK: - Methods
@@ -36,4 +38,10 @@ final class FormatterService: FormatterServiceProtocol {
     
     func format(value: Double,
                 accuracy: Int) -> String { String(format: "%.\(accuracy)f", value) }
+    
+    func format(date: Date, with format: String) -> String {
+        extractFormatter.dateFormat = format
+        
+        return extractFormatter.string(from: date)
+    }
 }

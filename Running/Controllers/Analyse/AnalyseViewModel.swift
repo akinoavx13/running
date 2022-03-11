@@ -7,6 +7,7 @@
 
 import RxSwift
 import RxCocoa
+import Foundation
 
 struct AnalyseViewModelActions { }
 
@@ -31,13 +32,16 @@ final class AnalyseViewModel: AnalyseViewModelProtocol {
     
     private let actions: AnalyseViewModelActions
     private let databaseService: DatabaseServiceProtocol
+    private let formatterService: FormatterServiceProtocol
     
     // MARK: - Lifecycle
     
     init(actions: AnalyseViewModelActions,
-         databaseService: DatabaseServiceProtocol) {
+         databaseService: DatabaseServiceProtocol,
+         formatterService: FormatterServiceProtocol) {
         self.actions = actions
         self.databaseService = databaseService
+        self.formatterService = formatterService
         
         configureComposition()
     }
@@ -74,13 +78,33 @@ extension AnalyseViewModel {
     private func configureComposition(workouts: [CDWorkout] = []) {
         var sections = [Section]()
         
-        sections.append(configureIntensitySection(workouts: workouts))
+        if let intensitySection = configureIntensitySection(workouts: workouts) {
+            sections.append(intensitySection)
+        }
         
         compositionSubject.onNext(Composition(sections: sections))
     }
     
-    private func configureIntensitySection(workouts: [CDWorkout]) -> Section {
-        let cells: [Cell] = [.intensity(IntensityCellViewModel())]
+    private func configureIntensitySection(workouts: [CDWorkout]) -> Section? {
+        guard !workouts.isEmpty else { return nil }
+        
+        var values: [(x: Double, y: Double)] = []
+        var xValues: [String] = []
+
+        Date.getLastDays(days: 7, from: Date())
+            .enumerated()
+            .forEach { iterator in
+                workouts.forEach { workout in
+                    if workout.startDate?.isIn(date: iterator.element) ?? false {
+                        values.append((x: Double(iterator.offset), y: workout.metabolicEquivalentTask))
+                    } else {
+                        values.append((x: Double(iterator.offset), y: 0))
+                    }
+                    xValues.append(formatterService.format(date: iterator.element, with: "dd\nE"))
+                }
+            }
+        
+        let cells: [Cell] = [.intensity(IntensityCellViewModel(values: values, xValues: xValues))]
         
         return .section(.intensity,
                         title: nil,

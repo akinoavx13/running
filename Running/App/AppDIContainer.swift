@@ -26,7 +26,8 @@ final class AppDIContainer {
     // MARK: - Containers
     
     lazy var analyseDIContainer: AnalyseDIContainerProtocol = {
-        let dependencies = AnalyseDIContainer.Dependencies(databaseService: databaseService)
+        let dependencies = AnalyseDIContainer.Dependencies(databaseService: databaseService,
+                                                           formatterService: formatterService)
         
         return AnalyseDIContainer(dependencies: dependencies)
     }()
