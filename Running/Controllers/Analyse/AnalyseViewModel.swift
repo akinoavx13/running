@@ -49,7 +49,7 @@ final class AnalyseViewModel: AnalyseViewModelProtocol {
     // MARK: - Methods
     
     func refresh() async {
-        let workouts = await databaseService.fetchWorkouts(start: .ago(days: 7, to: .now),
+        let workouts = await databaseService.fetchWorkouts(start: .ago(days: 6, to: .now),
                                                            end: .now)
         
         configureComposition(workouts: workouts)
@@ -66,11 +66,13 @@ extension AnalyseViewModel {
     }
     
     enum SectionType {
-        case intensity(_ for: SectionHeaderReusableViewModel)
+        case intensity(_ for: SectionHeaderReusableViewModel),
+             resume(_ for: SectionHeaderReusableViewModel)
     }
     
     enum Cell {
-        case intensity(_ for: IntensityCellViewModel)
+        case intensity(_ for: IntensityCellViewModel),
+             resume(_ for: ResumeCellViewModel)
     }
     
     // MARK: - Private methods
@@ -81,17 +83,17 @@ extension AnalyseViewModel {
         if let intensitySection = configureIntensitySection(workouts: workouts) {
             sections.append(intensitySection)
         }
+    
+        sections.append(configureResumeSection(workouts: workouts))
         
         compositionSubject.onNext(Composition(sections: sections))
     }
     
-    private func configureIntensitySection(workouts: [CDWorkout]) -> Section? {
-        guard !workouts.isEmpty else { return nil }
-        
+    private func configureIntensitySection(workouts: [CDWorkout]) -> Section? {        
         var values: [(x: Double, y: Double)] = []
         var xValues: [String] = []
 
-        Date.getLastDays(days: 7, from: Date())
+        Date.getLastDays(days: 6, from: Date())
             .enumerated()
             .forEach { iterator in
                 if let workout = workouts.first(where: { ($0.startDate?.isIn(date: iterator.element)) ?? false }) {
@@ -102,12 +104,28 @@ extension AnalyseViewModel {
                 xValues.append(formatterService.format(date: iterator.element, with: "dd\nE"))
             }
         
-        dd(values, xValues)
-        
         let cells: [Cell] = [.intensity(IntensityCellViewModel(values: values, xValues: xValues))]
         
         return .section(.intensity(SectionHeaderReusableViewModel(title: R.string.localizable.intensity(),
                                                                   caption: nil)),
+                        title: nil,
+                        cells: cells)
+    }
+    
+    private func configureResumeSection(workouts: [CDWorkout]) -> Section {
+        let intensity: Int = Int(workouts.map { $0.metabolicEquivalentTask }.reduce(0, +))
+        let distance = workouts.map { $0.totalDistance }.reduce(0, +)
+        let durationInSeconds: Int = Int(workouts.map { $0.duration }.reduce(0, +))
+        
+        let minutes: Int = durationInSeconds / 60
+        let seconds: Int = durationInSeconds % 60
+
+        let cells: [Cell] = [.resume(ResumeCellViewModel(intensity: "\(intensity) METs",
+                                                         distance: "\(formatterService.format(value: distance, accuracy: 1)) km",
+                                                         duration: "\(minutes):\(seconds) min"))]
+        
+        return .section(.resume(SectionHeaderReusableViewModel(title: R.string.localizable.resume(),
+                                                               caption: nil)),
                         title: nil,
                         cells: cells)
     }

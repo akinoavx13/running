@@ -16,6 +16,7 @@ final class AnalyseViewController: UIViewController {
     @IBOutlet private weak var collectionView: UICollectionView! {
         didSet {
             collectionView.register(cellType: IntensityCell.self)
+            collectionView.register(cellType: ResumeCell.self)
             collectionView.register(supplementaryViewType: SectionHeaderReusableView.self, ofKind: UICollectionView.elementKindSectionHeader)
             collectionView.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
         }
@@ -109,6 +110,11 @@ extension AnalyseViewController: UICollectionViewDataSource {
             cell.bind(to: viewModel)
             
             return cell
+        case let .resume(viewModel):
+            let cell: ResumeCell = collectionView.dequeueReusableCell(for: indexPath)
+            cell.bind(to: viewModel)
+            
+            return cell
         }
     }
     
@@ -116,7 +122,7 @@ extension AnalyseViewController: UICollectionViewDataSource {
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
         switch composition.sections[indexPath.section].type {
-        case let .intensity(viewModel):
+        case let .intensity(viewModel), let .resume(viewModel):
             let headerView: SectionHeaderReusableView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, for: indexPath)
             headerView.bind(to: viewModel)
             
@@ -135,6 +141,7 @@ extension AnalyseViewController: UICollectionViewDelegateFlowLayout {
         
         switch type {
         case .intensity: return IntensityCell.size
+        case .resume: return ResumeCell.size
         }
     }
     
@@ -142,7 +149,7 @@ extension AnalyseViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
         switch composition.sections[section].type {
-        case .intensity: return SectionHeaderReusableView.size
+        case .intensity, .resume: return SectionHeaderReusableView.size
         }
     }
     
@@ -150,10 +157,7 @@ extension AnalyseViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         switch composition.sections[section].type {
-        case .intensity: return UIEdgeInsets(top: 8,
-                                                  left: 0,
-                                                  bottom: 0,
-                                                  right: 0)
+        case .intensity, .resume: return .zero
         }
     }
 }

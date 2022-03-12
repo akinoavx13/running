@@ -28,7 +28,7 @@ final class IntensityCell: UICollectionViewCell, NibReusable {
     
     static var size: CGSize {
         CGSize(width: UIScreen.main.bounds.width,
-               height: 300)
+               height: 250)
     }
     
     // MARK: - Lifecycle
