@@ -200,7 +200,8 @@ extension SettingsViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         switch composition.sections[section].type {
-        case .latestWorkouts, .eraseData: return .zero
+        case .latestWorkouts: return 6
+        case .eraseData: return 0
         }
     }
 }
