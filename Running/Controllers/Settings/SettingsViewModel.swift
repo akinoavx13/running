@@ -88,7 +88,7 @@ extension SettingsViewModel {
     }
     
     enum SectionType {
-        case latestWorkouts(_ for: LatestWorkoutsReusableViewModel),
+        case latestWorkouts(_ for: SectionHeaderReusableViewModel),
              eraseData
     }
     
@@ -130,7 +130,8 @@ extension SettingsViewModel {
                                                                  isImported: importService.isImported(uuid: $0.uuid)))
             }
         
-        return .section(.latestWorkouts(LatestWorkoutsReusableViewModel(nbWorkouts: workouts.count)),
+        return .section(.latestWorkouts(SectionHeaderReusableViewModel(title: R.string.localizable.latest_workouts(),
+                                                                       caption: "\(workouts.count)")),
                         title: nil,
                         cells: cells)
     }

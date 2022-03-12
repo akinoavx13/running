@@ -14,9 +14,16 @@ final class AnalyseViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet private weak var collectionView: UICollectionView! {
-        didSet { collectionView.register(cellType: IntensityCell.self) }
+        didSet {
+            collectionView.register(cellType: IntensityCell.self)
+            collectionView.register(cellType: ResumeCell.self)
+            collectionView.register(supplementaryViewType: SectionHeaderReusableView.self, ofKind: UICollectionView.elementKindSectionHeader)
+            collectionView.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
+        }
     }
     
+    private var refreshControl = UIRefreshControl()
+
     // MARK: - Properties
     
     var viewModel: AnalyseViewModelProtocol!
@@ -39,7 +46,7 @@ final class AnalyseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = R.string.localizable.analyse()
+        configure()
         
         bind(to: viewModel)
         
@@ -47,6 +54,14 @@ final class AnalyseViewController: UIViewController {
     }
     
     // MARK: - Private methods
+    
+    private func configure() {
+        title = R.string.localizable.analyse()
+        
+        refreshControl.addTarget(self, action: #selector(refreshControlValueDidChange), for: .valueChanged)
+        
+        collectionView.refreshControl = refreshControl
+    }
     
     private func bind(to viewModel: AnalyseViewModelProtocol) {
         viewModel.composition
@@ -62,7 +77,18 @@ final class AnalyseViewController: UIViewController {
     private func refresh() {
         Task {
             await viewModel.refresh()
+            
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                
+                self.refreshControl.endRefreshing()
+            }
         }
+    }
+    
+    @objc private func refreshControlValueDidChange() {
+        refreshControl.beginRefreshing()
+        refresh()
     }
 }
 
@@ -84,6 +110,23 @@ extension AnalyseViewController: UICollectionViewDataSource {
             cell.bind(to: viewModel)
             
             return cell
+        case let .resume(viewModel):
+            let cell: ResumeCell = collectionView.dequeueReusableCell(for: indexPath)
+            cell.bind(to: viewModel)
+            
+            return cell
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
+        switch composition.sections[indexPath.section].type {
+        case let .intensity(viewModel), let .resume(viewModel):
+            let headerView: SectionHeaderReusableView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, for: indexPath)
+            headerView.bind(to: viewModel)
+            
+            return headerView
         }
     }
 }
@@ -98,6 +141,23 @@ extension AnalyseViewController: UICollectionViewDelegateFlowLayout {
         
         switch type {
         case .intensity: return IntensityCell.size
+        case .resume: return ResumeCell.size
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForHeaderInSection section: Int) -> CGSize {
+        switch composition.sections[section].type {
+        case .intensity, .resume: return SectionHeaderReusableView.size
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        switch composition.sections[section].type {
+        case .intensity, .resume: return .zero
         }
     }
 }

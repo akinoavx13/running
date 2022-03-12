@@ -9,6 +9,8 @@ import UIKit
 
 final class Colors {
 
+    static var accent = R.color.accentColor() ?? .systemPink
     static var tabBar = R.color.tabBar() ?? .systemPink
+    static var dark = R.color.dark() ?? .systemPink
     
 }

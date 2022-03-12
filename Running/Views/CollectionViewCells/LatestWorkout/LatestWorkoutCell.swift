@@ -18,6 +18,11 @@ final class LatestWorkoutCell: UICollectionViewCell, NibReusable {
     
     // MARK: - Outlets
     
+    @IBOutlet private weak var containerView: UIView! {
+        didSet {
+            containerView.layer.cornerRadius = 8
+        }
+    }
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var timeLabel: UILabel!
     @IBOutlet private weak var distanceLabel: UILabel!

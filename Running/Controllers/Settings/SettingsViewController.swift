@@ -18,7 +18,7 @@ final class SettingsViewController: UIViewController {
         didSet {
             collectionView.register(cellType: LatestWorkoutCell.self)
             collectionView.register(cellType: EraseDataCell.self)
-            collectionView.register(supplementaryViewType: LatestWorkoutsReusableView.self, ofKind: UICollectionView.elementKindSectionHeader)
+            collectionView.register(supplementaryViewType: SectionHeaderReusableView.self, ofKind: UICollectionView.elementKindSectionHeader)
             collectionView.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
         }
     }
@@ -94,7 +94,11 @@ final class SettingsViewController: UIViewController {
             let isSuccess = await viewModel.importWorkout(uuid: uuid)
             
             DispatchQueue.main.async {
-                HUD.flash(isSuccess ? .success : .error, delay: Constants.defaultHUDDuration)
+                if isSuccess {
+                    HUD.hide()
+                } else {
+                    HUD.flash(.error, delay: Constants.defaultHUDDuration)
+                }
             }
         }
     }
@@ -149,7 +153,7 @@ extension SettingsViewController: UICollectionViewDataSource {
                         at indexPath: IndexPath) -> UICollectionReusableView {
         switch composition.sections[indexPath.section].type {
         case let .latestWorkouts(viewModel):
-            let headerView: LatestWorkoutsReusableView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, for: indexPath)
+            let headerView: SectionHeaderReusableView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, for: indexPath)
             headerView.bind(to: viewModel)
             
             return headerView
@@ -176,7 +180,7 @@ extension SettingsViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
         switch composition.sections[section].type {
-        case .latestWorkouts: return LatestWorkoutsReusableView.size
+        case .latestWorkouts: return SectionHeaderReusableView.size
         case .eraseData: return .zero
         }
     }
@@ -200,7 +204,8 @@ extension SettingsViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         switch composition.sections[section].type {
-        case .latestWorkouts, .eraseData: return .zero
+        case .latestWorkouts: return 6
+        case .eraseData: return 0
         }
     }
 }

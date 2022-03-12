@@ -18,6 +18,7 @@
 		5242AAF327D9010400BABAB9 /* ImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5242AAF227D9010400BABAB9 /* ImportService.swift */; };
 		5242AAF927D90E7500BABAB9 /* EraseDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5242AAF727D90E7500BABAB9 /* EraseDataCell.xib */; };
 		5242AAFA27D90E7500BABAB9 /* EraseDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5242AAF827D90E7500BABAB9 /* EraseDataCell.swift */; };
+		5265693027D954620069E1EF /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 5265692F27D954620069E1EF /* Charts */; };
 		526B359227D782570092AFEC /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 526B359127D782570092AFEC /* HealthKit.framework */; };
 		526B359927D784BE0092AFEC /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526B359827D784BE0092AFEC /* AppDIContainer.swift */; };
 		526B359B27D784DA0092AFEC /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526B359A27D784DA0092AFEC /* AppFlowCoordinator.swift */; };
@@ -30,6 +31,9 @@
 		526B35AD27D787940092AFEC /* Rswift in Frameworks */ = {isa = PBXBuildFile; productRef = 526B35AC27D787940092AFEC /* Rswift */; };
 		526B35AF27D787E60092AFEC /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526B35AE27D787E60092AFEC /* R.generated.swift */; };
 		526B35B227D78BA60092AFEC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 526B35B427D78BA60092AFEC /* Localizable.strings */; };
+		527CFCFD27DD53F400C6D7FE /* ResumeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527CFCFC27DD53F400C6D7FE /* ResumeCell.swift */; };
+		527CFCFF27DD540200C6D7FE /* ResumeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527CFCFE27DD540200C6D7FE /* ResumeCell.xib */; };
+		527CFD0127DD540C00C6D7FE /* ResumeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527CFD0027DD540C00C6D7FE /* ResumeCellViewModel.swift */; };
 		5299BFEF27D7ED750011DB49 /* HealthKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299BFEE27D7ED750011DB49 /* HealthKitService.swift */; };
 		5299BFF127D7EE780011DB49 /* CompositionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5299BFF027D7EE780011DB49 /* CompositionSection.swift */; };
 		5299BFF427D7EEAC0011DB49 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 5299BFF327D7EEAC0011DB49 /* RxCocoa */; };
@@ -47,9 +51,9 @@
 		52A2426827D8B839006183C1 /* LatestWorkoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52A2426527D8B839006183C1 /* LatestWorkoutCell.xib */; };
 		52A2426927D8B839006183C1 /* LatestWorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2426627D8B839006183C1 /* LatestWorkoutCell.swift */; };
 		52A2426C27D8C01C006183C1 /* AnimateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2426B27D8C01C006183C1 /* AnimateButton.swift */; };
-		52A2427027D8C31E006183C1 /* LatestWorkoutsReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2426F27D8C31E006183C1 /* LatestWorkoutsReusableView.swift */; };
-		52A2427427D8C333006183C1 /* LatestWorkoutsReusableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2427327D8C333006183C1 /* LatestWorkoutsReusableViewModel.swift */; };
-		52A2427627D8C3AE006183C1 /* LatestWorkoutsReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52A2427527D8C3AE006183C1 /* LatestWorkoutsReusableView.xib */; };
+		52A2427027D8C31E006183C1 /* SectionHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2426F27D8C31E006183C1 /* SectionHeaderReusableView.swift */; };
+		52A2427427D8C333006183C1 /* SectionHeaderReusableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2427327D8C333006183C1 /* SectionHeaderReusableViewModel.swift */; };
+		52A2427627D8C3AE006183C1 /* SectionHeaderReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52A2427527D8C3AE006183C1 /* SectionHeaderReusableView.xib */; };
 		52BBAEA527D9403B00F5694A /* PKHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 52BBAEA427D9403B00F5694A /* PKHUD */; };
 		52BBAEA727D9408000F5694A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BBAEA627D9407F00F5694A /* Constants.swift */; };
 /* End PBXBuildFile section */
@@ -80,6 +84,9 @@
 		526B35A827D785D90092AFEC /* AnalyseViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AnalyseViewController.storyboard; sourceTree = "<group>"; };
 		526B35AE27D787E60092AFEC /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		526B35B327D78BA60092AFEC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		527CFCFC27DD53F400C6D7FE /* ResumeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeCell.swift; sourceTree = "<group>"; };
+		527CFCFE27DD540200C6D7FE /* ResumeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResumeCell.xib; sourceTree = "<group>"; };
+		527CFD0027DD540C00C6D7FE /* ResumeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResumeCellViewModel.swift; sourceTree = "<group>"; };
 		5299BFEE27D7ED750011DB49 /* HealthKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitService.swift; sourceTree = "<group>"; };
 		5299BFF027D7EE780011DB49 /* CompositionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionSection.swift; sourceTree = "<group>"; };
 		5299BFF727D7EF6F0011DB49 /* DD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD.swift; sourceTree = "<group>"; };
@@ -94,9 +101,9 @@
 		52A2426527D8B839006183C1 /* LatestWorkoutCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LatestWorkoutCell.xib; sourceTree = "<group>"; };
 		52A2426627D8B839006183C1 /* LatestWorkoutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LatestWorkoutCell.swift; sourceTree = "<group>"; };
 		52A2426B27D8C01C006183C1 /* AnimateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimateButton.swift; sourceTree = "<group>"; };
-		52A2426F27D8C31E006183C1 /* LatestWorkoutsReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestWorkoutsReusableView.swift; sourceTree = "<group>"; };
-		52A2427327D8C333006183C1 /* LatestWorkoutsReusableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestWorkoutsReusableViewModel.swift; sourceTree = "<group>"; };
-		52A2427527D8C3AE006183C1 /* LatestWorkoutsReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LatestWorkoutsReusableView.xib; sourceTree = "<group>"; };
+		52A2426F27D8C31E006183C1 /* SectionHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderReusableView.swift; sourceTree = "<group>"; };
+		52A2427327D8C333006183C1 /* SectionHeaderReusableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderReusableViewModel.swift; sourceTree = "<group>"; };
+		52A2427527D8C3AE006183C1 /* SectionHeaderReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeaderReusableView.xib; sourceTree = "<group>"; };
 		52BBAEA627D9407F00F5694A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +114,7 @@
 			files = (
 				5299BFF427D7EEAC0011DB49 /* RxCocoa in Frameworks */,
 				526B359227D782570092AFEC /* HealthKit.framework in Frameworks */,
+				5265693027D954620069E1EF /* Charts in Frameworks */,
 				5299BFF627D7EEAC0011DB49 /* RxSwift in Frameworks */,
 				52BBAEA527D9403B00F5694A /* PKHUD in Frameworks */,
 				526B35AD27D787940092AFEC /* Rswift in Frameworks */,
@@ -253,6 +261,16 @@
 			path = Analyse;
 			sourceTree = "<group>";
 		};
+		527CFCFB27DD53E600C6D7FE /* Resume */ = {
+			isa = PBXGroup;
+			children = (
+				527CFD0027DD540C00C6D7FE /* ResumeCellViewModel.swift */,
+				527CFCFC27DD53F400C6D7FE /* ResumeCell.swift */,
+				527CFCFE27DD540200C6D7FE /* ResumeCell.xib */,
+			);
+			path = Resume;
+			sourceTree = "<group>";
+		};
 		5299BFEC27D7ED580011DB49 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,6 +306,7 @@
 				5242AAF627D90E5000BABAB9 /* EraseData */,
 				52A2426327D8B818006183C1 /* LatestWorkout */,
 				5299BFFB27D7EFEB0011DB49 /* Intensity */,
+				527CFCFB27DD53E600C6D7FE /* Resume */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -335,19 +354,19 @@
 		52A2426D27D8C2F6006183C1 /* ReusableViews */ = {
 			isa = PBXGroup;
 			children = (
-				52A2426E27D8C300006183C1 /* LatestWorkouts */,
+				52A2426E27D8C300006183C1 /* SectionHeader */,
 			);
 			path = ReusableViews;
 			sourceTree = "<group>";
 		};
-		52A2426E27D8C300006183C1 /* LatestWorkouts */ = {
+		52A2426E27D8C300006183C1 /* SectionHeader */ = {
 			isa = PBXGroup;
 			children = (
-				52A2427327D8C333006183C1 /* LatestWorkoutsReusableViewModel.swift */,
-				52A2426F27D8C31E006183C1 /* LatestWorkoutsReusableView.swift */,
-				52A2427527D8C3AE006183C1 /* LatestWorkoutsReusableView.xib */,
+				52A2427327D8C333006183C1 /* SectionHeaderReusableViewModel.swift */,
+				52A2426F27D8C31E006183C1 /* SectionHeaderReusableView.swift */,
+				52A2427527D8C3AE006183C1 /* SectionHeaderReusableView.xib */,
 			);
-			path = LatestWorkouts;
+			path = SectionHeader;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -374,6 +393,7 @@
 				5299BFF527D7EEAC0011DB49 /* RxSwift */,
 				5299C00327D7F04D0011DB49 /* Reusable */,
 				52BBAEA427D9403B00F5694A /* PKHUD */,
+				5265692F27D954620069E1EF /* Charts */,
 			);
 			productName = Running;
 			productReference = 5221C73127D7820400C84795 /* Running.app */;
@@ -408,6 +428,7 @@
 				5299BFF227D7EEAB0011DB49 /* XCRemoteSwiftPackageReference "RxSwift" */,
 				5299C00227D7F04D0011DB49 /* XCRemoteSwiftPackageReference "Reusable" */,
 				52BBAEA327D9403B00F5694A /* XCRemoteSwiftPackageReference "PKHUD" */,
+				5265692E27D954620069E1EF /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = 5221C73227D7820400C84795 /* Products */;
 			projectDirPath = "";
@@ -423,7 +444,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52A2427627D8C3AE006183C1 /* LatestWorkoutsReusableView.xib in Resources */,
+				527CFCFF27DD540200C6D7FE /* ResumeCell.xib in Resources */,
+				52A2427627D8C3AE006183C1 /* SectionHeaderReusableView.xib in Resources */,
 				526B35A927D785D90092AFEC /* AnalyseViewController.storyboard in Resources */,
 				526B35B227D78BA60092AFEC /* Localizable.strings in Resources */,
 				5221C74127D7820400C84795 /* LaunchScreen.storyboard in Resources */,
@@ -483,10 +505,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52A2427027D8C31E006183C1 /* LatestWorkoutsReusableView.swift in Sources */,
+				52A2427027D8C31E006183C1 /* SectionHeaderReusableView.swift in Sources */,
 				5299BFF127D7EE780011DB49 /* CompositionSection.swift in Sources */,
 				5242AAF327D9010400BABAB9 /* ImportService.swift in Sources */,
-				52A2427427D8C333006183C1 /* LatestWorkoutsReusableViewModel.swift in Sources */,
+				52A2427427D8C333006183C1 /* SectionHeaderReusableViewModel.swift in Sources */,
 				5242AAFA27D90E7500BABAB9 /* EraseDataCell.swift in Sources */,
 				52BBAEA727D9408000F5694A /* Constants.swift in Sources */,
 				52340C4427D8DA1C00446E3C /* FormatterService.swift in Sources */,
@@ -500,6 +522,7 @@
 				52A2426C27D8C01C006183C1 /* AnimateButton.swift in Sources */,
 				526B35A727D785CF0092AFEC /* AnalyseViewController.swift in Sources */,
 				5299BFFF27D7F0120011DB49 /* IntensityCellViewModel.swift in Sources */,
+				527CFD0127DD540C00C6D7FE /* ResumeCellViewModel.swift in Sources */,
 				526B359E27D785440092AFEC /* Colors.swift in Sources */,
 				52A2426927D8B839006183C1 /* LatestWorkoutCell.swift in Sources */,
 				52A2426727D8B839006183C1 /* LatestWorkoutCellViewModel.swift in Sources */,
@@ -510,6 +533,7 @@
 				526B35A327D785BC0092AFEC /* AnalyseFlowCoordinator.swift in Sources */,
 				5299BFEF27D7ED750011DB49 /* HealthKitService.swift in Sources */,
 				521F0B1427D8E927004304F4 /* DatabaseService.swift in Sources */,
+				527CFCFD27DD53F400C6D7FE /* ResumeCell.swift in Sources */,
 				526B359927D784BE0092AFEC /* AppDIContainer.swift in Sources */,
 				5299BFF827D7EF6F0011DB49 /* DD.swift in Sources */,
 				52A2426127D8B21E006183C1 /* SettingsViewModel.swift in Sources */,
@@ -665,10 +689,14 @@
 				DEVELOPMENT_TEAM = D27NXEG753;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Running/Resources/Info.plist;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "This health data allows us to analyze your training.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -694,10 +722,14 @@
 				DEVELOPMENT_TEAM = D27NXEG753;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Running/Resources/Info.plist;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "This health data allows us to analyze your training.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -736,6 +768,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		5265692E27D954620069E1EF /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		526B35AB27D787940092AFEC /* XCRemoteSwiftPackageReference "R.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mac-cain13/R.swift.Library";
@@ -771,6 +811,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5265692F27D954620069E1EF /* Charts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5265692E27D954620069E1EF /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = Charts;
+		};
 		526B35AC27D787940092AFEC /* Rswift */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 526B35AB27D787940092AFEC /* XCRemoteSwiftPackageReference "R.swift" */;

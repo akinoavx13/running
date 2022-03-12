@@ -17,7 +17,8 @@ protocol AnalyseDIContainerProtocol: AnyObject {
 final class AnalyseDIContainer: AnalyseDIContainerProtocol {
     
     struct Dependencies {
-        let healthKitService: HealthKitServiceProtocol
+        let databaseService: DatabaseServiceProtocol
+        let formatterService: FormatterServiceProtocol
     }
     
     // MARK: - Properties
@@ -43,6 +44,7 @@ final class AnalyseDIContainer: AnalyseDIContainerProtocol {
 extension AnalyseDIContainer: AnalyseFlowCoordinatorDependencies {
     func makeAnalyseViewController(actions: AnalyseViewModelActions) -> AnalyseViewController {
         AnalyseViewController.create(with: AnalyseViewModel(actions: actions,
-                                                            healthKitService: dependencies.healthKitService))
+                                                            databaseService: dependencies.databaseService,
+                                                            formatterService: dependencies.formatterService))
     }
 }

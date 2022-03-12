@@ -14,6 +14,8 @@ protocol DatabaseServiceProtocol: AnyObject {
     
     func saveIfNeeded() -> Bool
     func fetchWorkout(with uuid: UUID) -> CDWorkout?
+    func fetchWorkouts(start: Date?,
+                       end: Date?) async -> [CDWorkout]
     func save(workout: HKWorkout,
               hearthRate: [HKQuantitySample],
               distanceWalkingRunning: [HKQuantitySample],
@@ -52,11 +54,25 @@ final class DatabaseService: DatabaseServiceProtocol {
     
     func fetchWorkout(with uuid: UUID) -> CDWorkout? {
         let fetchRequest: NSFetchRequest<CDWorkout> = NSFetchRequest(entityName: "\(CDWorkout.self)")
-        fetchRequest.predicate = NSPredicate(format: "%K == %@", #keyPath(CDWorkout.uuid), uuid.uuidString)
+        fetchRequest.predicate = NSPredicate(format: "uuid == %@", uuid.uuidString)
         
         guard let workouts = try? context.fetch(fetchRequest) else { return nil }
         
         return workouts.first
+    }
+    
+    func fetchWorkouts(start: Date?,
+                       end: Date?) async -> [CDWorkout] {
+        let fetchRequest: NSFetchRequest<CDWorkout> = NSFetchRequest(entityName: "\(CDWorkout.self)")
+        
+        if let start = start,
+           let end = end {
+            fetchRequest.predicate = NSPredicate(format: "startDate >= %@ AND endDate <= %@", start as NSDate, end as NSDate)
+        }
+        
+        guard let workouts = try? context.fetch(fetchRequest) else { return [] }
+        
+        return workouts
     }
     
     func save(workout: HKWorkout,
