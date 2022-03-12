@@ -94,15 +94,15 @@ extension AnalyseViewModel {
         Date.getLastDays(days: 7, from: Date())
             .enumerated()
             .forEach { iterator in
-                workouts.forEach { workout in
-                    if workout.startDate?.isIn(date: iterator.element) ?? false {
-                        values.append((x: Double(iterator.offset), y: workout.metabolicEquivalentTask))
-                    } else {
-                        values.append((x: Double(iterator.offset), y: 0))
-                    }
-                    xValues.append(formatterService.format(date: iterator.element, with: "dd\nE"))
+                if let workout = workouts.first(where: { ($0.startDate?.isIn(date: iterator.element)) ?? false }) {
+                    values.append((x: Double(iterator.offset), y: workout.metabolicEquivalentTask))
+                } else {
+                    values.append((x: Double(iterator.offset), y: 0))
                 }
+                xValues.append(formatterService.format(date: iterator.element, with: "dd\nE"))
             }
+        
+        dd(values, xValues)
         
         let cells: [Cell] = [.intensity(IntensityCellViewModel(values: values, xValues: xValues))]
         
