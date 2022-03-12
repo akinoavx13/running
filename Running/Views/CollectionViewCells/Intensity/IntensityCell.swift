@@ -48,23 +48,22 @@ final class IntensityCell: UICollectionViewCell, NibReusable {
         
         let xAxis = chartView.xAxis
         xAxis.labelFont = UIFont.systemFont(ofSize: 14, weight: .regular)
-        xAxis.labelTextColor = UIColor.label.withAlphaComponent(0.6)
+        xAxis.labelTextColor = UIColor.white.withAlphaComponent(0.6)
         xAxis.labelPosition = .bottom
+        xAxis.labelCount = viewModel.xValues.count
         xAxis.drawGridLinesEnabled = false
         xAxis.drawAxisLineEnabled = false
-        xAxis.labelCount = viewModel.xValues.count
         xAxis.valueFormatter = IndexAxisValueFormatter(values: viewModel.xValues)
         
         let leftAxis = chartView.leftAxis
         leftAxis.labelFont = UIFont.systemFont(ofSize: 14, weight: .regular)
-        leftAxis.labelTextColor = UIColor.label.withAlphaComponent(0.6)
+        leftAxis.labelTextColor = UIColor.white.withAlphaComponent(0.6)
         leftAxis.labelPosition = .outsideChart
         leftAxis.labelXOffset = -8
-        leftAxis.axisMinimum = 0
         leftAxis.drawAxisLineEnabled = false
-        leftAxis.gridColor = UIColor.label.withAlphaComponent(0.2)
-        leftAxis.gridLineWidth = 1.5
-        leftAxis.gridLineDashLengths = [4, 8]
+        leftAxis.gridColor = UIColor.white.withAlphaComponent(0.15)
+        leftAxis.gridLineWidth = 1
+        leftAxis.gridLineDashLengths = [2, 12]
         
         let rightAxis = chartView.rightAxis
         rightAxis.enabled = false

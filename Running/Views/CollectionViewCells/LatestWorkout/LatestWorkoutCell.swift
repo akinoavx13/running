@@ -31,7 +31,6 @@ final class LatestWorkoutCell: UICollectionViewCell, NibReusable {
     }
     @IBOutlet private weak var checkIconImageView: UIImageView!
     
-    
     // MARK: - Properties
     
     static var size: CGSize {

@@ -94,7 +94,11 @@ final class SettingsViewController: UIViewController {
             let isSuccess = await viewModel.importWorkout(uuid: uuid)
             
             DispatchQueue.main.async {
-                HUD.flash(isSuccess ? .success : .error, delay: Constants.defaultHUDDuration)
+                if isSuccess {
+                    HUD.hide()
+                } else {
+                    HUD.flash(.error, delay: Constants.defaultHUDDuration)
+                }
             }
         }
     }
