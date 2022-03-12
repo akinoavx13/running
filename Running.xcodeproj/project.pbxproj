@@ -48,9 +48,9 @@
 		52A2426827D8B839006183C1 /* LatestWorkoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52A2426527D8B839006183C1 /* LatestWorkoutCell.xib */; };
 		52A2426927D8B839006183C1 /* LatestWorkoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2426627D8B839006183C1 /* LatestWorkoutCell.swift */; };
 		52A2426C27D8C01C006183C1 /* AnimateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2426B27D8C01C006183C1 /* AnimateButton.swift */; };
-		52A2427027D8C31E006183C1 /* LatestWorkoutsReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2426F27D8C31E006183C1 /* LatestWorkoutsReusableView.swift */; };
-		52A2427427D8C333006183C1 /* LatestWorkoutsReusableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2427327D8C333006183C1 /* LatestWorkoutsReusableViewModel.swift */; };
-		52A2427627D8C3AE006183C1 /* LatestWorkoutsReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52A2427527D8C3AE006183C1 /* LatestWorkoutsReusableView.xib */; };
+		52A2427027D8C31E006183C1 /* SectionHeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2426F27D8C31E006183C1 /* SectionHeaderReusableView.swift */; };
+		52A2427427D8C333006183C1 /* SectionHeaderReusableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52A2427327D8C333006183C1 /* SectionHeaderReusableViewModel.swift */; };
+		52A2427627D8C3AE006183C1 /* SectionHeaderReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52A2427527D8C3AE006183C1 /* SectionHeaderReusableView.xib */; };
 		52BBAEA527D9403B00F5694A /* PKHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 52BBAEA427D9403B00F5694A /* PKHUD */; };
 		52BBAEA727D9408000F5694A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BBAEA627D9407F00F5694A /* Constants.swift */; };
 /* End PBXBuildFile section */
@@ -95,9 +95,9 @@
 		52A2426527D8B839006183C1 /* LatestWorkoutCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LatestWorkoutCell.xib; sourceTree = "<group>"; };
 		52A2426627D8B839006183C1 /* LatestWorkoutCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LatestWorkoutCell.swift; sourceTree = "<group>"; };
 		52A2426B27D8C01C006183C1 /* AnimateButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimateButton.swift; sourceTree = "<group>"; };
-		52A2426F27D8C31E006183C1 /* LatestWorkoutsReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestWorkoutsReusableView.swift; sourceTree = "<group>"; };
-		52A2427327D8C333006183C1 /* LatestWorkoutsReusableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestWorkoutsReusableViewModel.swift; sourceTree = "<group>"; };
-		52A2427527D8C3AE006183C1 /* LatestWorkoutsReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LatestWorkoutsReusableView.xib; sourceTree = "<group>"; };
+		52A2426F27D8C31E006183C1 /* SectionHeaderReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderReusableView.swift; sourceTree = "<group>"; };
+		52A2427327D8C333006183C1 /* SectionHeaderReusableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderReusableViewModel.swift; sourceTree = "<group>"; };
+		52A2427527D8C3AE006183C1 /* SectionHeaderReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeaderReusableView.xib; sourceTree = "<group>"; };
 		52BBAEA627D9407F00F5694A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -337,19 +337,19 @@
 		52A2426D27D8C2F6006183C1 /* ReusableViews */ = {
 			isa = PBXGroup;
 			children = (
-				52A2426E27D8C300006183C1 /* LatestWorkouts */,
+				52A2426E27D8C300006183C1 /* SectionHeader */,
 			);
 			path = ReusableViews;
 			sourceTree = "<group>";
 		};
-		52A2426E27D8C300006183C1 /* LatestWorkouts */ = {
+		52A2426E27D8C300006183C1 /* SectionHeader */ = {
 			isa = PBXGroup;
 			children = (
-				52A2427327D8C333006183C1 /* LatestWorkoutsReusableViewModel.swift */,
-				52A2426F27D8C31E006183C1 /* LatestWorkoutsReusableView.swift */,
-				52A2427527D8C3AE006183C1 /* LatestWorkoutsReusableView.xib */,
+				52A2427327D8C333006183C1 /* SectionHeaderReusableViewModel.swift */,
+				52A2426F27D8C31E006183C1 /* SectionHeaderReusableView.swift */,
+				52A2427527D8C3AE006183C1 /* SectionHeaderReusableView.xib */,
 			);
-			path = LatestWorkouts;
+			path = SectionHeader;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -427,7 +427,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52A2427627D8C3AE006183C1 /* LatestWorkoutsReusableView.xib in Resources */,
+				52A2427627D8C3AE006183C1 /* SectionHeaderReusableView.xib in Resources */,
 				526B35A927D785D90092AFEC /* AnalyseViewController.storyboard in Resources */,
 				526B35B227D78BA60092AFEC /* Localizable.strings in Resources */,
 				5221C74127D7820400C84795 /* LaunchScreen.storyboard in Resources */,
@@ -487,10 +487,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52A2427027D8C31E006183C1 /* LatestWorkoutsReusableView.swift in Sources */,
+				52A2427027D8C31E006183C1 /* SectionHeaderReusableView.swift in Sources */,
 				5299BFF127D7EE780011DB49 /* CompositionSection.swift in Sources */,
 				5242AAF327D9010400BABAB9 /* ImportService.swift in Sources */,
-				52A2427427D8C333006183C1 /* LatestWorkoutsReusableViewModel.swift in Sources */,
+				52A2427427D8C333006183C1 /* SectionHeaderReusableViewModel.swift in Sources */,
 				5242AAFA27D90E7500BABAB9 /* EraseDataCell.swift in Sources */,
 				52BBAEA727D9408000F5694A /* Constants.swift in Sources */,
 				52340C4427D8DA1C00446E3C /* FormatterService.swift in Sources */,
@@ -669,10 +669,13 @@
 				DEVELOPMENT_TEAM = D27NXEG753;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Running/Resources/Info.plist;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "This health data allows us to analyze your training.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -698,10 +701,13 @@
 				DEVELOPMENT_TEAM = D27NXEG753;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Running/Resources/Info.plist;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "This health data allows us to analyze your training.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

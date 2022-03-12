@@ -14,7 +14,11 @@ final class AnalyseViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet private weak var collectionView: UICollectionView! {
-        didSet { collectionView.register(cellType: IntensityCell.self) }
+        didSet {
+            collectionView.register(cellType: IntensityCell.self)
+            collectionView.register(supplementaryViewType: SectionHeaderReusableView.self, ofKind: UICollectionView.elementKindSectionHeader)
+            collectionView.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
+        }
     }
     
     private var refreshControl = UIRefreshControl()
@@ -107,6 +111,18 @@ extension AnalyseViewController: UICollectionViewDataSource {
             return cell
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        viewForSupplementaryElementOfKind kind: String,
+                        at indexPath: IndexPath) -> UICollectionReusableView {
+        switch composition.sections[indexPath.section].type {
+        case let .intensity(viewModel):
+            let headerView: SectionHeaderReusableView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, for: indexPath)
+            headerView.bind(to: viewModel)
+            
+            return headerView
+        }
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout -
@@ -119,6 +135,25 @@ extension AnalyseViewController: UICollectionViewDelegateFlowLayout {
         
         switch type {
         case .intensity: return IntensityCell.size
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForHeaderInSection section: Int) -> CGSize {
+        switch composition.sections[section].type {
+        case .intensity: return SectionHeaderReusableView.size
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        switch composition.sections[section].type {
+        case .intensity: return UIEdgeInsets(top: 8,
+                                                  left: 0,
+                                                  bottom: 0,
+                                                  right: 0)
         }
     }
 }

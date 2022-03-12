@@ -8,6 +8,6 @@
 "analyse" = "Analyse";
 "settings" = "Settings";
 "import" = "Import";
-"workouts_in_the_last_30_days" = "Workouts in the last 30 days";
+"latest_workouts" = "Latest workouts";
 "erase_all_data" = "Erase all data";
 "intensity" = "Intensity";

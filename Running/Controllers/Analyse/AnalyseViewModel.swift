@@ -66,7 +66,7 @@ extension AnalyseViewModel {
     }
     
     enum SectionType {
-        case intensity
+        case intensity(_ for: SectionHeaderReusableViewModel)
     }
     
     enum Cell {
@@ -106,7 +106,8 @@ extension AnalyseViewModel {
         
         let cells: [Cell] = [.intensity(IntensityCellViewModel(values: values, xValues: xValues))]
         
-        return .section(.intensity,
+        return .section(.intensity(SectionHeaderReusableViewModel(title: R.string.localizable.intensity(),
+                                                                  caption: nil)),
                         title: nil,
                         cells: cells)
     }

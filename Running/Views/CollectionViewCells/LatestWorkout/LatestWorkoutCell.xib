@@ -23,7 +23,7 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icons/person-running-thin" translatesAutoresizingMaskIntoConstraints="NO" id="xki-2V-rLm">
                                 <rect key="frame" x="0.0" y="9.5" width="24" height="24"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" name="AccentColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="24" id="0al-xk-9U5"/>
                                     <constraint firstAttribute="height" constant="24" id="qzK-Ln-0NW"/>
@@ -70,9 +70,9 @@
                             <action selector="importButtonDidTap:" destination="8mz-9A-vNh" eventType="touchUpInside" id="krV-fT-xdX"/>
                         </connections>
                     </button>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icons/check-regular" translatesAutoresizingMaskIntoConstraints="NO" id="H2d-oU-hUW">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icons/check-regular" translatesAutoresizingMaskIntoConstraints="NO" id="H2d-oU-hUW">
                         <rect key="frame" x="343" y="23" width="16" height="24"/>
-                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" name="AccentColor"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="16" id="3r6-h4-YZr"/>
                         </constraints>

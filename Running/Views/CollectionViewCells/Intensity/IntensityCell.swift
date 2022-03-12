@@ -20,6 +20,9 @@ final class IntensityCell: UICollectionViewCell, NibReusable {
             chartView.legend.enabled = false
         }
     }
+    @IBOutlet private weak var titleLabel: UILabel! {
+        didSet { titleLabel.text = R.string.localizable.intensity() }
+    }
     
     // MARK: - Properties
     
