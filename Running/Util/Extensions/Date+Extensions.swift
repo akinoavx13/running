@@ -12,6 +12,7 @@ extension Date {
     // MARK: - Properties
     
     static var lastWeek: Date? { ago(days: 7, to: .now) }
+    static var yesterday: Date? { ago(days: 1, to: .now) }
      
     // MARK: - Methods
     
@@ -19,8 +20,10 @@ extension Date {
         Calendar.current.date(byAdding: .day, value: -days, to: date)
     }
     
-    static func getLastDays(days: Int, from date: Date) -> [Date] {
-        (0...days)
+    static func getLastDays(days: Int, from date: Date?) -> [Date] {
+        guard let date = date else { return [] }
+
+        return (0...days)
             .reversed()
             .compactMap { index in
                 Date.ago(days: index, to: date)

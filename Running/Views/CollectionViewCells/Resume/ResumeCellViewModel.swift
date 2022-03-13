@@ -20,12 +20,18 @@ final class ResumeCellViewModel {
         let intensity: Int = Int(workouts.map { $0.metabolicEquivalentTask }.reduce(0, +))
         let distance = workouts.map { $0.totalDistance }.reduce(0, +)
         let durationInSeconds = workouts.map { $0.duration }.reduce(0, +)
-        
-        let minutes: Int = Int(durationInSeconds.secondsToMinutes)
-        let seconds: Int = Int(durationInSeconds) % 60
+
+        let hours: Int = Int(durationInSeconds) / 3600
+        let minutes: Int = (Int(durationInSeconds) % 3600) / 60
+        let seconds: Int = (Int(durationInSeconds) % 3600) % 60
 
         self.intensity = "\(intensity) METs"
         self.distance = formatterService.format(value: distance, accuracy: 1) + " km"
-        self.duration = "\(minutes):\(seconds) min"
+        
+        if hours > 0 {
+            self.duration = "\(hours)h \(minutes) min"
+        } else {
+            self.duration = "\(minutes)min \(seconds) sec"
+        }
     }
 }

@@ -25,7 +25,7 @@ final class ResumeCell: UICollectionViewCell, NibReusable {
         didSet {
             intensityContainer.layer.cornerRadius = 4
             intensityContainer.layer.borderColor = Colors.accent.cgColor
-            intensityContainer.layer.borderWidth = 1
+            intensityContainer.layer.borderWidth = 2
         }
     }
     @IBOutlet private weak var intensityTitleLabel: UILabel! {
@@ -94,7 +94,7 @@ final class ResumeCell: UICollectionViewCell, NibReusable {
     // MARK: - Actions
     
     @objc private func intensityDidTap(_ sender: UITapGestureRecognizer) {
-        intensityContainer.layer.borderWidth = 1
+        intensityContainer.layer.borderWidth = 2
         intensityIconImageView.tintColor = AnalyseViewModel.ResumeType.intensity.color
         intensityIconImageView.alpha = 1
         
@@ -110,7 +110,7 @@ final class ResumeCell: UICollectionViewCell, NibReusable {
     }
     
     @objc private func distanceDidTap(_ sender: UITapGestureRecognizer) {
-        distanceContainer.layer.borderWidth = 1
+        distanceContainer.layer.borderWidth = 2
         distanceIconImageView.tintColor = AnalyseViewModel.ResumeType.distance.color
         distanceIconImageView.alpha = 1
 
@@ -126,7 +126,7 @@ final class ResumeCell: UICollectionViewCell, NibReusable {
     }
     
     @objc private func durationDidTap(_ sender: UITapGestureRecognizer) {
-        durationContainer.layer.borderWidth = 1
+        durationContainer.layer.borderWidth = 2
         durationIconImageView.tintColor = AnalyseViewModel.ResumeType.duration.color
         durationIconImageView.alpha = 1
 

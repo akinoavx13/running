@@ -56,12 +56,12 @@ final class SuggestedIntensityCell: UICollectionViewCell, NibReusable {
         xAxis.drawAxisLineEnabled = false
         xAxis.valueFormatter = IndexAxisValueFormatter(values: viewModel.xValues)
         
-        let upperLimit = ChartLimitLine(limit: 20)
+        let upperLimit = ChartLimitLine(limit: viewModel.upperLimit)
         upperLimit.lineWidth = 2
         upperLimit.lineDashLengths = [8, 8]
         upperLimit.lineColor = Colors.accent
 
-        let lowerLimit = ChartLimitLine(limit: 10)
+        let lowerLimit = ChartLimitLine(limit: viewModel.lowerLimit)
         lowerLimit.lineWidth = 2
         lowerLimit.lineDashLengths = [8, 8]
         lowerLimit.lineColor = Colors.accent

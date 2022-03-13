@@ -18,6 +18,7 @@
 		5242AAF327D9010400BABAB9 /* ImportService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5242AAF227D9010400BABAB9 /* ImportService.swift */; };
 		5242AAF927D90E7500BABAB9 /* EraseDataCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5242AAF727D90E7500BABAB9 /* EraseDataCell.xib */; };
 		5242AAFA27D90E7500BABAB9 /* EraseDataCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5242AAF827D90E7500BABAB9 /* EraseDataCell.swift */; };
+		5258131927DE881000779BDA /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5258131827DE881000779BDA /* Array+Extensions.swift */; };
 		5265693027D954620069E1EF /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = 5265692F27D954620069E1EF /* Charts */; };
 		526B359227D782570092AFEC /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 526B359127D782570092AFEC /* HealthKit.framework */; };
 		526B359927D784BE0092AFEC /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526B359827D784BE0092AFEC /* AppDIContainer.swift */; };
@@ -76,6 +77,7 @@
 		5242AAF227D9010400BABAB9 /* ImportService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportService.swift; sourceTree = "<group>"; };
 		5242AAF727D90E7500BABAB9 /* EraseDataCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EraseDataCell.xib; sourceTree = "<group>"; };
 		5242AAF827D90E7500BABAB9 /* EraseDataCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EraseDataCell.swift; sourceTree = "<group>"; };
+		5258131827DE881000779BDA /* Array+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
 		526B358F27D782570092AFEC /* Running.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Running.entitlements; sourceTree = "<group>"; };
 		526B359127D782570092AFEC /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		526B359827D784BE0092AFEC /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 			children = (
 				5237753427D7F5A700157ED5 /* Date+Extensions.swift */,
 				52E2057827DE128C0075BF16 /* Double+Extensions.swift */,
+				5258131827DE881000779BDA /* Array+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -545,6 +548,7 @@
 				52E2057E27DE16510075BF16 /* SuggestedIntensityCellViewModel.swift in Sources */,
 				526B35A727D785CF0092AFEC /* AnalyseViewController.swift in Sources */,
 				5299BFFF27D7F0120011DB49 /* IntensityCellViewModel.swift in Sources */,
+				5258131927DE881000779BDA /* Array+Extensions.swift in Sources */,
 				527CFD0127DD540C00C6D7FE /* ResumeCellViewModel.swift in Sources */,
 				526B359E27D785440092AFEC /* Colors.swift in Sources */,
 				52A2426927D8B839006183C1 /* LatestWorkoutCell.swift in Sources */,
