@@ -18,13 +18,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F9b-PP-WwG" customClass="BarChartView" customModule="Charts">
-                        <rect key="frame" x="16" y="0.0" width="343" height="250"/>
+                        <rect key="frame" x="12" y="0.0" width="351" height="250"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="F9b-PP-WwG" firstAttribute="leading" secondItem="2VY-W7-z5f" secondAttribute="leading" constant="16" id="M4B-lb-bMs"/>
-                    <constraint firstAttribute="trailing" secondItem="F9b-PP-WwG" secondAttribute="trailing" constant="16" id="U4x-sT-Xqe"/>
+                    <constraint firstItem="F9b-PP-WwG" firstAttribute="leading" secondItem="2VY-W7-z5f" secondAttribute="leading" constant="12" id="M4B-lb-bMs"/>
+                    <constraint firstAttribute="trailing" secondItem="F9b-PP-WwG" secondAttribute="trailing" constant="12" id="U4x-sT-Xqe"/>
                     <constraint firstItem="F9b-PP-WwG" firstAttribute="top" secondItem="2VY-W7-z5f" secondAttribute="top" id="i9t-Dz-2R0"/>
                     <constraint firstAttribute="bottom" secondItem="F9b-PP-WwG" secondAttribute="bottom" id="wHn-Z8-hHN"/>
                 </constraints>

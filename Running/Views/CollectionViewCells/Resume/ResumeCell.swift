@@ -8,6 +8,15 @@
 import UIKit
 import Reusable
 
+protocol ResumeCellDelegate: AnyObject {
+    func resumeCell(_ sender: ResumeCell,
+                    intensityContainerDidTap view: UIView)
+    func resumeCell(_ sender: ResumeCell,
+                    distanceContainerDidTap view: UIView)
+    func resumeCell(_ sender: ResumeCell,
+                    durationContainerDidTap view: UIView)
+}
+
 final class ResumeCell: UICollectionViewCell, NibReusable {
     
     // MARK: - Outlets
@@ -26,7 +35,10 @@ final class ResumeCell: UICollectionViewCell, NibReusable {
     @IBOutlet private weak var intensityIconImageView: UIImageView!
     
     @IBOutlet private weak var distanceContainer: UIView! {
-        didSet { distanceContainer.layer.cornerRadius = 4 }
+        didSet {
+            distanceContainer.layer.cornerRadius = 4
+            distanceContainer.layer.borderColor = Colors.blue.cgColor
+        }
     }
     @IBOutlet private weak var distanceTitleLabel: UILabel! {
         didSet { distanceTitleLabel.text = R.string.localizable.distance() }
@@ -35,7 +47,10 @@ final class ResumeCell: UICollectionViewCell, NibReusable {
     @IBOutlet private weak var distanceIconImageView: UIImageView!
     
     @IBOutlet private weak var durationContainer: UIView! {
-        didSet { durationContainer.layer.cornerRadius = 4 }
+        didSet {
+            durationContainer.layer.cornerRadius = 4
+            durationContainer.layer.borderColor = Colors.green.cgColor
+        }
     }
     @IBOutlet private weak var durationTitleLabel: UILabel! {
         didSet { durationTitleLabel.text = R.string.localizable.duration() }
@@ -50,6 +65,8 @@ final class ResumeCell: UICollectionViewCell, NibReusable {
                height: 55)
     }
     
+    weak var delegate: ResumeCellDelegate?
+    
     // MARK: - Lifecycle
     
     override func prepareForReuse() {
@@ -58,6 +75,8 @@ final class ResumeCell: UICollectionViewCell, NibReusable {
         intensityValueLabel.text = nil
         distanceValueLabel.text = nil
         durationValueLabel.text = nil
+        
+        delegate = nil
     }
     
     // MARK: - Methods
@@ -66,5 +85,59 @@ final class ResumeCell: UICollectionViewCell, NibReusable {
         intensityValueLabel.text = viewModel.intensity
         distanceValueLabel.text = viewModel.distance
         durationValueLabel.text = viewModel.duration
+        
+        intensityContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(intensityDidTap(_:))))
+        distanceContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(distanceDidTap(_:))))
+        durationContainer.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(durationDidTap(_:))))
+    }
+    
+    // MARK: - Actions
+    
+    @objc private func intensityDidTap(_ sender: UITapGestureRecognizer) {
+        intensityContainer.layer.borderWidth = 1
+        intensityIconImageView.tintColor = Colors.accent
+        intensityIconImageView.alpha = 1
+        
+        distanceContainer.layer.borderWidth = 0
+        distanceIconImageView.tintColor = .white
+        distanceIconImageView.alpha = 0.5
+        
+        durationContainer.layer.borderWidth = 0
+        durationIconImageView.tintColor = .white
+        durationIconImageView.alpha = 0.5
+        
+        delegate?.resumeCell(self, intensityContainerDidTap: intensityContainer)
+    }
+    
+    @objc private func distanceDidTap(_ sender: UITapGestureRecognizer) {
+        distanceContainer.layer.borderWidth = 1
+        distanceIconImageView.tintColor = Colors.blue
+        distanceIconImageView.alpha = 1
+
+        intensityContainer.layer.borderWidth = 0
+        intensityIconImageView.tintColor = .white
+        intensityIconImageView.alpha = 0.5
+        
+        durationContainer.layer.borderWidth = 0
+        durationIconImageView.tintColor = .white
+        durationIconImageView.alpha = 0.5
+        
+        delegate?.resumeCell(self, distanceContainerDidTap: intensityContainer)
+    }
+    
+    @objc private func durationDidTap(_ sender: UITapGestureRecognizer) {
+        durationContainer.layer.borderWidth = 1
+        durationIconImageView.tintColor = Colors.green
+        durationIconImageView.alpha = 1
+
+        intensityContainer.layer.borderWidth = 0
+        intensityIconImageView.tintColor = .white
+        intensityIconImageView.alpha = 0.5
+        
+        distanceContainer.layer.borderWidth = 0
+        distanceIconImageView.tintColor = .white
+        distanceIconImageView.alpha = 0.5
+        
+        delegate?.resumeCell(self, durationContainerDidTap: intensityContainer)
     }
 }

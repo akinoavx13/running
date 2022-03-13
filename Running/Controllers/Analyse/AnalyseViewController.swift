@@ -112,6 +112,7 @@ extension AnalyseViewController: UICollectionViewDataSource {
             return cell
         case let .resume(viewModel):
             let cell: ResumeCell = collectionView.dequeueReusableCell(for: indexPath)
+            cell.delegate = self
             cell.bind(to: viewModel)
             
             return cell
@@ -159,5 +160,24 @@ extension AnalyseViewController: UICollectionViewDelegateFlowLayout {
         switch composition.sections[section].type {
         case .intensity, .resume: return .zero
         }
+    }
+}
+
+// MARK: - ResumeCellDelegate -
+
+extension AnalyseViewController: ResumeCellDelegate {
+    func resumeCell(_ sender: ResumeCell,
+                    intensityContainerDidTap view: UIView) {
+        viewModel.update(resumeType: .intensity)
+    }
+    
+    func resumeCell(_ sender: ResumeCell,
+                    distanceContainerDidTap view: UIView) {
+        viewModel.update(resumeType: .distance)
+    }
+    
+    func resumeCell(_ sender: ResumeCell,
+                    durationContainerDidTap view: UIView) {
+        viewModel.update(resumeType: .duration)
     }
 }

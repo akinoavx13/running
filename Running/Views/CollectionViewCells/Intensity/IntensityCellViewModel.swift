@@ -11,12 +11,15 @@ final class IntensityCellViewModel {
     
     let values: [(x: Double, y: Double)]
     let xValues: [String]
+    let resumeType: AnalyseViewModel.ResumeType
     
     // MARK: - Lifecycle
     
     init(values: [(x: Double, y: Double)],
-         xValues: [String]) {
+         xValues: [String],
+         resumeType: AnalyseViewModel.ResumeType) {
         self.values = values
         self.xValues = xValues
+        self.resumeType = resumeType
     }
 }

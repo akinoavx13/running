@@ -56,6 +56,7 @@
 		52A2427627D8C3AE006183C1 /* SectionHeaderReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52A2427527D8C3AE006183C1 /* SectionHeaderReusableView.xib */; };
 		52BBAEA527D9403B00F5694A /* PKHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 52BBAEA427D9403B00F5694A /* PKHUD */; };
 		52BBAEA727D9408000F5694A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BBAEA627D9407F00F5694A /* Constants.swift */; };
+		52E2057927DE128C0075BF16 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E2057827DE128C0075BF16 /* Double+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +106,7 @@
 		52A2427327D8C333006183C1 /* SectionHeaderReusableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderReusableViewModel.swift; sourceTree = "<group>"; };
 		52A2427527D8C3AE006183C1 /* SectionHeaderReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SectionHeaderReusableView.xib; sourceTree = "<group>"; };
 		52BBAEA627D9407F00F5694A /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		52E2057827DE128C0075BF16 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				5237753427D7F5A700157ED5 /* Date+Extensions.swift */,
+				52E2057827DE128C0075BF16 /* Double+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -514,6 +517,7 @@
 				52340C4427D8DA1C00446E3C /* FormatterService.swift in Sources */,
 				521F0B1727D8E95F004304F4 /* Running.xcdatamodeld in Sources */,
 				526B359B27D784DA0092AFEC /* AppFlowCoordinator.swift in Sources */,
+				52E2057927DE128C0075BF16 /* Double+Extensions.swift in Sources */,
 				52A2426227D8B21E006183C1 /* SettingsFlowCoordinator.swift in Sources */,
 				5299BFFD27D7F0070011DB49 /* IntensityCell.swift in Sources */,
 				526B35A527D785C60092AFEC /* AnalyseViewModel.swift in Sources */,
