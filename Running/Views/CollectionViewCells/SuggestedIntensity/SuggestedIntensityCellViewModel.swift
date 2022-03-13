@@ -36,7 +36,7 @@ final class SuggestedIntensityCellViewModel {
                 xValues.append(formatterService.format(date: iterator.element, with: "dd\nE"))
             }
         
-        let cumulativeIntensity = Date.getLastDays(days: 6, from: Date.yesterday)
+        let cumulativeIntensity = Date.getLastDays(days: 6, from: Date.lastWeek)
             .compactMap { date -> Double? in
                 guard let workout = workouts.first(where: { ($0.startDate?.isIn(date: date)) ?? false }) else { return nil }
                 
@@ -44,8 +44,8 @@ final class SuggestedIntensityCellViewModel {
             }
             .reduce(0, +)
         
-        self.upperLimit = cumulativeIntensity * 1.2
-        self.lowerLimit = cumulativeIntensity * 0.8
+        self.upperLimit = cumulativeIntensity * 1.1
+        self.lowerLimit = cumulativeIntensity * 0.9
         
         self.values = values
         self.xValues = xValues
