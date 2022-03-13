@@ -8,6 +8,7 @@
 import RxSwift
 import RxCocoa
 import Foundation
+import UIKit.UIColor
 
 struct AnalyseViewModelActions { }
 
@@ -37,6 +38,14 @@ final class AnalyseViewModel: AnalyseViewModelProtocol {
             case .intensity: return R.string.localizable.intensity()
             case .distance: return R.string.localizable.distance()
             case .duration: return R.string.localizable.duration()
+            }
+        }
+        
+        var color: UIColor {
+            switch self {
+            case .intensity: return Colors.accent
+            case .distance: return Colors.blue
+            case .duration: return Colors.green
             }
         }
     }
@@ -122,27 +131,9 @@ extension AnalyseViewModel {
                                            resumeType: ResumeType?) -> Section? {
         guard let resumeType = resumeType else { return nil }
         
-        var values: [(x: Double, y: Double)] = []
-        var xValues: [String] = []
-
-        Date.getLastDays(days: 6, from: Date())
-            .enumerated()
-            .forEach { iterator in
-                if let workout = workouts.first(where: { ($0.startDate?.isIn(date: iterator.element)) ?? false }) {
-                    switch resumeType {
-                    case .intensity: values.append((x: Double(iterator.offset), y: workout.metabolicEquivalentTask))
-                    case .distance: values.append((x: Double(iterator.offset), y: workout.totalDistance))
-                    case .duration: values.append((x: Double(iterator.offset), y: workout.duration.secondsToMinutes))
-                    }
-                } else {
-                    values.append((x: Double(iterator.offset), y: 0))
-                }
-                xValues.append(formatterService.format(date: iterator.element, with: "dd\nE"))
-            }
-        
-        let cells: [Cell] = [.intensity(IntensityCellViewModel(values: values,
-                                                               xValues: xValues,
-                                                               resumeType: resumeType))]
+        let cells: [Cell] = [.intensity(IntensityCellViewModel(workouts: workouts,
+                                                               resumeType: resumeType,
+                                                               formatterService: formatterService))]
         
         return .section(.intensity(SectionHeaderReusableViewModel(title: resumeType.title,
                                                                   caption: nil)),
@@ -151,16 +142,8 @@ extension AnalyseViewModel {
     }
     
     private func configureResumeSection(workouts: [CDWorkout]) -> Section {
-        let intensity: Int = Int(workouts.map { $0.metabolicEquivalentTask }.reduce(0, +))
-        let distance = workouts.map { $0.totalDistance }.reduce(0, +)
-        let durationInSeconds = workouts.map { $0.duration }.reduce(0, +)
-        
-        let minutes: Int = Int(durationInSeconds.secondsToMinutes)
-        let seconds: Int = Int(durationInSeconds) % 60
-
-        let cells: [Cell] = [.resume(ResumeCellViewModel(intensity: "\(intensity) METs",
-                                                         distance: "\(formatterService.format(value: distance, accuracy: 1)) km",
-                                                         duration: "\(minutes):\(seconds) min"))]
+        let cells: [Cell] = [.resume(ResumeCellViewModel(workouts: workouts,
+                                                         formatterService: formatterService))]
         
         return .section(.resume(SectionHeaderReusableViewModel(title: R.string.localizable.resume(),
                                                                caption: nil)),

@@ -115,20 +115,9 @@ extension SettingsViewModel {
         guard !workouts.isEmpty else { return nil }
         
         let cells: [Cell] = workouts
-            .map {
-                let distance = $0.totalDistance?.doubleValue(for: HKUnit.meterUnit(with: .kilo)) ?? 0
-                
-                return .latestWorkout(LatestWorkoutCellViewModel(uuid: $0.uuid,
-                                                                 date: formatterService.format(date: $0.startDate,
-                                                                                               dateStyle: .short,
-                                                                                               timeStyle: .none),
-                                                                 time: formatterService.format(date: $0.startDate,
-                                                                                               dateStyle: .none,
-                                                                                               timeStyle: .short),
-                                                                 distance: formatterService.format(value: distance,
-                                                                                                   accuracy: 2),
-                                                                 isImported: importService.isImported(uuid: $0.uuid)))
-            }
+            .map { .latestWorkout(LatestWorkoutCellViewModel(workout: $0,
+                                                             formatterService: formatterService,
+                                                             importService: importService)) }
         
         return .section(.latestWorkouts(SectionHeaderReusableViewModel(title: R.string.localizable.latest_workouts(),
                                                                        caption: "\(workouts.count)")),

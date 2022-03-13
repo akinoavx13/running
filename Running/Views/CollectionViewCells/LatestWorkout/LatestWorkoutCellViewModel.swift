@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import HealthKit.HKWorkout
 
 final class LatestWorkoutCellViewModel {
     
@@ -19,15 +20,18 @@ final class LatestWorkoutCellViewModel {
     
     // MARK: - Lifecycle
     
-    init(uuid: UUID,
-         date: String,
-         time: String,
-         distance: String,
-         isImported: Bool) {
-        self.uuid = uuid
-        self.date = date
-        self.time = time
-        self.distance = "\(distance) km"
-        self.isImported = isImported
+    init(workout: HKWorkout,
+         formatterService: FormatterServiceProtocol,
+         importService: ImportServiceProtocol) {
+        self.uuid = workout.uuid
+        self.date = formatterService.format(date: workout.startDate,
+                                            dateStyle: .short,
+                                            timeStyle: .none)
+        self.time = formatterService.format(date: workout.startDate,
+                                            dateStyle: .none,
+                                            timeStyle: .short)
+        self.distance = formatterService.format(value: workout.totalDistance?.doubleValue(for: HKUnit.meterUnit(with: .kilo)) ?? 0,
+                                                accuracy: 2) + " km"
+        self.isImported = importService.isImported(uuid: workout.uuid)
     }
 }

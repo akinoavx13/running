@@ -17,6 +17,7 @@ final class AnalyseViewController: UIViewController {
         didSet {
             collectionView.register(cellType: IntensityCell.self)
             collectionView.register(cellType: ResumeCell.self)
+            collectionView.register(cellType: SuggestedIntensityCell.self)
             collectionView.register(supplementaryViewType: SectionHeaderReusableView.self, ofKind: UICollectionView.elementKindSectionHeader)
             collectionView.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
         }

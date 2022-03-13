@@ -15,11 +15,17 @@ final class ResumeCellViewModel {
     
     // MARK: - Lifecycle
     
-    init(intensity: String,
-         distance: String,
-         duration: String) {
-        self.intensity = intensity
-        self.distance = distance
-        self.duration = duration
+    init(workouts: [CDWorkout],
+         formatterService: FormatterServiceProtocol) {
+        let intensity: Int = Int(workouts.map { $0.metabolicEquivalentTask }.reduce(0, +))
+        let distance = workouts.map { $0.totalDistance }.reduce(0, +)
+        let durationInSeconds = workouts.map { $0.duration }.reduce(0, +)
+        
+        let minutes: Int = Int(durationInSeconds.secondsToMinutes)
+        let seconds: Int = Int(durationInSeconds) % 60
+
+        self.intensity = "\(intensity) METs"
+        self.distance = formatterService.format(value: distance, accuracy: 1) + " km"
+        self.duration = "\(minutes):\(seconds) min"
     }
 }
