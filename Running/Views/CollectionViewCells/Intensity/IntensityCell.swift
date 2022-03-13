@@ -42,15 +42,10 @@ final class IntensityCell: UICollectionViewCell, NibReusable {
     // MARK: - Methods
     
     func bind(to viewModel: IntensityCellViewModel) {
-        let chartDataSet = BarChartDataSet(entries: viewModel.values.map { BarChartDataEntry(x: $0.x, y: $0.y) })
-        chartDataSet.colors = [viewModel.resumeType.color]
-        chartDataSet.drawValuesEnabled = false
-        
         let xAxis = chartView.xAxis
         xAxis.labelFont = UIFont.systemFont(ofSize: 14, weight: .regular)
         xAxis.labelTextColor = UIColor.white.withAlphaComponent(0.6)
         xAxis.labelPosition = .bottom
-        xAxis.labelCount = viewModel.xValues.count
         xAxis.drawGridLinesEnabled = false
         xAxis.drawAxisLineEnabled = false
         xAxis.valueFormatter = IndexAxisValueFormatter(values: viewModel.xValues)
@@ -66,6 +61,10 @@ final class IntensityCell: UICollectionViewCell, NibReusable {
         
         let rightAxis = chartView.rightAxis
         rightAxis.enabled = false
+        
+        let chartDataSet = BarChartDataSet(entries: viewModel.values.map { BarChartDataEntry(x: $0.x, y: $0.y) })
+        chartDataSet.colors = [viewModel.resumeType.color]
+        chartDataSet.drawValuesEnabled = false
         
         chartView.data = BarChartData(dataSet: chartDataSet)
     }

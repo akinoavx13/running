@@ -121,13 +121,11 @@ extension SettingsViewModel {
         
         return .section(.latestWorkouts(SectionHeaderReusableViewModel(title: R.string.localizable.latest_workouts(),
                                                                        caption: "\(workouts.count)")),
-                        title: nil,
                         cells: cells)
     }
     
     private func configureEraseDataSection() -> Section {
         .section(.eraseData,
-                 title: nil,
                  cells: [.eraseData])
     }
 }

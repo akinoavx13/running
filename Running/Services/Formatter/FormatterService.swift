@@ -5,7 +5,7 @@
 //  Created by Maxime Maheo on 09/03/2022.
 //
 
-import Foundation
+import Foundation.NSDate
 
 protocol FormatterServiceProtocol: AnyObject {
     func format(date: Date,

@@ -117,6 +117,11 @@ extension AnalyseViewController: UICollectionViewDataSource {
             cell.bind(to: viewModel)
             
             return cell
+        case let .suggestedIntensity(viewModel):
+            let cell: SuggestedIntensityCell = collectionView.dequeueReusableCell(for: indexPath)
+            cell.bind(to: viewModel)
+            
+            return cell
         }
     }
     
@@ -124,7 +129,7 @@ extension AnalyseViewController: UICollectionViewDataSource {
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
         switch composition.sections[indexPath.section].type {
-        case let .intensity(viewModel), let .resume(viewModel):
+        case let .intensity(viewModel), let .resume(viewModel), let .suggestedIntensity(viewModel):
             let headerView: SectionHeaderReusableView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, for: indexPath)
             headerView.bind(to: viewModel)
             
@@ -144,6 +149,7 @@ extension AnalyseViewController: UICollectionViewDelegateFlowLayout {
         switch type {
         case .intensity: return IntensityCell.size
         case .resume: return ResumeCell.size
+        case .suggestedIntensity: return SuggestedIntensityCell.size
         }
     }
     
@@ -151,7 +157,7 @@ extension AnalyseViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
         switch composition.sections[section].type {
-        case .intensity, .resume: return SectionHeaderReusableView.size
+        case .intensity, .resume, .suggestedIntensity: return SectionHeaderReusableView.size
         }
     }
     
@@ -159,7 +165,10 @@ extension AnalyseViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         switch composition.sections[section].type {
-        case .intensity, .resume: return .zero
+        case .intensity, .resume, .suggestedIntensity: return UIEdgeInsets(top: 0,
+                                                                           left: 0,
+                                                                           bottom: 12,
+                                                                           right: 0)
         }
     }
 }

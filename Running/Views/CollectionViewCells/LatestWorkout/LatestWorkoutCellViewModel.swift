@@ -5,7 +5,7 @@
 //  Created by Maxime Maheo on 08/03/2022.
 //
 
-import Foundation
+import Foundation.NSUUID
 import HealthKit.HKWorkout
 
 final class LatestWorkoutCellViewModel {

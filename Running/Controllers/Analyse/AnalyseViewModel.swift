@@ -7,7 +7,6 @@
 
 import RxSwift
 import RxCocoa
-import Foundation
 import UIKit.UIColor
 
 struct AnalyseViewModelActions { }
@@ -103,12 +102,14 @@ extension AnalyseViewModel {
     
     enum SectionType {
         case intensity(_ for: SectionHeaderReusableViewModel),
-             resume(_ for: SectionHeaderReusableViewModel)
+             resume(_ for: SectionHeaderReusableViewModel),
+             suggestedIntensity(_ for: SectionHeaderReusableViewModel)
     }
     
     enum Cell {
         case intensity(_ for: IntensityCellViewModel),
-             resume(_ for: ResumeCellViewModel)
+             resume(_ for: ResumeCellViewModel),
+             suggestedIntensity(_ for: SuggestedIntensityCellViewModel)
     }
     
     // MARK: - Private methods
@@ -123,6 +124,7 @@ extension AnalyseViewModel {
         }
     
         sections.append(configureResumeSection(workouts: workouts))
+        sections.append(configureSuggestedIntensitySection(workouts: workouts))
         
         compositionSubject.onNext(Composition(sections: sections))
     }
@@ -137,7 +139,6 @@ extension AnalyseViewModel {
         
         return .section(.intensity(SectionHeaderReusableViewModel(title: resumeType.title,
                                                                   caption: nil)),
-                        title: nil,
                         cells: cells)
     }
     
@@ -147,7 +148,15 @@ extension AnalyseViewModel {
         
         return .section(.resume(SectionHeaderReusableViewModel(title: R.string.localizable.resume(),
                                                                caption: nil)),
-                        title: nil,
+                        cells: cells)
+    }
+    
+    private func configureSuggestedIntensitySection(workouts: [CDWorkout]) -> Section {
+        let cells: [Cell] = [.suggestedIntensity(SuggestedIntensityCellViewModel(workouts: workouts,
+                                                                                 formatterService: formatterService))]
+        
+        return .section(.suggestedIntensity(SectionHeaderReusableViewModel(title: R.string.localizable.suggested_intensity(),
+                                                                           caption: nil)),
                         cells: cells)
     }
 }
