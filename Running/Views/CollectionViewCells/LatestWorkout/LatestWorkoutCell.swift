@@ -19,9 +19,7 @@ final class LatestWorkoutCell: UICollectionViewCell, NibReusable {
     // MARK: - Outlets
     
     @IBOutlet private weak var containerView: UIView! {
-        didSet {
-            containerView.layer.cornerRadius = 8
-        }
+        didSet { containerView.layer.cornerRadius = 8 }
     }
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var timeLabel: UILabel!
@@ -35,7 +33,7 @@ final class LatestWorkoutCell: UICollectionViewCell, NibReusable {
     
     static var size: CGSize {
         CGSize(width: UIScreen.main.bounds.width,
-               height: 70)
+               height: 60)
     }
     
     weak var delegate: LatestWorkoutCellDelegate?
