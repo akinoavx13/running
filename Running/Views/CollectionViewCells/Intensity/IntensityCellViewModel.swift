@@ -25,7 +25,7 @@ final class IntensityCellViewModel {
         var values: [(x: Double, y: Double)] = []
         var xValues: [String] = []
 
-        Date.getLastDays(days: 6, from: Date())
+        Date.getLastDays(days: 6, from: .today)
             .enumerated()
             .forEach { iterator in
                 if let workout = workouts.first(where: { ($0.startDate?.isIn(date: iterator.element)) ?? false }) {

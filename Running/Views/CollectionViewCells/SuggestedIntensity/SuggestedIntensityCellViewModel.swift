@@ -23,7 +23,7 @@ final class SuggestedIntensityCellViewModel {
         var values: [(x: Double, y: Double)] = []
         var xValues: [String] = []
         
-        Date.getLastDays(days: 6, from: Date())
+        Date.getLastDays(days: 6, from: .today)
             .enumerated()
             .forEach { iterator in
                 let lastValue = values.last?.y ?? 0
