@@ -30,6 +30,7 @@ final class IntensityCellViewModel {
             .forEach { iterator in
                 if let workout = workouts.first(where: { ($0.startDate?.isIn(date: iterator.element)) ?? false }) {
                     switch resumeType {
+                        // TODO: Calculate RSS
                     case .intensity: values.append((x: Double(iterator.offset), y: workout.metabolicEquivalentTask))
                     case .distance: values.append((x: Double(iterator.offset), y: workout.totalDistance))
                     case .duration: values.append((x: Double(iterator.offset), y: workout.duration.secondsToMinutes))

@@ -29,6 +29,7 @@ final class SuggestedIntensityCellViewModel {
                 let lastValue = values.last?.y ?? 0
                 
                 if let workout = workouts.first(where: { ($0.startDate?.isIn(date: iterator.element)) ?? false }) {
+                    // TODO: Calculate RSS
                     values.append((x: Double(iterator.offset), y: lastValue + workout.metabolicEquivalentTask))
                 } else {
                     values.append((x: Double(iterator.offset), y: lastValue))
@@ -39,7 +40,7 @@ final class SuggestedIntensityCellViewModel {
         let cumulativeIntensity = Date.getLastDays(days: 6, from: Date.lastWeek)
             .compactMap { date -> Double? in
                 guard let workout = workouts.first(where: { ($0.startDate?.isIn(date: date)) ?? false }) else { return nil }
-                
+                // TODO: Calculate RSS
                 return workout.metabolicEquivalentTask
             }
             .reduce(0, +)

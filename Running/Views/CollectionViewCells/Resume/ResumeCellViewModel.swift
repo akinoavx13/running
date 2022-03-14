@@ -17,6 +17,7 @@ final class ResumeCellViewModel {
     
     init(workouts: [CDWorkout],
          formatterService: FormatterServiceProtocol) {
+        // TODO: Calculate RSS
         let intensity: Int = Int(workouts.map { $0.metabolicEquivalentTask }.reduce(0, +))
         let distance = workouts.map { $0.totalDistance }.reduce(0, +)
         let durationInSeconds = workouts.map { $0.duration }.reduce(0, +)
