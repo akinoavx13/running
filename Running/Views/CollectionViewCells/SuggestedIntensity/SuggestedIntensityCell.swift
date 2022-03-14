@@ -77,6 +77,7 @@ final class SuggestedIntensityCell: UICollectionViewCell, NibReusable {
         leftAxis.removeAllLimitLines()
         leftAxis.addLimitLine(upperLimit)
         leftAxis.addLimitLine(lowerLimit)
+        leftAxis.axisMinimum = 0
         
         let rightAxis = chartView.rightAxis
         rightAxis.enabled = false
