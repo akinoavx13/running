@@ -199,7 +199,7 @@ final class DatabaseService: DatabaseServiceProtocol {
     }
     
     private func updateUserMaxHeartRate() {
-        let maxHeartRate = fetchWorkouts(start: .ago(days: 30, to: .today),
+        let maxHeartRate = fetchWorkouts(start: .add(days: -30, to: .today),
                                          end: .today)
             .compactMap { $0.hearthRate?.allObjects as? [CDQuantitySample] }
             .flatMap { $0 }

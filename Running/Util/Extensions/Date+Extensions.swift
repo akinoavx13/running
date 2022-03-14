@@ -11,14 +11,18 @@ extension Date {
     
     // MARK: - Properties
     
-    static var lastWeek: Date? { ago(days: 7, to: .today) }
-    static var yesterday: Date? { ago(days: 1, to: .today) }
-    static var today: Date { Calendar.current.startOfDay(for: Date()) }
+    static var lastWeek: Date? { add(days: -7, to: .today) }
+    static var yesterday: Date? { add(days: -1, to: .today) }
+    static var today: Date? { Calendar.current.startOfDay(for: Date()) }
      
     // MARK: - Methods
     
-    static func ago(days: Int, to date: Date) -> Date? {
-        Calendar.current.date(byAdding: .day, value: -days, to: date)
+    static func add(days: Int, to date: Date?) -> Date? {
+        guard let date = date else { return nil }
+
+        return Calendar.current.date(byAdding: .day,
+                                     value: days,
+                                     to: date)
     }
     
     static func getLastDays(days: Int, from date: Date?) -> [Date] {
@@ -26,9 +30,7 @@ extension Date {
 
         return (0...days)
             .reversed()
-            .compactMap { index in
-                Date.ago(days: index, to: date)
-            }
+            .compactMap { index in .add(days: -index, to: date) }
     }
     
     func isIn(date: Date) -> Bool {

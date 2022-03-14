@@ -55,6 +55,7 @@ final class AnalyseViewModel: AnalyseViewModelProtocol {
 
     private var resumeType: ResumeType = .intensity
     private var workouts: [CDWorkout] = []
+    private var user: CDUser?
     
     private let compositionSubject = ReplaySubject<Composition>.create(bufferSize: 1)
     private let actions: AnalyseViewModelActions
@@ -76,18 +77,22 @@ final class AnalyseViewModel: AnalyseViewModelProtocol {
     // MARK: - Methods
     
     func refresh() {
-        workouts = databaseService.fetchWorkouts(start: .ago(days: 6, to: .today),
+        workouts = databaseService.fetchWorkouts(start: .add(days: -14, to: .today),
                                                  end: .today)
         
+        user = databaseService.fetchUser()
+        
         configureComposition(workouts: workouts,
-                             resumeType: resumeType)
+                             resumeType: resumeType,
+                             user: user)
     }
     
     func update(resumeType: ResumeType) {
         self.resumeType = resumeType
         
         configureComposition(workouts: workouts,
-                             resumeType: resumeType)
+                             resumeType: resumeType,
+                             user: user)
     }
 }
 
@@ -115,26 +120,39 @@ extension AnalyseViewModel {
     // MARK: - Private methods
     
     private func configureComposition(workouts: [CDWorkout] = [],
-                                      resumeType: ResumeType? = nil) {
+                                      resumeType: ResumeType? = nil,
+                                      user: CDUser? = nil) {
         var sections = [Section]()
         
         if let intensitySection = configureIntensitySection(workouts: workouts,
-                                                            resumeType: resumeType) {
+                                                            resumeType: resumeType,
+                                                            user: user) {
             sections.append(intensitySection)
         }
     
-        sections.append(configureResumeSection(workouts: workouts))
-        sections.append(configureSuggestedIntensitySection(workouts: workouts))
+        if let resumeSection = configureResumeSection(workouts: workouts,
+                                                      user: user) {
+            sections.append(resumeSection)
+        }
+        
+        if let suggestedIntensitySection = configureSuggestedIntensitySection(workouts: workouts,
+                                                                              user: user) {
+            sections.append(suggestedIntensitySection)
+        }
         
         compositionSubject.onNext(Composition(sections: sections))
     }
     
     private func configureIntensitySection(workouts: [CDWorkout],
-                                           resumeType: ResumeType?) -> Section? {
-        guard let resumeType = resumeType else { return nil }
+                                           resumeType: ResumeType?,
+                                           user: CDUser?) -> Section? {
+        guard let resumeType = resumeType,
+              let user = user
+        else { return nil }
         
         let cells: [Cell] = [.intensity(IntensityCellViewModel(workouts: workouts,
                                                                resumeType: resumeType,
+                                                               maxHeartRate: user.maxHearthRate,
                                                                formatterService: formatterService))]
         
         return .section(.intensity(SectionHeaderReusableViewModel(title: resumeType.title,
@@ -142,8 +160,12 @@ extension AnalyseViewModel {
                         cells: cells)
     }
     
-    private func configureResumeSection(workouts: [CDWorkout]) -> Section {
+    private func configureResumeSection(workouts: [CDWorkout],
+                                        user: CDUser?) -> Section? {
+        guard let user = user else { return nil }
+
         let cells: [Cell] = [.resume(ResumeCellViewModel(workouts: workouts,
+                                                         maxHeartRate: user.maxHearthRate,
                                                          formatterService: formatterService))]
         
         return .section(.resume(SectionHeaderReusableViewModel(title: R.string.localizable.resume(),
@@ -151,8 +173,12 @@ extension AnalyseViewModel {
                         cells: cells)
     }
     
-    private func configureSuggestedIntensitySection(workouts: [CDWorkout]) -> Section {
+    private func configureSuggestedIntensitySection(workouts: [CDWorkout],
+                                                    user: CDUser?) -> Section? {
+        guard let user = user else { return nil }
+        
         let cells: [Cell] = [.suggestedIntensity(SuggestedIntensityCellViewModel(workouts: workouts,
+                                                                                 maxHeartRate: user.maxHearthRate,
                                                                                  formatterService: formatterService))]
         
         return .section(.suggestedIntensity(SectionHeaderReusableViewModel(title: R.string.localizable.suggested_intensity(),

@@ -19,19 +19,19 @@ final class IntensityCellViewModel {
     
     init(workouts: [CDWorkout],
          resumeType: AnalyseViewModel.ResumeType,
+         maxHeartRate: Double,
          formatterService: FormatterServiceProtocol) {
         self.resumeType = resumeType
         
         var values: [(x: Double, y: Double)] = []
         var xValues: [String] = []
-
+        
         Date.getLastDays(days: 6, from: .today)
             .enumerated()
             .forEach { iterator in
                 if let workout = workouts.first(where: { ($0.startDate?.isIn(date: iterator.element)) ?? false }) {
                     switch resumeType {
-                        // TODO: Calculate RSS
-                    case .intensity: values.append((x: Double(iterator.offset), y: workout.metabolicEquivalentTask))
+                    case .intensity: values.append((x: Double(iterator.offset), y: workout.rss(maxHeartRate: maxHeartRate)))
                     case .distance: values.append((x: Double(iterator.offset), y: workout.totalDistance))
                     case .duration: values.append((x: Double(iterator.offset), y: workout.duration.secondsToMinutes))
                     }

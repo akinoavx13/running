@@ -19,6 +19,7 @@ final class SuggestedIntensityCellViewModel {
     // MARK: - Lifecycle
     
     init(workouts: [CDWorkout],
+         maxHeartRate: Double,
          formatterService: FormatterServiceProtocol) {
         var values: [(x: Double, y: Double)] = []
         var xValues: [String] = []
@@ -29,8 +30,7 @@ final class SuggestedIntensityCellViewModel {
                 let lastValue = values.last?.y ?? 0
                 
                 if let workout = workouts.first(where: { ($0.startDate?.isIn(date: iterator.element)) ?? false }) {
-                    // TODO: Calculate RSS
-                    values.append((x: Double(iterator.offset), y: lastValue + workout.metabolicEquivalentTask))
+                    values.append((x: Double(iterator.offset), y: lastValue + workout.rss(maxHeartRate: maxHeartRate)))
                 } else {
                     values.append((x: Double(iterator.offset), y: lastValue))
                 }
@@ -40,8 +40,8 @@ final class SuggestedIntensityCellViewModel {
         let cumulativeIntensity = Date.getLastDays(days: 6, from: Date.lastWeek)
             .compactMap { date -> Double? in
                 guard let workout = workouts.first(where: { ($0.startDate?.isIn(date: date)) ?? false }) else { return nil }
-                // TODO: Calculate RSS
-                return workout.metabolicEquivalentTask
+
+                return workout.rss(maxHeartRate: maxHeartRate)
             }
             .reduce(0, +)
         

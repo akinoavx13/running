@@ -54,11 +54,13 @@ final class SettingsViewModel: SettingsViewModelProtocol {
     // MARK: - Methods
     
     func refresh() async {
-        guard let startDate = Date.ago(days: 30, to: .today) else { return }
+        guard let today = Date.today,
+              let startDate = Date.add(days: -30, to: today)
+        else { return }
         
         let workouts = await importService.availableForImport(activity: .running,
                                                               start: startDate,
-                                                              end: .today)
+                                                              end: today)
         let user = databaseService.fetchUser()
 
         configureComposition(workouts: workouts,
