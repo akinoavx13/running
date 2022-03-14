@@ -12,7 +12,7 @@ protocol ImportServiceProtocol: AnyObject {
     func availableForImport(activity: HKWorkoutActivityType,
                             start: Date,
                             end: Date) async -> [HKWorkout]
-    func importWorkout(uuid: UUID) async -> Bool
+    func importWorkout(uuid: UUID) async
     func isImported(uuid: UUID) -> Bool
 }
 
@@ -43,10 +43,10 @@ final class ImportService: ImportServiceProtocol {
         return workouts.filter { $0.metadata?[HKMetadataKeyAverageMETs] != nil }
     }
     
-    func importWorkout(uuid: UUID) async -> Bool {
+    func importWorkout(uuid: UUID) async {
         guard let workout = await healthKitService.fetchWorkout(with: uuid),
               !isImported(uuid: uuid)
-        else { return false }
+        else { return }
         
         let heartRate = await healthKitService.fetchQuantitySample(for: workout,
                                                                       quantityType: .heartRate)
@@ -59,12 +59,12 @@ final class ImportService: ImportServiceProtocol {
         let activeEnergyBurned = await healthKitService.fetchQuantitySample(for: workout,
                                                                                quantityType: .activeEnergyBurned)
         
-        return databaseService.save(workout: workout,
-                                    hearthRate: heartRate,
-                                    distanceWalkingRunning: distanceWalkingRunning,
-                                    stepCount: stepCount,
-                                    basalEnergyBurned: basalEnergyBurned,
-                                    activeEnergyBurned: activeEnergyBurned)
+        databaseService.save(workout: workout,
+                             hearthRate: heartRate,
+                             distanceWalkingRunning: distanceWalkingRunning,
+                             stepCount: stepCount,
+                             basalEnergyBurned: basalEnergyBurned,
+                             activeEnergyBurned: activeEnergyBurned)
     }
     
     func isImported(uuid: UUID) -> Bool {

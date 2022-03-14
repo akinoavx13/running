@@ -19,7 +19,7 @@ protocol AnalyseViewModelProtocol: AnyObject {
     
     // MARK: - Methods
     
-    func refresh() async
+    func refresh()
     func update(resumeType: AnalyseViewModel.ResumeType)
 }
 
@@ -75,9 +75,9 @@ final class AnalyseViewModel: AnalyseViewModelProtocol {
     
     // MARK: - Methods
     
-    func refresh() async {
-        workouts = await databaseService.fetchWorkouts(start: .ago(days: 6, to: .today),
-                                                       end: .today)
+    func refresh() {
+        workouts = databaseService.fetchWorkouts(start: .ago(days: 6, to: .today),
+                                                 end: .today)
         
         configureComposition(workouts: workouts,
                              resumeType: resumeType)

@@ -16,6 +16,7 @@ final class SettingsViewController: UIViewController {
     
     @IBOutlet private weak var collectionView: UICollectionView! {
         didSet {
+            collectionView.register(cellType: ValueCell.self)
             collectionView.register(cellType: LatestWorkoutCell.self)
             collectionView.register(cellType: EraseDataCell.self)
             collectionView.register(supplementaryViewType: SectionHeaderReusableView.self, ofKind: UICollectionView.elementKindSectionHeader)
@@ -91,15 +92,9 @@ final class SettingsViewController: UIViewController {
         HUD.show(.progress)
         
         Task {
-            let isSuccess = await viewModel.importWorkout(uuid: uuid)
+            await viewModel.importWorkout(uuid: uuid)
             
-            DispatchQueue.main.async {
-                if isSuccess {
-                    HUD.hide()
-                } else {
-                    HUD.flash(.error, delay: Constants.defaultHUDDuration)
-                }
-            }
+            DispatchQueue.main.async { HUD.hide() }
         }
     }
     
@@ -145,6 +140,11 @@ extension SettingsViewController: UICollectionViewDataSource {
             cell.delegate = self
             
             return cell
+        case let .value(viewModel):
+            let cell: ValueCell = collectionView.dequeueReusableCell(for: indexPath)
+            cell.bind(to: viewModel)
+
+            return cell
         }
     }
     
@@ -152,7 +152,7 @@ extension SettingsViewController: UICollectionViewDataSource {
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
         switch composition.sections[indexPath.section].type {
-        case let .latestWorkouts(viewModel):
+        case let .latestWorkouts(viewModel), let .users(viewModel):
             let headerView: SectionHeaderReusableView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, for: indexPath)
             headerView.bind(to: viewModel)
             
@@ -173,6 +173,7 @@ extension SettingsViewController: UICollectionViewDelegateFlowLayout {
         switch type {
         case .latestWorkout: return LatestWorkoutCell.size
         case .eraseData: return EraseDataCell.size
+        case .value: return ValueCell.size
         }
     }
     
@@ -180,7 +181,7 @@ extension SettingsViewController: UICollectionViewDelegateFlowLayout {
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
         switch composition.sections[section].type {
-        case .latestWorkouts: return SectionHeaderReusableView.size
+        case .latestWorkouts, .users: return SectionHeaderReusableView.size
         case .eraseData: return .zero
         }
     }
@@ -188,23 +189,17 @@ extension SettingsViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        switch composition.sections[section].type {
-        case .latestWorkouts: return UIEdgeInsets(top: 8,
-                                                  left: 0,
-                                                  bottom: 0,
-                                                  right: 0)
-        case .eraseData: return UIEdgeInsets(top: 16,
-                                             left: 0,
-                                             bottom: 0,
-                                             right: 0)
-        }
+        UIEdgeInsets(top: 0,
+                     left: 0,
+                     bottom: 12,
+                     right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         switch composition.sections[section].type {
-        case .latestWorkouts: return 6
+        case .latestWorkouts, .users: return 6
         case .eraseData: return 0
         }
     }

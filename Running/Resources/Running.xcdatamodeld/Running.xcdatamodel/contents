@@ -11,6 +11,9 @@
         <relationship name="workout_hearthRate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDWorkout" inverseName="hearthRate" inverseEntity="CDWorkout"/>
         <relationship name="workout_stepCount" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDWorkout" inverseName="stepCount" inverseEntity="CDWorkout"/>
     </entity>
+    <entity name="CDUser" representedClassName="CDUser" syncable="YES" codeGenerationType="class">
+        <attribute name="maxHearthRate" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+    </entity>
     <entity name="CDWorkout" representedClassName="CDWorkout" syncable="YES" codeGenerationType="class">
         <attribute name="duration" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="endDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -29,7 +32,8 @@
         <relationship name="stepCount" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="CDQuantitySample" inverseName="workout_stepCount" inverseEntity="CDQuantitySample"/>
     </entity>
     <elements>
-        <element name="CDWorkout" positionX="-258.68359375" positionY="-35.78515625" width="128" height="268"/>
         <element name="CDQuantitySample" positionX="19.19921875" positionY="65.8828125" width="128" height="178"/>
+        <element name="CDWorkout" positionX="-258.68359375" positionY="-35.78515625" width="128" height="268"/>
+        <element name="CDUser" positionX="-117" positionY="90" width="128" height="44"/>
     </elements>
 </model>

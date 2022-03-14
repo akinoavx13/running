@@ -76,15 +76,8 @@ final class AnalyseViewController: UIViewController {
     }
     
     private func refresh() {
-        Task {
-            await viewModel.refresh()
-            
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                
-                self.refreshControl.endRefreshing()
-            }
-        }
+        viewModel.refresh()
+        refreshControl.endRefreshing()
     }
     
     @objc private func refreshControlValueDidChange() {
@@ -164,12 +157,10 @@ extension AnalyseViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
-        switch composition.sections[section].type {
-        case .intensity, .resume, .suggestedIntensity: return UIEdgeInsets(top: 0,
-                                                                           left: 0,
-                                                                           bottom: 12,
-                                                                           right: 0)
-        }
+        UIEdgeInsets(top: 0,
+                     left: 0,
+                     bottom: 12,
+                     right: 0)
     }
 }
 

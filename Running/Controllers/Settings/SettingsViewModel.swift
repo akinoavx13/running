@@ -20,7 +20,7 @@ protocol SettingsViewModelProtocol: AnyObject {
     // MARK: - Methods
     
     func refresh() async
-    func importWorkout(uuid: UUID) async -> Bool
+    func importWorkout(uuid: UUID) async
     func eraseAllData() async
 }
 
@@ -59,16 +59,16 @@ final class SettingsViewModel: SettingsViewModelProtocol {
         let workouts = await importService.availableForImport(activity: .running,
                                                               start: startDate,
                                                               end: .today)
+        let user = databaseService.fetchUser()
 
-        configureComposition(workouts: workouts)
+        configureComposition(workouts: workouts,
+                             user: user)
     }
     
-    func importWorkout(uuid: UUID) async -> Bool {
-        guard await importService.importWorkout(uuid: uuid) else { return false }
+    func importWorkout(uuid: UUID) async {
+        await importService.importWorkout(uuid: uuid)
         
         await refresh()
-        
-        return true
     }
     
     func eraseAllData() async {
@@ -88,32 +88,45 @@ extension SettingsViewModel {
     }
     
     enum SectionType {
-        case latestWorkouts(_ for: SectionHeaderReusableViewModel),
+        case users(_ for: SectionHeaderReusableViewModel),
+             latestWorkouts(_ for: SectionHeaderReusableViewModel),
              eraseData
     }
     
     enum Cell {
         case latestWorkout(_ for: LatestWorkoutCellViewModel),
-             eraseData
+             eraseData,
+             value(_ for: ValueCellViewModel)
     }
     
     // MARK: - Private methods
     
-    private func configureComposition(workouts: [HKWorkout] = []) {
+    private func configureComposition(workouts: [HKWorkout] = [],
+                                      user: CDUser? = nil) {
         var sections = [Section]()
         
-        if let latestWorkoutsSection = configureLatestWorkoutsSection(workouts: workouts) {
-            sections.append(latestWorkoutsSection)
+        if let userSection = configureUserSection(user: user) {
+            sections.append(userSection)
         }
         
+        sections.append(configureLatestWorkoutsSection(workouts: workouts))
         sections.append(configureEraseDataSection())
         
         compositionSubject.onNext(Composition(sections: sections))
     }
     
-    private func configureLatestWorkoutsSection(workouts: [HKWorkout]) -> Section? {
-        guard !workouts.isEmpty else { return nil }
+    private func configureUserSection(user: CDUser?) -> Section? {
+        guard let user = user else { return nil }
         
+        let cells: [Cell] = [.value(ValueCellViewModel(title: R.string.localizable.max_heart_rate(),
+                                                       value: "\(Int(user.maxHearthRate)) bpm"))]
+        
+        return .section(.users(SectionHeaderReusableViewModel(title: R.string.localizable.user(),
+                                                              caption: nil)),
+                        cells: cells)
+    }
+    
+    private func configureLatestWorkoutsSection(workouts: [HKWorkout]) -> Section {
         let cells: [Cell] = workouts
             .map { .latestWorkout(LatestWorkoutCellViewModel(workout: $0,
                                                              formatterService: formatterService,

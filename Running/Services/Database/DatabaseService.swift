@@ -12,16 +12,16 @@ protocol DatabaseServiceProtocol: AnyObject {
     
     // MARK: - Methods
     
-    func saveIfNeeded() -> Bool
     func fetchWorkout(with uuid: UUID) -> CDWorkout?
     func fetchWorkouts(start: Date?,
-                       end: Date?) async -> [CDWorkout]
+                       end: Date?) -> [CDWorkout]
+    func fetchUser() -> CDUser?
     func save(workout: HKWorkout,
               hearthRate: [HKQuantitySample],
               distanceWalkingRunning: [HKQuantitySample],
               stepCount: [HKQuantitySample],
               basalEnergyBurned: [HKQuantitySample],
-              activeEnergyBurned: [HKQuantitySample]) -> Bool
+              activeEnergyBurned: [HKQuantitySample])
     func eraseAllData()
 }
 
@@ -40,18 +40,6 @@ final class DatabaseService: DatabaseServiceProtocol {
     
     // MARK: - Methods
     
-    func saveIfNeeded() -> Bool {
-        guard context.hasChanges else { return false }
-    
-        do {
-            try context.save()
-            
-            return true
-        } catch {
-            fatalError(error.localizedDescription)
-        }
-    }
-    
     func fetchWorkout(with uuid: UUID) -> CDWorkout? {
         let fetchRequest: NSFetchRequest<CDWorkout> = NSFetchRequest(entityName: "\(CDWorkout.self)")
         fetchRequest.predicate = NSPredicate(format: "uuid == %@", uuid.uuidString)
@@ -62,7 +50,7 @@ final class DatabaseService: DatabaseServiceProtocol {
     }
     
     func fetchWorkouts(start: Date?,
-                       end: Date?) async -> [CDWorkout] {
+                       end: Date?) -> [CDWorkout] {
         let fetchRequest: NSFetchRequest<CDWorkout> = NSFetchRequest(entityName: "\(CDWorkout.self)")
         
         if let start = start,
@@ -75,12 +63,20 @@ final class DatabaseService: DatabaseServiceProtocol {
         return workouts
     }
     
+    func fetchUser() -> CDUser? {
+        let fetchRequest: NSFetchRequest<CDUser> = NSFetchRequest(entityName: "\(CDUser.self)")
+        
+        guard let users = try? context.fetch(fetchRequest) else { return nil }
+        
+        return users.first
+    }
+    
     func save(workout: HKWorkout,
               hearthRate: [HKQuantitySample],
               distanceWalkingRunning: [HKQuantitySample],
               stepCount: [HKQuantitySample],
               basalEnergyBurned: [HKQuantitySample],
-              activeEnergyBurned: [HKQuantitySample]) -> Bool {
+              activeEnergyBurned: [HKQuantitySample]) {
         let newWorkout = CDWorkout(context: context)
         newWorkout.uuid = workout.uuid
         newWorkout.startDate = workout.startDate
@@ -117,7 +113,9 @@ final class DatabaseService: DatabaseServiceProtocol {
         newWorkout.basalEnergyBurned = NSSet(array: basalEnergyBurned.map { convertEnergyBurned(quantitySample: $0) })
         newWorkout.activeEnergyBurned = NSSet(array: activeEnergyBurned.map { convertEnergyBurned(quantitySample: $0) })
 
-        return saveIfNeeded()
+        saveIfNeeded()
+        
+        updateUserMaxHeartRate()
     }
     
     func eraseAllData() {
@@ -146,6 +144,16 @@ final class DatabaseService: DatabaseServiceProtocol {
         }
         
         context = persistentContainer.newBackgroundContext()
+    }
+    
+    private func saveIfNeeded() {
+        guard context.hasChanges else { return }
+    
+        do {
+            try context.save()
+        } catch {
+            fatalError(error.localizedDescription)
+        }
     }
     
     private func convertHearthRate(quantitySample: HKQuantitySample) -> CDQuantitySample {
@@ -186,5 +194,25 @@ final class DatabaseService: DatabaseServiceProtocol {
         newHearthRate.value = quantitySample.quantity.doubleValue(for: .kilocalorie())
         
         return newHearthRate
+    }
+    
+    private func updateUserMaxHeartRate() {
+        let maxHeartRate = fetchWorkouts(start: nil, end: nil)
+            .compactMap { $0.hearthRate?.allObjects as? [CDQuantitySample] }
+            .flatMap { $0 }
+            .map { $0.value }
+            .max() ?? 0
+        
+        let user: CDUser
+        
+        if let savedUser = fetchUser() {
+            user = savedUser
+        } else {
+            user = CDUser(context: context)
+        }
+        
+        user.maxHearthRate = maxHeartRate
+        
+        saveIfNeeded()
     }
 }
