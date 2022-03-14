@@ -36,6 +36,8 @@ final class DatabaseService: DatabaseServiceProtocol {
     
     init() {
         initDatabase()
+        
+        updateUserMaxHeartRate()
     }
     
     // MARK: - Methods
@@ -197,7 +199,8 @@ final class DatabaseService: DatabaseServiceProtocol {
     }
     
     private func updateUserMaxHeartRate() {
-        let maxHeartRate = fetchWorkouts(start: nil, end: nil)
+        let maxHeartRate = fetchWorkouts(start: .ago(days: 30, to: .today),
+                                         end: .today)
             .compactMap { $0.hearthRate?.allObjects as? [CDQuantitySample] }
             .flatMap { $0 }
             .map { $0.value }

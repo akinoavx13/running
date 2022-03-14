@@ -122,7 +122,7 @@ extension SettingsViewModel {
                                                        value: "\(Int(user.maxHearthRate)) bpm"))]
         
         return .section(.users(SectionHeaderReusableViewModel(title: R.string.localizable.user(),
-                                                              caption: nil)),
+                                                              caption: R.string.localizable.last_x_days(30))),
                         cells: cells)
     }
     

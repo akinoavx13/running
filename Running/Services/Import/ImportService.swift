@@ -40,7 +40,15 @@ final class ImportService: ImportServiceProtocol {
                                                             start: start,
                                                             end: end)
         
-        return workouts.filter { $0.metadata?[HKMetadataKeyAverageMETs] != nil }
+        var availableWorkouts: [HKWorkout] = []
+        
+        for workout in workouts {
+            if !(await healthKitService.fetchQuantitySample(for: workout, quantityType: .heartRate).isEmpty) {
+                availableWorkouts.append(workout)
+            }
+        }
+        
+        return workouts
     }
     
     func importWorkout(uuid: UUID) async {

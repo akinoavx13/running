@@ -77,6 +77,8 @@ final class SettingsViewController: UIViewController {
     }
     
     private func refresh() {
+        HUD.show(.progress)
+        
         Task {
             await viewModel.refresh()
             
@@ -84,6 +86,7 @@ final class SettingsViewController: UIViewController {
                 guard let self = self else { return }
                 
                 self.refreshControl.endRefreshing()
+                HUD.hide()
             }
         }
     }

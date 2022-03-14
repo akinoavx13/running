@@ -19,3 +19,4 @@
 "this_week" = "This week";
 "user" = "User";
 "max_heart_rate" = "Max heart rate";
+"last_x_days" = "Last %i days";
