@@ -43,12 +43,13 @@ final class ImportService: ImportServiceProtocol {
         var availableWorkouts: [HKWorkout] = []
         
         for workout in workouts {
-            if !(await healthKitService.fetchQuantitySample(for: workout, quantityType: .heartRate).isEmpty) {
+            if !(await healthKitService.fetchQuantitySample(for: workout, quantityType: .heartRate).isEmpty),
+               workout.totalDistance?.doubleValue(for: .meterUnit(with: .kilo)) ?? 0 > 0 {
                 availableWorkouts.append(workout)
             }
         }
         
-        return workouts
+        return availableWorkouts
     }
     
     func importWorkout(uuid: UUID) async {
