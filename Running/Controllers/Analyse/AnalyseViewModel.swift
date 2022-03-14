@@ -76,8 +76,8 @@ final class AnalyseViewModel: AnalyseViewModelProtocol {
     // MARK: - Methods
     
     func refresh() async {
-        workouts = await databaseService.fetchWorkouts(start: .ago(days: 6, to: .now),
-                                                           end: .now)
+        workouts = await databaseService.fetchWorkouts(start: .ago(days: 6, to: .today),
+                                                       end: .today)
         
         configureComposition(workouts: workouts,
                              resumeType: resumeType)
