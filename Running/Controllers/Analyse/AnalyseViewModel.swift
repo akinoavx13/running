@@ -77,8 +77,8 @@ final class AnalyseViewModel: AnalyseViewModelProtocol {
     // MARK: - Methods
     
     func refresh() {
-        workouts = databaseService.fetchWorkouts(start: .add(days: -14, to: .today),
-                                                 end: .today)
+        workouts = databaseService.fetchWorkouts(start: .add(days: -14, to: .now),
+                                                 end: .now)
         
         user = databaseService.fetchUser()
         

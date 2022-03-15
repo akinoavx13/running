@@ -24,7 +24,7 @@ final class ResumeCellViewModel {
         var distance: Double = 0
         var durationInSeconds: Double = 0
         
-        Date.getLastDays(days: 6, from: .today)
+        Date.getLastDays(days: 6, from: .now)
             .enumerated()
             .forEach { iterator in
                 if let workout = workouts.first(where: { ($0.startDate?.isIn(date: iterator.element)) ?? false }) {

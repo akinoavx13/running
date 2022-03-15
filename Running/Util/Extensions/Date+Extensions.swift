@@ -11,9 +11,8 @@ extension Date {
     
     // MARK: - Properties
     
-    static var lastWeek: Date? { add(days: -7, to: .today) }
-    static var yesterday: Date? { add(days: -1, to: .today) }
-    static var today: Date? { Calendar.current.startOfDay(for: Date()) }
+    static var lastWeek: Date? { add(days: -7, to: .now) }
+    static var yesterday: Date? { add(days: -1, to: .now) }
      
     // MARK: - Methods
     
