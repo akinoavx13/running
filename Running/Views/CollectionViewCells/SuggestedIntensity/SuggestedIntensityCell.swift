@@ -27,6 +27,7 @@ final class SuggestedIntensityCell: UICollectionViewCell, NibReusable {
             chartView.dragEnabled = false
             chartView.doubleTapToZoomEnabled = false
             chartView.legend.enabled = false
+            chartView.isUserInteractionEnabled = false
         }
     }
     
